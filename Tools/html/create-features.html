@@ -6,56 +6,65 @@
   <script src="../js/match_two_images.js"></script>
 </head>
 <body>
-<!--<img hidden id="test1" src="images/objects/b.jpg" />-->
-<!--<img hidden id="test2" src="images/postcard_scene_2.jpg" />-->
 <div id="content">
-  <form id="form1" runat="server">
+  <form id="form1" onsubmit="return false;" method="post">
     <input type='file' id="imgInp" />
-    <img id="blah" src="#" alt="your image" />
+      <br>
+    <img id="image" src="#" alt="your image" />
+      <br>
+      <button onclick="getFeatures()">get features</button>
   </form>
 </div>
 <script>
-//  window.onload =function () {
-//    var img1 = document.getElementById("test1");
-//    var img2 = document.getElementById("test2");
-//    var ef = Object.create(ExtraFeatures);
-//    console.log(ef.test);
-//    ef.loadImage(img1);
-//    var features = ef.getFeatures();
-//    //var myJsonString = JSON.stringify(yourArray);
-//    var json_kp = JSON.stringify(features.KeyPoints);
-//    var json_dp = JSON.stringify(features.Descriptors);
-////    var detect_test = Object.create(Detect);
-////    detect_test.loadImage(img1,img2);
-////    detect_test.Match();
-////    detect_test.showResult();
-//
-//    var blob = new Blob([json_kp], {type: "application/json"});
-//    var url  = URL.createObjectURL(blob);
-//
-//    var a = document.createElement('a');
-//    a.download    = "backup.json";
-//    a.href        = url;
-//    a.textContent = "Download backup.json";
-//
-//    document.getElementById('content').appendChild(a);
-//  }
+  window.onload =function () {
+      $(document).ready(function () {
+          $("#imgInp").change(function(){
+              readURL(this);
+              $(".download_link").remove();
+          });
+      });
+  };
   function readURL(input) {
       if (input.files && input.files[0]) {
           var reader = new FileReader();
 
           reader.onload = function (e) {
-              $('#blah').attr('src', e.target.result);
-          }
-
+              $('#image').attr('src', e.target.result);
+          };
           reader.readAsDataURL(input.files[0]);
       }
+  };
+    function saveJsonToFile(json_str,file_name) {
+        var blob = new Blob([json_str], {type: "application/json"});
+        var url  = URL.createObjectURL(blob);
+
+        var a = document.createElement('a');
+        a.download    = file_name+".json";
+        a.href        = url;
+        a.className = "download_link";
+        a.textContent = "Download "+file_name+".json ";
+
+        $('#content').append(a);
+        $('#content').append(document.createElement("br"));
+    }
+  function getFeatures() {
+      var img1 = document.getElementById("image");
+      //get features
+      var ef = Object.create(ExtraFeatures);
+      console.log(ef.test);
+      ef.loadImage(img1);
+      var features = ef.getFeatures();
+      var json_kp = JSON.stringify(features.KeyPoints);
+      var json_dp = JSON.stringify(features.Descriptors);
+      //save to file
+      var full_path = document.getElementById('imgInp').value;
+
+      var full_name = full_path.replace(/^.*[\\\/]/, '');//匹配/
+      var full_name = full_name.replace(/\.\w{0,9}/,'');//匹配.
+      //alert(full_name);
+      saveJsonToFile(json_kp,full_name+"_keypoints");
+      saveJsonToFile(json_dp,full_name+"_descriptors");
   }
-$(document).ready(function () {
-    $("#imgInp").change(function(){
-        readURL(this);
-    });
-});
 
 </script>
 

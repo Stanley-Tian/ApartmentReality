@@ -56,7 +56,7 @@ var Detect ={
     createDiv.width=this.image1.Width+this.image2.Width;
     createDiv.height=Math.max(this.image1.Height,this.image2.Height);
     createDiv.id= canvas_name;
-    createDiv.display = "hide";
+    createDiv.style.display = "none";
     document.body.appendChild(createDiv);
     this.canvas.element = document.getElementById(canvas_name);
   },
@@ -126,9 +126,10 @@ ExtraFeatures = {
     var createDiv=document.createElement("canvas");
     createDiv.style.background="pink";
     createDiv.width=Detect.image1.Width;
+    //createDiv.display = "hide";
     createDiv.height=Math.max(Detect.image1.Height);
     createDiv.id= canvas_name;
-    //createDiv.display = "hide";
+    createDiv.style.display = "none";
     document.body.appendChild(createDiv);
     Detect.canvas.element = document.getElementById(canvas_name);
   },
