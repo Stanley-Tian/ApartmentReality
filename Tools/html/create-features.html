@@ -3,7 +3,8 @@
 <head>
   <script src="../js/tracking-min.js"></script>
   <script src="../js/jquery.min.js"></script>
-  <script src="../js/match_two_images.js"></script>
+  <script src="../js/tmt_algo.js"></script>
+    <script src="../js/funcs.js"></script>
 </head>
 <body>
 <div id="content">
@@ -34,19 +35,7 @@
           reader.readAsDataURL(input.files[0]);
       }
   };
-    function saveJsonToFile(json_str,file_name) {
-        var blob = new Blob([json_str], {type: "application/json"});
-        var url  = URL.createObjectURL(blob);
 
-        var a = document.createElement('a');
-        a.download    = file_name+".json";
-        a.href        = url;
-        a.className = "download_link";
-        a.textContent = "Download "+file_name+".json ";
-
-        $('#content').append(a);
-        $('#content').append(document.createElement("br"));
-    }
   function getFeatures() {
       var img1 = document.getElementById("image");
       //get features

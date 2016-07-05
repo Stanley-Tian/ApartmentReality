@@ -107,9 +107,20 @@ var Detect ={
       this.canvas.context.stroke();
     }
     this.canvas.element.hidden=false;
+    return matches;
   }
 };
-
+/**
+ * 继承自Detect的对象，用来提取图像特征
+ * 使用方法：
+ *       var img1 = document.getElementById("test1");//获取图像
+ *       var ef = Object.create(ExtraFeatures);//创建对象
+ *       ef.loadImage(img1);//载入图像
+ *       var features = ef.getFeatures();//获取特征
+ *       var json_kp = JSON.stringify(features.KeyPoints);//将两个特征转换为json格式
+ *       var json_dp = JSON.stringify(features.Descriptors);
+ * @type {Detect}
+ */
 var ExtraFeatures = Object.create(Detect);//从Detect继承过来
 ExtraFeatures = {
   test:1,
