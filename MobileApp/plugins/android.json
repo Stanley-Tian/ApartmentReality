@@ -12,6 +12,9 @@
         },
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.tmtvision.MobileApp"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.tmtvision.MobileApp"
         }
     },
     "dependent_plugins": {
