@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Web SQL Database</title>
+    <meta charset="utf-8">
+</head>
+<body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.db.min.js"></script>
+<script src="../js/funcs.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+//        var db = openDatabase('tmt_web_database', '1.0', 'Test DB', 2 * 1024 * 1024);
+//        db.transaction(function (tx) {
+//            tx.executeSql('CREATE TABLE IF NOT EXISTS reference (id unique, name, keypoints_url,descriptors_url)');
+//            tx.executeSql('INSERT INTO reference ' +
+//                    '(id, name,keypoints_url,descriptors_url) ' +
+//                    'VALUES ' +
+//                    '(1, "手机袋","assets/FeatureData/a_keypoints.json","assets/FeatureData/a_descriptors.json")');
+//            tx.executeSql('INSERT INTO reference ' +
+//                    '(id, name,keypoints_url,descriptors_url) ' +
+//                    'VALUES ' +
+//                    '(2, "星矢卡","assets/FeatureData/c_keypoints.json","assets/FeatureData/c_descriptors.json")');
+//        });
+        initWebSQL();
+    });
+
+</script>
+</body>
+</html>

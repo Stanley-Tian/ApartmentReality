@@ -23,11 +23,35 @@
 			<p><button onclick="alert('fuck')">fuck</button></p>
             <p><button onclick='changeText()'>change divs</button></p>
             <div id="testchange">didododio</div>
-            <a href="html/the-best-match.html">test best math</a>
+            <a href="html/the-best-match.html">test best math</a><br>
+            <a href="html/color_camera.html">test h5 cam</a><br>
+            <button id="test_ajax">Test ajax</button>
+            <button id="test_camera">Test Camera</button>
+            <button id="switch_camera">Swtich Camera</button>
+            <button id="focus_camera">Focus</button>
         </div>
+        <script src="cordova.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="CameraPreview.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#test_ajax").click(function () {
+                    htmlobj=$.ajax({url:"ttt.txt",async:false});
+                    $("#testchange").html(htmlobj.responseText);
+                });
+                $("#test_camera").click(function () {
+                    cordova.plugins.camerapreview.startCamera({x: 10, y: 10, width: 350, height:350, camera: "front", tapPhoto: true, previewDrag: true, toBack: false});
+                    cordova.plugins.camerapreview.show();
+                });
+                $("#switch_camera").click(function () {
+                    cordova.plugins.camerapreview.switchCamera();
+                });
+                $("#focus_camera").click(function () {
+                    cordova.plugins.camerapreview.focus();
+                });
+            });
 
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-
+        </script>
     </body>
 </html>

@@ -26,3 +26,52 @@ function getInputFileName(full_path) {
     var full_name = full_name.replace(/\.\w{0,9}/,'');//匹配.，剔除扩展名
     return full_name;
 }
+
+function initWebSQL() {
+    var db = $.db("tmt_web_database", "1.0", "Our Data", 1024 * 1024);
+    db.dropTable({name: "reference"});
+
+    db.createTable({
+        name: "reference",
+        columns: [
+            "id INTEGER PRIMARY KEY",
+            "name TEXT",
+            "keypoints_url TEXT",
+            "descriptors_url TEXT",
+        ],
+        done: function () {
+            console.log("Table reference created successfully");
+        },
+        fail: function () {
+            console.log("Table reference created failed");
+        }
+    });
+    db.insert("reference", {
+        data: {
+            id: 1,
+            name: "一个花袋",
+            keypoints_url:"assets/FeatureData/a_keypoints.json",
+            descriptors_url:"assets/FeatureData/a_descriptors.json"
+        },
+        done: function () {
+            console.log("One item added successfully");
+        },
+        fail: function () {
+            console.log("One item added failed");
+        }
+    });
+    db.insert("reference", {
+        data: {
+            id: 2,
+            name: "一张卡",
+            keypoints_url:"assets/FeatureData/c_keypoints.json",
+            descriptors_url:"assets/FeatureData/c_descriptors.json"
+        },
+        done: function () {
+            console.log("One item added successfully");
+        },
+        fail: function () {
+            console.log("One item added failed");
+        }
+    });
+}

@@ -5,7 +5,7 @@
 //内部文件读写
 //使用范例
 新建并写入数据
-file_op.creatfile("f1.txt","this is the file content 1!");
+file_op.createFile("f1.txt","this is the file content 1!");
 
 读取文件：
 file_op.readFile("f1.txt");
@@ -18,8 +18,8 @@ file_op.onLoadedFile = function (filedata) {
 
 var file_op = {
 
-    creatfile: function (mfilepath, mfileData) {
-        console.log("enter the creatfile!");
+    createFile: function (mfilepath, mfileData) {
+        console.log("enter the createFile!");
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
             console.log('file system open: ' + fs.name);
             fs.root.getFile(mfilepath, { create: true, exclusive: false }, function (fileEntry) {
