@@ -26,11 +26,14 @@ function getInputFileName(full_path) {
     var full_name = full_name.replace(/\.\w{0,9}/,'');//匹配.，剔除扩展名
     return full_name;
 }
-
+/**
+ * 初始化WebSQL，新建一个表，并将数据存入
+ */
 function initWebSQL() {
     var db = $.db("tmt_web_database", "1.0", "Our Data", 1024 * 1024);
+    //为了防止冲突，先drop掉表
     db.dropTable({name: "reference"});
-
+    //新建表
     db.createTable({
         name: "reference",
         columns: [
@@ -46,6 +49,7 @@ function initWebSQL() {
             console.log("Table reference created failed");
         }
     });
+    //插入数据
     db.insert("reference", {
         data: {
             id: 1,
