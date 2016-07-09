@@ -5,6 +5,7 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>Hello World</title>
     </head>
@@ -14,13 +15,11 @@
             document.getElementById('testchange').innerHTML = 'Fred Flinstone';
         }
     </script>
-        <div class="app">
-            <h1>Apache Cordova</h1>
             <div id="deviceready" class="blink">
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
             </div>
-			<p><button onclick="alert('fuck')">fuck</button></p>
+			<p><button onclick="alert('fuck中文')">fuck</button></p>
             <p><button onclick='changeText()'>change divs</button></p>
             <div id="testchange">didododio</div>
             <a href="html/the-best-match.html">test best math</a><br>
@@ -30,7 +29,7 @@
             <button id="switch_camera">Swtich Camera</button>
             <button id="focus_camera">Focus</button>
             <button id="get_device_info">Get Device Info</button>
-        </div>
+            <a href="index.html">主页</a>
         <script src="cordova.js"></script>
         <script src="js/index.js"></script>
         <script src="js/jquery.min.js"></script>
