@@ -1,0 +1,28 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "com.mbppower.camerapreview": {
+            "PACKAGE_NAME": "com.tmtvision.MobileApp"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.tmtvision.MobileApp"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.tmtvision.MobileApp"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.tmtvision.MobileApp"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.tmtvision.MobileApp"
+        }
+    }
+}
