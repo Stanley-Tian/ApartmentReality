@@ -1,0 +1,68 @@
+{
+    "1": {
+        "name": "1-1 号户型",
+        "keypoints_url": "assets/FeatureData/1-1_keypoints.json",
+        "descriptors_url": "assets/FeatureData/1-1_descriptors.json",
+        "image_url": "assets/FeatureData/1-1.jpg"
+    },
+    "2": {
+        "name": "2-1 号户型",
+        "keypoints_url": "assets/FeatureData/2-1_keypoints.json",
+        "descriptors_url": "assets/FeatureData/2-1_descriptors.json",
+        "image_url": "assets/FeatureData/2-1.jpg"
+    },
+    "3": {
+        "name": "3-1 号户型",
+        "keypoints_url": "assets/FeatureData/3-1_keypoints.json",
+        "descriptors_url": "assets/FeatureData/3-1_descriptors.json",
+        "image_url": "assets/FeatureData/3-1.jpg"
+    },
+    "4": {
+        "name": "3-2 号户型",
+        "keypoints_url": "assets/FeatureData/3-2_keypoints.json",
+        "descriptors_url": "assets/FeatureData/3-2_descriptors.json",
+        "image_url": "assets/FeatureData/3-2.jpg"
+    },
+    "5": {
+        "name": "3-3 号户型",
+        "keypoints_url": "assets/FeatureData/3-3_keypoints.json",
+        "descriptors_url": "assets/FeatureData/3-3_descriptors.json",
+        "image_url": "assets/FeatureData/3-3.jpg"
+    },
+    "6": {
+        "name": "4-1 号户型",
+        "keypoints_url": "assets/FeatureData/4-1_keypoints.json",
+        "descriptors_url": "assets/FeatureData/4-1_descriptors.json",
+        "image_url": "assets/FeatureData/4-1.jpg"
+    },
+    "7": {
+        "name": "4-2 号户型",
+        "keypoints_url": "assets/FeatureData/4-2_keypoints.json",
+        "descriptors_url": "assets/FeatureData/4-2_descriptors.json",
+        "image_url": "assets/FeatureData/4-2.jpg"
+    },
+    "8": {
+        "name": "4-3 号户型",
+        "keypoints_url": "assets/FeatureData/4-3_keypoints.json",
+        "descriptors_url": "assets/FeatureData/4-3_descriptors.json",
+        "image_url": "assets/FeatureData/4-3.jpg"
+    },
+    "9": {
+        "name": "5-1 号户型",
+        "keypoints_url": "assets/FeatureData/5-1_keypoints.json",
+        "descriptors_url": "assets/FeatureData/5-1_descriptors.json",
+        "image_url": "assets/FeatureData/5-1.jpg"
+    },
+    "10": {
+        "name": "5-2 号户型",
+        "keypoints_url": "assets/FeatureData/5-2_keypoints.json",
+        "descriptors_url": "assets/FeatureData/5-2_descriptors.json",
+        "image_url": "assets/FeatureData/5-2.jpg"
+    },
+    "11": {
+        "name": "5-3 号户型",
+        "keypoints_url": "assets/FeatureData/5-3_keypoints.json",
+        "descriptors_url": "assets/FeatureData/5-3_descriptors.json",
+        "image_url": "assets/FeatureData/5-3.jpg"
+    }
+}

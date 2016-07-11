@@ -30,10 +30,13 @@
             <button id="switch_camera">Swtich Camera</button>
             <button id="focus_camera">Focus</button>
             <button id="get_device_info">Get Device Info</button>
+            <a href="the-best-match.html">The Best Match</a>
         </div>
         <script src="cordova.js"></script>
         <script src="js/index.js"></script>
         <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.db.min.js"></script>
+        <script src="js/funcs.js"></script>
         <script src="CameraPreview.js"></script>
         <script>
             $(document).ready(function(){
@@ -59,6 +62,8 @@
                           "像素比："+window.devicePixelRatio+"\n"
                     );
                 });
+                initWebSQL();
+                saveFeaturesToSessionStorage();
             });
 
         </script>

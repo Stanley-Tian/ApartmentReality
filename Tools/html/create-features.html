@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="../js/tracking-min.js"></script>
-  <script src="../js/jquery.min.js"></script>
-  <script src="../js/tmt_algo.js"></script>
-    <script src="../js/funcs.js"></script>
+  <script src="../../MobileApp/www/js/tracking-min.js"></script>
+  <script src="../../MobileApp/www/js/jquery.min.js"></script>
+  <script src="../../MobileApp/www/js/tmt_algo.js"></script>
+  <script src="../../MobileApp/www/js/funcs.js"></script>
 </head>
 <body>
 <div id="content">
@@ -39,20 +39,22 @@
   function getFeatures() {
       var img1 = document.getElementById("image");
       //get features
-      var ef = Object.create(ExtraFeatures);
+      var ef = Object.create(ExtractFeatures);
       console.log(ef.test);
       ef.loadImage(img1);
       var features = ef.getFeatures();
-      var json_kp = JSON.stringify(features.KeyPoints);
-      var json_dp = JSON.stringify(features.Descriptors);
+      //var json_kp = JSON.stringify(features.KeyPoints);
+      //var json_dp = JSON.stringify(features.Descriptors);
+      var json_features = JSON.stringify(features);
       //save to file
       var full_path = document.getElementById('imgInp').value;
 
       var full_name = full_path.replace(/^.*[\\\/]/, '');//匹配/
       var full_name = full_name.replace(/\.\w{0,9}/,'');//匹配.
       //alert(full_name);
-      saveJsonToFile(json_kp,full_name+"_keypoints");
-      saveJsonToFile(json_dp,full_name+"_descriptors");
+      //saveJsonToFile(json_kp,full_name+"_keypoints");
+      //saveJsonToFile(json_dp,full_name+"_descriptors");
+      saveJsonToFile(json_features,full_name+"_feature");
   }
 
 </script>
