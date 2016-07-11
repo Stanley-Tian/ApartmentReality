@@ -30,17 +30,17 @@ function getInputFileName(full_path) {
  * 初始化WebSQL，新建一个表，并将数据存入
  */
 function initWebSQL() {
-    var db = $.db("tmt_web_database", "1.0", "Our Data", 1024 * 1024);
+    app.db = $.db("tmt_web_database", "1.0", "Our Data", 1024 * 1024);
     //为了防止冲突，先drop掉表
-    db.dropTable({name: "reference"});
+    app.db.dropTable({name: "reference"});
     //新建表
-    db.createTable({
+    app.db.createTable({
         name: "reference",
         columns: [
             "id INTEGER PRIMARY KEY",
             "name TEXT",
-            "keypoints_url TEXT",
-            "descriptors_url TEXT",
+            "feature_url TEXT",
+            "image_url TEXT"
         ],
         done: function () {
             console.log("Table reference created successfully");
@@ -49,33 +49,51 @@ function initWebSQL() {
             console.log("Table reference created failed");
         }
     });
-    //插入数据
-    db.insert("reference", {
-        data: {
-            id: 1,
-            name: "一个花袋",
-            keypoints_url:"assets/FeatureData/a_keypoints.json",
-            descriptors_url:"assets/FeatureData/a_descriptors.json"
+    //载入json数据
+    feature_data_json=$.ajax({url:"assets/FeatureData.json",async:false});
+    var feature_data = JSON.parse(feature_data_json.responseText);
+    for(var i in feature_data)
+    {
+        var a = feature_data[i];
+        //console.log(feature_data[i]);
+        app.db.insert("reference", {
+            data: {
+                id: i,
+                name: a["name"],
+                feature_url:a["feature_url"],
+                image_url:a["image_url"]
+            },
+            done: function () {
+                console.log("item "+i+" added successfully");
+            },
+            fail: function () {
+                console.log("item "+i+" added failed");
+            }
+        });
+    }
+}
+
+function saveFeaturesToSessionStorage() {
+    var storage = window.sessionStorage;
+    app.db.criteria("reference").list(
+        function (transaction, results) {
+            var rows = results.rows;
+            for (var i = 0; i < rows.length; i++) {
+                var row = rows.item(i);
+                var feature_json=$.ajax({url:row.feature_url,async:false}).responseText;
+                // var feature ;
+                // feature = JSON.parse(feature_json);
+                // var features_json = JSON.stringify(features);
+                //将数据存入sessionStorage，这样只要用户还在这个session里面，就可以持续的访问数据
+                //当用户离开session，及重启应用时，sessionStorage将被重置
+               // var value = storage.getItem(key); // Pass a key name to get its value.
+                storage.setItem(row.id,feature_json) // Pass a key name and its value to add or update that key.
+                //storage.removeItem(key) // Pass a key name to remove that key from storage.
+                console.log(row.id + " " + row.name + " " + row.feature_url + "");
+            }
         },
-        done: function () {
-            console.log("One item added successfully");
-        },
-        fail: function () {
-            console.log("One item added failed");
+        function (transaction, error) {
+            console.log("Something went wrong....");
         }
-    });
-    db.insert("reference", {
-        data: {
-            id: 2,
-            name: "一张卡",
-            keypoints_url:"assets/FeatureData/c_keypoints.json",
-            descriptors_url:"assets/FeatureData/c_descriptors.json"
-        },
-        done: function () {
-            console.log("One item added successfully");
-        },
-        fail: function () {
-            console.log("One item added failed");
-        }
-    });
+    );
 }

@@ -10,12 +10,17 @@
 <body>
 <div id="content">
     <form id="form1" onsubmit="return false;" method="post">
-        <label>摄像头拍到的场景图</label>
+        <label>场景图片</label>
         <input type='file' id="img1" />
         <br>
-        <img id="image1" src="#" alt="your image" />
+        <label>对象图片</label>
+        <input type='file' id="img2" />
         <br>
-        <button onclick="matchFeaturesFromFiles()">Match</button>
+        <img id="image1" src="#" alt="your image" />
+        <img id="image2" src="#" alt="your image" />
+
+        <br>
+        <button onclick="matchImages()">Match</button>
     </form>
 </div>
 
@@ -28,14 +33,35 @@
               $(".download_link").remove();
               $("canvas").remove();
           });
+          $("#img2").change(function(){
+              readURL(this,"#image2");
+              $(".download_link").remove();
+              $("canvas").remove();
+          });
       });
   };
-  function matchFeaturesFromFiles() {
+  function matchImages() {
       var img1 = document.getElementById("image1");
-      var scene = Object.create(ExtraFeatures);
-      scene.loadImage(img1);
-      var scene_features = scene.getFeatures();
+      var img2 = document.getElementById("image2");
 
+      var img1_ef = Object.create(ExtraFeatures);
+      var img2_ef = Object.create(ExtraFeatures);
+
+      img1_ef.loadImage(img1);
+      var img1_features = img1_ef.getFeatures();
+
+      img2_ef.loadImage(img2);
+      var img2_features = img2_ef.getFeatures();
+
+      var read_feature_json=$.ajax({url:"../assets/FeatureData/1-1_feature.json",async:false}).responseText;
+        var read_feature = JSON.parse(read_feature_json);
+      //do the match
+      //var matches = tracking.Brief.reciprocalMatch(img1_features.KeyPoints,img1_features.Descriptors,img2_features.KeyPoints,img2_features.Descriptors);
+      var matches = tracking.Brief.reciprocalMatch(img1_features.KeyPoints,img1_features.Descriptors,read_feature.KeyPoints,read_feature.Descriptors);
+      //sort by confidence from big to small
+      matches.sort(function(a, b) {
+          return b.confidence - a.confidence;
+      });
 
       //save to file
       var json_matches = JSON.stringify(matches);
