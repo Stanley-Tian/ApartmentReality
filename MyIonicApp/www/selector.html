@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>扫描户型</title>
+
+  <script src="js/jquery.js"></script>
+
+</head>
+<body>
+<canvas id="scanner"></canvas>
+<script>
+
+    var img = new Image();
+    img.onload =function () {
+      console.log("进入函数");
+      $mScanner = $("#scanner");
+      $mScanner.width = document.body.clientWidth;
+      $mScanner.height = document.body.clientHeight;
+      console.log("clientWidth:"+document.body.clientWidth);
+      console.log("clientHeight"+document.body.clientHeight);
+      var cv = document.getElementById("scanner").getContext("2d");
+      var img_x = ($mScanner.width - img.width)/2;
+      var img_y = ($mScanner.height - img.height)/2;
+      img_x = (img_x<0)? 0:img_x;
+      img_y = (img_y<0)? 0:img_y;
+      console.log("Img_x:"+img.width);
+      console.log("Img_y:"+img.height);
+
+      console.log("x:"+img_x);
+      console.log("y:"+img_y);
+      cv.drawImage(img,img_x,img_y);
+    };
+    img.src = "img/ionic.png";
+
+
+</script>
+</body>
+</html>
