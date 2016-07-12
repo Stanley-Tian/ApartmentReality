@@ -1,4 +1,4 @@
 /.idea
-.blend
-.blend1
-.ipt
+*.blend
+*.blend1
+*.ipt
