@@ -2,11 +2,9 @@
  * Created by rwp on 2016/7/12.
  */
 function OnClick() {
-  alert("haha");
   console.log("haha");
 }
 function selectImg() {
-  alert("show img!");
   var cv  = document.getElementById('mCv');
   var cans = cv.getContext('2d');
   cans.moveTo(20,30);//第一个起点
@@ -17,5 +15,3 @@ function selectImg() {
   cans.stroke();
   //cv.textContent("aa");
 }
-console.log("selector.js");
-alert("已加载");
