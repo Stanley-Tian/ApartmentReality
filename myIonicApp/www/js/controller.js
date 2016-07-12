@@ -12,7 +12,7 @@ angular.module('myApp.controllers', [])
   .controller('show3DController', function($scope) {
 
     $scope.title='户型3D视图';
-    init();
+    show3D();
     $scope.$on('$ionicView.afterEnter', function (viewInfo, state) {
 
     });
