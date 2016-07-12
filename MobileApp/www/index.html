@@ -40,12 +40,18 @@ https://github.com/creationix/msgpack-js-browser
     <script src='three/js/libs/stats.min.js'></script>
     <script src='three/src/loaders/ObjectLoader.js'></script>
     <script src='three/js/loaders/OBJLoader.js'></script>
-    <script src='js/three_init.js'></script>
+    <script src='js/init_three_model.js'></script>
+    <script src="js/jquery.min.js"></script>
 </head>
 <body>
 <div id='viewport'></div>
 <script>
-    
+$(document).ready(function () {
+    initModel('viewport');
+    loadModel('assets/HouseModles/basic_scene.json');
+    animate();
+});
+
 
 </script>
 </body>
