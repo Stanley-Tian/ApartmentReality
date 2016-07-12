@@ -5,6 +5,6 @@ node_modules/
 platforms/
 plugins/
 
-/.idea
 /platforms
-.DS_Store
+/.editorconfig
+/.idea
