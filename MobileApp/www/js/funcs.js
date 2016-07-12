@@ -1,3 +1,5 @@
+//This js file require : tmt_algo.js
+
 /**
  * Created by Tevil on 2016/7/5.
  */
@@ -97,3 +99,65 @@ function saveFeaturesToSessionStorage() {
         }
     );
 }
+/**
+ *
+ * @param scene_img 图像img,html上的<image>对象
+ * @param onSuccess 第一个参数为成功匹配的户型id
+ * @param onFailed
+ *
+ * 使用方法：
+ *  var onSuccess = function (bestid) {
+ *  console.log(`Perfect Matched! Id: ${bestid} `);
+ *   };
+ *    var onFailed = function () {
+ *   console.log("Failed Again");
+ *   };
+ *    var img1 = document.getElementById("image1");
+ *    matchFeaturesFromSessionStorage(img1,onSuccess,onFailed);
+ */
+function matchFeaturesFromSessionStorage(scene_img,onSuccess,onFailed) {
+    //var img1 = document.getElementById("image1");
+    var scene = Object.create(ExtractFeatures);
+    scene.loadImage(scene_img);
+    var scene_features = scene.getFeatures();
+
+    var storage = window.sessionStorage;
+    var best_fit = {};
+    best_fit.id=0;
+    best_fit.av_confidence = 0.0;
+    for(var i=1;i<=11;i++)
+    {
+        var obj_features_json = storage.getItem(i); // Pass a key name to get its value.
+        var obj_features = JSON.parse(obj_features_json);
+        var matches = tracking.Brief.reciprocalMatch(scene_features.KeyPoints,scene_features.Descriptors,obj_features.KeyPoints,obj_features.Descriptors);
+        //sort by confidence from big to small
+        matches.sort(function(a, b) {
+            return b.confidence - a.confidence;
+        });
+        var total_confidence =0.0;
+
+        var start =0;
+        var end= matches.length>50?50:matches.length;
+        for(var j=start;j<end;j++)
+        {
+            total_confidence=total_confidence+matches[j].confidence;
+        }
+        var average_confidence = total_confidence/(end-start);
+        if (average_confidence>best_fit.av_confidence)
+        {
+            best_fit.id = i;
+            best_fit.av_confidence = average_confidence;
+        }
+        console.log("item: "+i+" av_confidence: "+average_confidence);
+    }
+    console.log("best id: "+best_fit.id+" av_confidence: "+best_fit.av_confidence);
+
+    if(typeof onSuccess === "function"&&best_fit.av_confidence>0.82)
+    {
+        onSuccess(best_fit.id);
+    }else if(typeof onFailed === "function")
+    {
+        onFailed();
+    }
+}
+

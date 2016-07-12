@@ -28,7 +28,7 @@
         <img id="image5-2" src="assets/FeatureData/5-2.JPG" alt="your image" hidden />
         <img id="image5-3" src="assets/FeatureData/5-3.JPG" alt="your image" hidden />
         <button onclick="matchFeaturesFromImages()">Match from Images</button>
-        <button onclick="matchFeaturesFromSessionStorage()">Match from session storage</button>
+        <button id="match">Match from session storage</button>
 
     </form>
 </div>
@@ -39,6 +39,16 @@
           $("#img1").change(function(){
               readURL(this,"#image1");
               $("canvas").remove();
+          });
+          $("#match").click(function () {
+              var onSuccess = function (bestid) {
+                  console.log(`Perfect Matched! Id: ${bestid} `);
+              };
+              var onFailed = function () {
+                  console.log("Failed Again");
+              };
+              var img1 = document.getElementById("image1");
+              matchFeaturesFromSessionStorage(img1,onSuccess,onFailed);
           });
       });
   };
@@ -104,43 +114,7 @@
 
         console.log("best id: "+best_fit.id+" av_confidence: "+best_fit.av_confidence);
   }
-  function matchFeaturesFromSessionStorage() {
-      var img1 = document.getElementById("image1");
-      var scene = Object.create(ExtractFeatures);
-      scene.loadImage(img1);
-      var scene_features = scene.getFeatures();
 
-      var storage = window.sessionStorage;
-      var best_fit = {};
-      best_fit.id=0;
-      best_fit.av_confidence = 0.0;
-      for(var i=1;i<=11;i++)
-      {
-          var obj_features_json = storage.getItem(i); // Pass a key name to get its value.
-          var obj_features = JSON.parse(obj_features_json);
-          var matches = tracking.Brief.reciprocalMatch(scene_features.KeyPoints,scene_features.Descriptors,obj_features.KeyPoints,obj_features.Descriptors);
-          //sort by confidence from big to small
-          matches.sort(function(a, b) {
-              return b.confidence - a.confidence;
-          });
-          var total_confidence =0.0;
-
-          var start =0;
-          var end= matches.length>50?50:matches.length;
-          for(var j=start;j<end;j++)
-          {
-              total_confidence=total_confidence+matches[j].confidence;
-          }
-          var average_confidence = total_confidence/(end-start);
-          if (average_confidence>best_fit.av_confidence)
-          {
-              best_fit.id = i;
-              best_fit.av_confidence = average_confidence;
-          }
-          console.log("item: "+i+" av_confidence: "+average_confidence);
-      }
-      console.log("best id: "+best_fit.id+" av_confidence: "+best_fit.av_confidence);
-  }
   function matchFeaturesFromFiles() {
       var img1 = document.getElementById("image1");
       var scene = Object.create(ExtractFeatures);

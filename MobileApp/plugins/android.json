@@ -18,6 +18,9 @@
         },
         "com.mbppower.camerapreview": {
             "PACKAGE_NAME": "com.tmtvision.MobileApp"
+        },
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "com.tmtvision.MobileApp"
         }
     },
     "dependent_plugins": {

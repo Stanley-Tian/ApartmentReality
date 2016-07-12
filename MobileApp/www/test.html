@@ -30,6 +30,7 @@
             <button id="switch_camera">Swtich Camera</button>
             <button id="focus_camera">Focus</button>
             <button id="get_device_info">Get Device Info</button>
+            <button id="get_accelerator">Get Acc</button>
             <a href="the-best-match.html">The Best Match</a>
         </div>
         <script src="cordova.js"></script>
@@ -62,8 +63,27 @@
                           "像素比："+window.devicePixelRatio+"\n"
                     );
                 });
+                $("#get_accelerator").click(function () {
+                    function onSuccess(acceleration) {
+
+                        var acc_content = 'X: ' + acceleration.x + '<br>' +
+                                'Y: ' + acceleration.y + '<br>' +
+                                'Z: ' + acceleration.z + '<br>' +
+                                'Tmp: '      + acceleration.timestamp + '\n';
+                        $("#testchange").html(acc_content);
+                    }
+
+                    function onError() {
+                        alert('onError!');
+                    }
+
+                    var options = { frequency: 100 };  // Update every 3 seconds
+
+                    var watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+                });
                 initWebSQL();
                 saveFeaturesToSessionStorage();
+
             });
 
         </script>
