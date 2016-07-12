@@ -1,38 +1,58 @@
 <!DOCTYPE html>
-<html>
-    <head>
-<!--         <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *"> -->
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Hello World</title>
-    </head>
-    <body>
-    new stanley-dev
-    <script type="text/javascript">
-        function changeText(){
-            document.getElementById('testchange').innerHTML = 'Fred Flinstone';
+
+<!--
+Requires msgpack-js.js
+https://github.com/creationix/msgpack-js-browser
+(ported from https://github.com/creationix/msgpack-js)
+-->
+<html lang='en'>
+<head>
+    <title>three.js webgl - msgpack loader</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0'>
+    <style>
+        body {
+            margin: 0px;
+            overflow: hidden;
         }
-    </script>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-            <a href="test.html">Go to Test Page</a><br>
-        </div>
-        <script src="cordova.js"></script>
-        <script src="js/index.js"></script>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/jquery.db.min.js"></script>
-        <script src="CameraPreview.js"></script>
-        <script>
-            $(document).ready(function(){
+        #viewport {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #1b1c1e;
+            background-image: linear-gradient(#7d8fa3, #1b1c1e);
+        }
+        #info {
+            color: #fff;
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            text-align: center;
+            z-index: 100;
+            display:block;
+        }
+        a { color: orange }
+    </style>
+    <script src='three/build/three.js'></script>
+    <script src='three/js/controls/OrbitControls.js'></script>
+    <script src='three/js/Detector.js'></script>
+    <script src='three/js/libs/msgpack-js.js'></script>
+    <script src='three/js/libs/stats.min.js'></script>
+    <script src='three/src/loaders/ObjectLoader.js'></script>
+    <script src='three/js/loaders/OBJLoader.js'></script>
+    <script src='js/init_three_model.js'></script>
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+<div id='viewport'></div>
+<script>
+$(document).ready(function () {
+    initModel('viewport');
+    loadModel('assets/HouseModles/basic_scene.json');
+    animate();
+});
 
-            });
 
-        </script>
-    </body>
+</script>
+</body>
 </html>
