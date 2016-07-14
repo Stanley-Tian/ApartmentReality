@@ -51,3 +51,64 @@ function initCamera() {
 function releaseCamera() {
   cordova.plugins.camerapreview.stopCamera();
 }
+function detectImage() {
+  //take a pic
+  cordova.plugins.camerapreview.takePicture({maxWidth: 500, maxHeight:500});
+  //handle the pic
+  cordova.plugins.camerapreview.setOnPictureTakenHandler(function(result){
+    //var img = document.getElementById('originalPicture');
+    var taken_img = document.getElementById("taken_image");
+    taken_img.src = result[1];
+    taken_img.onload = function () {
+      var c=document.getElementById("resize_image_canvas");
+      var ctx=c.getContext("2d");
+      ctx.drawImage(taken_img,0,0,400,400);
+      var dataurl = c.toDataURL();
+
+      var taken_img_400 = document.getElementById("small_image");
+      taken_img_400.src = dataurl;
+      
+      taken_img_400.onload = function () {
+        console.dir("result: "+taken_img_400);
+        function onSuccess(result) {
+          console.log(result);
+        }
+        function onFailed() {
+          console.log("failed");
+        }
+        console.log("width: "+taken_img_400.naturalWidth);
+        console.log("height: "+taken_img_400.naturalHeight);
+
+        matchFeaturesFromSessionStorage(taken_img_400,onSuccess,onFailed);
+      };
+    };
+
+    // var img = new Image();
+    // //console.log("img: "+img);
+    // //var canvas = document.getElementById("myCanvas");
+    //
+    //
+    // img.onload = function () {
+    //   var canvas = document.createElement('canvas');
+    //   canvas.height = img.height;
+    //   canvas.width = img.width;
+    //   var ctx = canvas.getContext("2d");
+    //   ctx.drawImage(this, 0, 0);
+    //   var base64Img = canvas.toDataURL();
+    //   cordova.base64ToGallery(
+    //       base64Img,
+    //       'originalImg_',
+    //       function(msg) {
+    //         alert("Base64 success: " + msg);
+    //       },
+    //       function(err) {
+    //         alert("Base64 error: " + err);
+    //       }
+    //   );
+    // }
+    //
+    // img.src = result[0];//originalPicturePath;
+
+    //document.getElementById('previewPicture').src = result[1];//previewPicturePath;
+  });
+}

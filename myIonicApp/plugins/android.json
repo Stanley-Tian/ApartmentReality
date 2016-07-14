@@ -27,6 +27,9 @@
         },
         "com.mbppower.camerapreview": {
             "PACKAGE_NAME": "com.tmtvision.mobilapp"
+        },
+        "cordova-base64-to-gallery": {
+            "PACKAGE_NAME": "com.tmtvision.mobilapp"
         }
     },
     "dependent_plugins": {}

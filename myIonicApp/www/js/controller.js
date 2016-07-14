@@ -13,10 +13,14 @@ angular.module('myApp.controllers', [])
         // drawWindow();
         initWebSQL();//初始化WebSQL
         saveFeaturesToSessionStorage();//初始化SessionStorage
+        $("#take_pic").click(function () {
+          detectImage();
+        });
       });
       $scope.$on('$ionicView.afterEnter', function (viewInfo, state) {
           //selectImg();\
           initCamera();
+
       });
       $scope.$on('$ionicView.afterLeave', function (viewInfo, state) {
           releaseCamera();

@@ -1,8 +1,12 @@
 
 <ion-view view-title="请扫描户型" >
   <ion-content id = "selector-content">
-    <canvas id="mCv" height="300" width="300"></canvas>
+    <button id="take_pic">Take a Pic</button>
+    <!--<canvas id="mCv" height="300" width="300"></canvas>-->
+    <img id="taken_image" src="" alt="" hidden>
 
+    <canvas id="resize_image_canvas" width="400" height="400" hidden></canvas>
+    <img id="small_image">
   </ion-content>
 
 </ion-view>
