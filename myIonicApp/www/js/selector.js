@@ -52,24 +52,7 @@ function releaseCamera() {
   cordova.plugins.camerapreview.stopCamera();
 }
 function detectImage() {
-  //take a pic
-  cordova.plugins.camerapreview.takePicture({maxWidth: 500, maxHeight:500});
-  //handle the pic
-  cordova.plugins.camerapreview.setOnPictureTakenHandler(function(result){
-    //var img = document.getElementById('originalPicture');
-    var taken_img = document.getElementById("taken_image");
-    taken_img.src = result[1];
-    taken_img.onload = function () {
-      var c=document.getElementById("resize_image_canvas");
-      var ctx=c.getContext("2d");
-      ctx.drawImage(taken_img,0,0,400,400);
-      var dataurl = c.toDataURL();
-
-      var taken_img_400 = document.getElementById("small_image");
-      taken_img_400.src = dataurl;
-      
-      taken_img_400.onload = function () {
-        console.dir("result: "+taken_img_400);
+      var taken_img_400 = document.getElementById("test_image");
         function onSuccess(result) {
           console.log(result);
         }
@@ -80,35 +63,86 @@ function detectImage() {
         console.log("height: "+taken_img_400.naturalHeight);
 
         matchFeaturesFromSessionStorage(taken_img_400,onSuccess,onFailed);
-      };
+}
+
+function detectImage2() {
+    var taken_img = document.getElementById("taken_image");
+
+  taken_img.onload = function () {
+    console.log("Origin width: "+taken_img.naturalWidth);
+    console.log("Origin height: "+taken_img.naturalHeight);
+    var c=document.getElementById("resize_image_canvas");
+    var ctx=c.getContext("2d");
+    ctx.drawImage(taken_img,0,0,800,800*(taken_img.naturalHeight/taken_img.naturalWidth));
+    var dataurl = c.toDataURL();
+
+    var taken_img_400 = document.getElementById("small_image");
+    taken_img_400.src = dataurl;
+
+    taken_img_400.onload = function () {
+      console.dir("result: "+taken_img_400);
+      function onSuccess(result) {
+        console.log(result);
+      }
+      function onFailed() {
+        console.log("failed");
+      }
+      console.log("width: "+taken_img_400.naturalWidth);
+      console.log("height: "+taken_img_400.naturalHeight);
+
+      matchFeaturesFromSessionStorage(taken_img_400,onSuccess,onFailed);
     };
-
-    // var img = new Image();
-    // //console.log("img: "+img);
-    // //var canvas = document.getElementById("myCanvas");
-    //
-    //
-    // img.onload = function () {
-    //   var canvas = document.createElement('canvas');
-    //   canvas.height = img.height;
-    //   canvas.width = img.width;
-    //   var ctx = canvas.getContext("2d");
-    //   ctx.drawImage(this, 0, 0);
-    //   var base64Img = canvas.toDataURL();
-    //   cordova.base64ToGallery(
-    //       base64Img,
-    //       'originalImg_',
-    //       function(msg) {
-    //         alert("Base64 success: " + msg);
-    //       },
-    //       function(err) {
-    //         alert("Base64 error: " + err);
-    //       }
-    //   );
-    // }
-    //
-    // img.src = result[0];//originalPicturePath;
-
-    //document.getElementById('previewPicture').src = result[1];//previewPicturePath;
+  };
+}
+function getImage(){
+  navigator.camera.getPicture(onSuccess, onFail, { quality: 100,
+    destinationType: Camera.DestinationType.FILE_URI,
+    correctOrientation:true
   });
+
+  function onSuccess(imageURI) {
+    var image = document.getElementById('taken_image');
+    image.src = imageURI;
+  }
+
+  function onFail(message) {
+    alert('Failed because: ' + message);
+  }
+}
+//official sample
+function setOptions(srcType) {
+  var options = {
+    // Some common settings are 20, 50, and 100
+    quality: 50,
+    destinationType: Camera.DestinationType.FILE_URI,
+    // In this app, dynamically set the picture source, Camera or photo gallery
+    sourceType: srcType,
+    encodingType: Camera.EncodingType.JPEG,
+    mediaType: Camera.MediaType.PICTURE,
+    allowEdit: true,
+    correctOrientation: true  //Corrects Android orientation quirks
+  }
+  return options;
+}
+function displayImage(imgUri) {
+
+  var elem = document.getElementById('imageFile');
+  elem.src = imgUri;
+}
+function openCamera(selection) {
+
+  var srcType = Camera.PictureSourceType.CAMERA;
+  var options = setOptions(srcType);
+  var func = createNewFileEntry;
+
+  navigator.camera.getPicture(function cameraSuccess(imageUri) {
+
+    displayImage(imageUri);
+    // You may choose to copy the picture, save it somewhere, or upload.
+    func(imageUri);
+
+  }, function cameraError(error) {
+    console.debug("Unable to obtain picture: " + error, "app");
+
+  }, options);
 }

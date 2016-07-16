@@ -30,7 +30,14 @@
         },
         "cordova-base64-to-gallery": {
             "PACKAGE_NAME": "com.tmtvision.mobilapp"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.tmtvision.mobilapp"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.tmtvision.mobilapp"
+        }
+    }
 }

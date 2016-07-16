@@ -2,10 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <script src="../../MobileApp/js/tracking-min.js"></script>
-    <script src="../../MobileApp/js/jquery.min.js"></script>
-    <script src="../../MobileApp/js/tmt_algo.js"></script>
-    <script src="../../MobileApp/js/funcs.js"></script>
+    <script src="../../MobileApp/www/js/index.js"></script>
+    <script src="../../MobileApp/www/js/tracking-min.js"></script>
+    <script src="../../MobileApp/www/js/jquery.min.js"></script>
+    <script src="../../MobileApp/www/js/jquery.db.min.js"></script>
+    <script src="../../MobileApp/www/js/tmt_algo.js"></script>
+    <script src="../../MobileApp/www/js/funcs.js"></script>
 </head>
 <body>
 <div id="content">
@@ -14,27 +16,110 @@
         <input type='file' id="img1" />
         <br>
         <img id="image1" src="#" alt="your image" />
-        <br>
-        <button onclick="matchFeaturesFromFiles()">Match</button>
+        <img id="image1-1" src="../assets/FeatureData/1-1.JPG" alt="your image" hidden />
+        <img id="image2-1" src="../assets/FeatureData/2-1.JPG" alt="your image" hidden />
+        <img id="image3-1" src="../assets/FeatureData/3-1.JPG" alt="your image" hidden />
+        <img id="image3-2" src="../assets/FeatureData/3-2.JPG" alt="your image" hidden />
+        <img id="image3-3" src="../assets/FeatureData/3-3.JPG" alt="your image" hidden />
+        <img id="image4-1" src="../assets/FeatureData/4-1.JPG" alt="your image" hidden />
+        <img id="image4-2" src="../assets/FeatureData/4-2.JPG" alt="your image" hidden />
+        <img id="image4-3" src="../assets/FeatureData/4-3.JPG" alt="your image" hidden />
+        <img id="image5-1" src="../assets/FeatureData/5-1.JPG" alt="your image" hidden />
+        <img id="image5-2" src="../assets/FeatureData/5-2.JPG" alt="your image" hidden />
+        <img id="image5-3" src="../assets/FeatureData/5-3.JPG" alt="your image" hidden />
+        <button onclick="matchFeaturesFromImages()">Match from Images</button>
+        <button id="match">Match from session storage</button>
+
     </form>
 </div>
 
 <script>
   window.onload =function () {
       $(document).ready(function () {
-
           $("#img1").change(function(){
               readURL(this,"#image1");
               $("canvas").remove();
           });
+          $("#match").click(function () {
+              var onSuccess = function (bestid) {
+                  console.log(`Perfect Matched! Id: ${bestid} `);
+              };
+              var onFailed = function () {
+                  console.log("Failed Again");
+              };
+              var img1 = document.getElementById("image1");
+              matchFeaturesFromSessionStorage(img1,onSuccess,onFailed);
+          });
       });
   };
-  function matchFeaturesFromFiles() {
+  function matchFeaturesFromImages() {
+      initWebSQL();
       var img1 = document.getElementById("image1");
-      var scene = Object.create(ExtraFeatures);
+
+      var scene = Object.create(ExtractFeatures);
       scene.loadImage(img1);
       var scene_features = scene.getFeatures();
 
+      var storage = window.sessionStorage;
+      var obj_set =[
+          "image1-1",
+          "image2-1",
+          "image3-1",
+          "image3-2",
+          "image3-3",
+          "image4-1",
+          "image4-2",
+          "image4-3",
+          "image5-1",
+          "image5-2",
+          "image5-3"
+      ];
+      var best_fit = {};
+      best_fit.id=0;
+      best_fit.av_confidence = 0.0;
+      for(var i=1;i<=11;i++)
+      {
+          var img1 = document.getElementById("image1");
+          var img2 = document.getElementById(obj_set[i-1]);
+
+          var detect_test = Object.create(Detect);//新建一个对象
+          detect_test.loadImage(img1,img2);//载入两张图像
+          var matches = detect_test.Match();//进行匹配
+          //detect_test.showResult();//显示匹配结果
+
+          /////////////////////////////////////
+//          var obj_features = storage.getItem(i); // Pass a key name to get its value.
+//          var a = JSON.parse(obj_features);
+//          var matches = tracking.Brief.reciprocalMatch(scene_features.KeyPoints,scene_features.Descriptors,a.KeyPoints,a.Descriptors);
+//          //sort by confidence from big to small
+//          matches.sort(function(a, b) {
+//              return b.confidence - a.confidence;
+//          });
+          var total_confidence =0.0;
+
+          var start =0;
+          var end= matches.length>50?50:matches.length;
+          for(var j=start;j<end;j++)
+          {
+              total_confidence=total_confidence+matches[j].confidence;
+          }
+          var average_confidence = total_confidence/(end-start);
+          if (average_confidence>best_fit.av_confidence)
+          {
+              best_fit.id = i;
+              best_fit.av_confidence = average_confidence;
+          }
+          console.log("item: "+i+" av_confidence: "+average_confidence);
+      }
+
+        console.log("best id: "+best_fit.id+" av_confidence: "+best_fit.av_confidence);
+  }
+
+  function matchFeaturesFromFiles() {
+      var img1 = document.getElementById("image1");
+      var scene = Object.create(ExtractFeatures);
+      scene.loadImage(img1);
+      var scene_features = scene.getFeatures();
 
       //save to file
       var json_matches = JSON.stringify(matches);

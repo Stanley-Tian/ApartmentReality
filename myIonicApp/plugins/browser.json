@@ -7,6 +7,12 @@
         "files": {}
     },
     "installed_plugins": {
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.tmtvision.mobilapp"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.tmtvision.mobilapp"
+        },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.tmtvision.mobilapp"
         },
@@ -20,9 +26,6 @@
             "PACKAGE_NAME": "com.tmtvision.mobilapp"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.tmtvision.mobilapp"
-        },
-        "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.tmtvision.mobilapp"
         }
     },

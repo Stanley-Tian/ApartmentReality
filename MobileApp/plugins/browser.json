@@ -16,13 +16,10 @@
         "cordova-plugin-compat": {
             "PACKAGE_NAME": "com.tmtvision.MobileApp"
         },
-        "cordova-plugin-file": {
-            "PACKAGE_NAME": "com.tmtvision.MobileApp"
-        },
-        "com.mbppower.camerapreview": {
-            "PACKAGE_NAME": "com.tmtvision.MobileApp"
-        },
         "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "com.tmtvision.MobileApp"
+        },
+        "cordova-plugin-file": {
             "PACKAGE_NAME": "com.tmtvision.MobileApp"
         }
     },
