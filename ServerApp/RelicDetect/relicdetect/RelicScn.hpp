@@ -4,6 +4,7 @@
 #endif 
 #include "RelicDetect.hpp"
 #include "RelicObj.hpp"
+#include "RelicStructs.cpp"
 class RelicScn :public RelicDetect
 {
 public:
@@ -13,7 +14,7 @@ public:
 	// Parameter: RelicObj obj	待匹配的对象，需要经过
 	// 说明:		  匹配一个目标
 	//************************************
-	bool RelicScn::Match_an_Obj(RelicObj obj);
+	MatchResult RelicScn::Match_an_Obj(RelicObj obj);
 	//************************************
 	// Method:    Draw_Obj
 	// Returns:   void

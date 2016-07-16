@@ -16,19 +16,19 @@ string RelicDetect::test()
 void RelicDetect::Load_Img(InputArray img)
 {
 	if (img.channels() == 1)
-	{
-		cvtColor(img, this->img_color, CV_GRAY2BGR);
+	{//若为灰度图
+		cvtColor(img.getMat(), this->img_color, CV_GRAY2BGR);
 	}
 	else
-	{
+	{//若为彩图
 		this->img_color = img.getMat();
 	}
-	RelicDetect::img_color = img.getMat();
+	//RelicDetect::img_color = img.getMat();
 	
 	cout <<"color image cols:"<< img_color.cols << endl;
 	cout << "color image rows:" << img_color.rows << endl;
 
-	cvtColor(img, RelicDetect::img_gray, CV_BGR2GRAY);
+	cvtColor(this->img_color, this->img_gray, CV_BGR2GRAY);
 }
 
 void RelicDetect::Calc_Keypoints_and_Descriptors()

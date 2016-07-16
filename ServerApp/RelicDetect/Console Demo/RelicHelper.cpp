@@ -7,6 +7,64 @@ RelicHelper::RelicHelper()
 RelicHelper::~RelicHelper()
 {
 }
+int RelicHelper::getFilenames(const std::string& dir, std::vector<std::string>& filenames)
+{
+	fs::path path(dir);
+	if (!fs::exists(path))
+	{
+		return -1;
+	}
+	fs::directory_iterator end_iter;
+	for (fs::directory_iterator iter(path); iter != end_iter; ++iter)
+	{
+		if (fs::is_regular_file(iter->status()))
+		{
+			filenames.push_back(iter->path().string());
+		}
+		if (fs::is_directory(iter->status()))
+		{
+			getFilenames(iter->path().string(), filenames);
+		}
+	}
+	return filenames.size();
+}
+
+int RelicHelper::getFilenames(fs::path dir, std::vector<fs::path>& filenames)
+{
+	fs::path path = system_complete(dir);
+	if (!fs::exists(path))
+	{
+		return -1;
+	}
+	fs::directory_iterator end_iter;
+	for (fs::directory_iterator iter(path); iter != end_iter; ++iter)
+	{
+		if (fs::is_regular_file(iter->status()))
+		{
+			filenames.push_back(iter->path());
+		}
+		if (fs::is_directory(iter->status()))
+		{
+			getFilenames(iter->path(), filenames);
+		}
+	}
+	return filenames.size();
+}
+
+string RelicHelper::eraseCinGetlineQuotation(string str)
+{
+	size_t first_one = str.find_first_of("\"");
+	if (first_one != string::npos)
+	{
+		str.erase(first_one, first_one + 1);
+	}
+	size_t last_one = str.find_last_of("\"");
+	if (last_one != string::npos)
+	{
+		str.erase(last_one, last_one + 1);
+	}
+	return str;
+}
 bool RelicHelper::Base64Encode(const std::string& input, std::string* output) 
 {
 	typedef boost::archive::iterators::base64_from_binary<boost::archive::iterators::transform_width<std::string::const_iterator, 6, 8> > Base64EncodeIterator;

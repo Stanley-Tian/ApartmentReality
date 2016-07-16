@@ -56,47 +56,13 @@ void relic_origin(Mat object_color,Mat scene_color)
 	waitKey(1);
 }
 
-void relic_from_file()
+void relic_from_file(Mat scene_color,string feature_json_file)
 {
-	Mat object_color = imread("..\\images\\postcard_object.JPG");
-	Mat scene_color = imread("..\\images\\postcard_scene_1.jpg");
-
-	//RelicObj obj;
 	RelicScn scene;
-	//obj.Load_Img(object_color);
 	scene.Load_Img(scene_color);
-	//calc 
-	//obj.Calc_Keypoints_and_Descriptors();
 	scene.Calc_Keypoints_and_Descriptors();
 
-	//scene.Match_an_Obj(obj);
-	//scene.Draw_Obj();
-	//cout << "relicDetect" << endl;
-
-	/////////////////////////////////////////////////////
-	//RelicDetect doit;
-	//doit.Match(obj, scene);
-	////-------------------------
-
-	//cout << obj.descriptors;
-	////----------------------------
-	//auto descriptors_vecvec = obj.Get_Descriptors(obj.descriptors);
-	//cout << "vec descriptors" << endl;
-	////---------------------------
-	//for (int j = 0;j < descriptors_vecvec[0].size();j++)
-	//{
-	//	cout << descriptors_vecvec[0][j]<<endl;
-	//}
-	//Json::Value root;string test;
-	//auto str = obj.Convert_to_Json(obj);
-
-	//fstream a_file("obj_json.json", ios::out);
-	//if (a_file.is_open())
-	//{
-	//	a_file << str;
-	//	a_file.close();
-	//}
-	fstream in_file("obj_json.json", ios::in);
+	fstream in_file(feature_json_file, ios::in);
 	RelicObj obj2;
 	if (in_file.is_open())
 	{
@@ -106,10 +72,6 @@ void relic_from_file()
 		
 		obj2.Parse_from_Json(json_str);
 	}
-	//RelicDetect judge;
-	//obj2.Load_Img(object_color);
-	//obj2.img_color = imread("..\\images\\postcard_object.JPG", IMREAD_COLOR);
-	//judge.Match(obj2, scene);
 	scene.Match_an_Obj(obj2);
 	scene.Draw_Obj();
 	waitKey(0);
@@ -142,7 +104,8 @@ int main()
 		{
 			Mat object_color = imread("..\\images\\objects\\A1.jpg");
 			Mat scene_color = frame;
-			relic_origin(object_color, scene_color);
+			//relic_origin(object_color, scene_color);//读取原图，来做匹配
+			relic_from_file(scene_color,"..\\..\\..\\Images\\新户型图\\裁切的下载的原图\\json\\A1_feature.json");//读取特征文件，来做匹配
 		}
 		imshow("aka", frame);
 		//if (waitKey(30) == 0) break;

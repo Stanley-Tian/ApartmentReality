@@ -38,7 +38,7 @@ int main()
 	vector<fs::path> filenames;
 	string json_folder = system_complete(p).string() + "/json";
 	if (fs::create_directory(json_folder)) {
-		std::cout << "Success" << "\n";
+		std::cout << "json子目录创建成功" << "\n";
 	}
 	get_filenames(system_complete(p), filenames);
 	for (int i = 0;i < filenames.size();i++)
@@ -52,16 +52,17 @@ int main()
 		size_t dot = filename.find_last_of(".");
 		if (dot!=string::npos)
 		{
-			filename.erase(dot, dot + 1);
+			filename.erase(dot);
 		}
 		fs::path new_dir();
 
-		fstream examplefile(json_folder+"/"+ filename+".json", ios::out); //out方式打开文本
+		fstream examplefile(json_folder+"/"+ filename+"_feature.json", ios::out); //out方式打开文本
 		if (examplefile.is_open())
 		{
 			examplefile << json_str;
 			examplefile.close();
 		}
+		cout << "已完成" << i + 1 << "/" << filenames.size() << endl;
 	}
 	system("pause");
 	return 0;

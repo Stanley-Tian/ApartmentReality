@@ -3,10 +3,12 @@
 #endif 
 //#define  BOOST_LOG_TRIVIAL(info) cout
 #include "RelicScn.hpp"
-bool RelicScn::Match_an_Obj(RelicObj obj)
+MatchResult RelicScn::Match_an_Obj(RelicObj obj)
 {
-	string message;
+	MatchResult mr;
+	
 
+	string message;
 	FlannBasedMatcher matcher;
 	vector<DMatch> matches;
 	BOOST_LOG_TRIVIAL(info) << "obj descrip dims: " << obj.descriptors.dims<< endl;
