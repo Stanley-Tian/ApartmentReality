@@ -35,8 +35,25 @@ using namespace cv::xfeatures2d;
 using namespace std;
 int main()
 {
-	Mat test_img =imread("A1-test.jpg");
-	RelicAPI::detect(test_img);
+	VideoCapture cap(1); // open the default camera
+	if (!cap.isOpened())  // check if we succeeded
+		return -1;
+	for (;;)
+	{
+		Mat frame;
+		cap >> frame; // get a new frame from camera
+		if (waitKey(30) == 32)
+		{
+			Mat scene_color = frame;
+			cout << "best Match ID:" << RelicAPI::detect(frame) << endl;
+		}
+		imshow("aka", frame);
+		waitKey(10);
+		//if (waitKey(30) == 0) break;
+	}
+	//Mat test_img =imread("A1-test.jpg");
+
+	system("pause");
     return 0;
 }
 

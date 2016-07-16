@@ -25,14 +25,14 @@
         "image_url": "assets/FeatureData/A5.jpg"
     },
     "6": {
+        "name": "B1 号户型",
+        "feature_url": "assets/FeatureData/B1_feature.json",
+        "image_url": "assets/FeatureData/B1.jpg"
+    },
+    "7": {
         "name": "B2 号户型",
         "feature_url": "assets/FeatureData/B2_feature.json",
         "image_url": "assets/FeatureData/B2.jpg"
-    },
-    "7": {
-        "name": "B3 号户型",
-        "feature_url": "assets/FeatureData/B3_feature.json",
-        "image_url": "assets/FeatureData/B3.jpg"
     },
     "8": {
         "name": "D1 号户型",

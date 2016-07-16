@@ -6,8 +6,6 @@
 MatchResult RelicScn::Match_an_Obj(RelicObj obj)
 {
 	MatchResult mr;
-	
-
 	string message;
 	FlannBasedMatcher matcher;
 	vector<DMatch> matches;
@@ -16,7 +14,7 @@ MatchResult RelicScn::Match_an_Obj(RelicObj obj)
 
 	if (this->descriptors.dims==0||obj.descriptors.dims==0)
 	{//目标图像描述子计算失败
-		return false;
+		return mr;
 	}
 	matcher.match(obj.descriptors, this->descriptors, matches);
 	vector<DMatch> good_matches = Get_Good_Matches(matches);
@@ -35,7 +33,7 @@ MatchResult RelicScn::Match_an_Obj(RelicObj obj)
 	if (H.dims==0)
 	{//变换矩阵计算失败
 		BOOST_LOG_TRIVIAL(info) << "变换矩阵计算失败" << endl;
-		return false;
+		return mr;
 	}
 	else
 	{
@@ -59,6 +57,7 @@ MatchResult RelicScn::Match_an_Obj(RelicObj obj)
 	BOOST_LOG_TRIVIAL(info) << "环境图像大小（像素）： " << whole_scene_area;
 	double ratio = possible_target_area / whole_scene_area;
 	BOOST_LOG_TRIVIAL(info) << "检测到的目标占全图比例： " << ratio;
+	mr.ObjectRatio = ratio;
 	if (ratio>0.03 && ratio<1)
 	{
 		for (int i=0;i < possible_obj_corners.size();i++)
@@ -66,16 +65,17 @@ MatchResult RelicScn::Match_an_Obj(RelicObj obj)
 			if (possible_obj_corners[i].x < 0 || possible_obj_corners[i].y < 0)
 			{
 				BOOST_LOG_TRIVIAL(info) << "未能检测到目标物体！";
-				return false;
+				return mr;
 			}
 		}
 		BOOST_LOG_TRIVIAL(info) << "成功检测到目标物体！";
-		return true;
+		mr.ObjectFound = true;
+		return mr;
 	} 
 	else
 	{
 		BOOST_LOG_TRIVIAL(info) << "未能检测到目标物体！";
-		return false;
+		return mr;
 	}
 }
 

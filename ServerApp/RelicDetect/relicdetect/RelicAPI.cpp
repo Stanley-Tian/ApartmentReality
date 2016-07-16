@@ -1,4 +1,5 @@
 #include "RelicAPI.hpp"
+#include <algorithm>
 RelicAPI::RelicAPI()
 {
 }
@@ -26,6 +27,10 @@ string RelicAPI::detect(const Mat origin_image)
 	vector<fs::path> feature_filenames;
 	RelicHelper::getFilenames(system_complete(p), feature_filenames);
 
+	//vector<pair<int,MatchResult>> all_mr_candidate;
+	pair<int, double> match_candidate;
+	match_candidate.first = -1;
+	match_candidate.second = 0.0;
 	for (int i = 0;i < feature_filenames.size();i++)
 	{
 		fstream in_file(feature_filenames[i], ios::in);
@@ -38,9 +43,21 @@ string RelicAPI::detect(const Mat origin_image)
 
 			obj2.Parse_from_Json(json_str);
 		}
-		scene.Match_an_Obj(obj2);
-		scene.Draw_Obj();
-		waitKey(0);
+		MatchResult cur_mr = scene.Match_an_Obj(obj2);
+		if (cur_mr.ObjectFound)
+		{
+			if (cur_mr.ObjectRatio>match_candidate.second)
+			{
+				match_candidate.first = i;
+				match_candidate.second = cur_mr.ObjectRatio;
+			}
+		}
+
+		//scene.Draw_Obj();
+		//waitKey(0);
 	}
-	return "a";
+	stringstream ss;string str;
+	ss << match_candidate.first;
+	ss >> str;
+	return str;
 }
