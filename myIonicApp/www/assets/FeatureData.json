@@ -1,57 +1,47 @@
 {
     "1": {
-        "name": "1-1 号户型",
-        "feature_url": "assets/FeatureData/1-1_feature.json",
-        "image_url": "assets/FeatureData/1-1.jpg"
+        "name": "A1 户型",
+        "feature_url": "assets/FeatureData/A1_feature.json",
+        "image_url": "assets/FeatureData/A1.jpg"
     },
     "2": {
-        "name": "2-1 号户型",
-        "feature_url": "assets/FeatureData/2-1_feature.json",
-        "image_url": "assets/FeatureData/2-1.jpg"
+        "name": "A2 号户型",
+        "feature_url": "assets/FeatureData/A2_feature.json",
+        "image_url": "assets/FeatureData/A2.jpg"
     },
     "3": {
-        "name": "3-1 号户型",
-        "feature_url": "assets/FeatureData/3-1_feature.json",
-        "image_url": "assets/FeatureData/3-1.jpg"
+        "name": "A3 号户型",
+        "feature_url": "assets/FeatureData/A3_feature.json",
+        "image_url": "assets/FeatureData/A3.jpg"
     },
     "4": {
-        "name": "3-2 号户型",
-        "feature_url": "assets/FeatureData/3-2_feature.json",
-        "image_url": "assets/FeatureData/3-2.jpg"
+        "name": "A4 号户型",
+        "feature_url": "assets/FeatureData/A4_feature.json",
+        "image_url": "assets/FeatureData/A4.jpg"
     },
     "5": {
-        "name": "3-3 号户型",
-        "feature_url": "assets/FeatureData/3-3_feature.json",
-        "image_url": "assets/FeatureData/3-3.jpg"
+        "name": "A5 号户型",
+        "feature_url": "assets/FeatureData/A5_feature.json",
+        "image_url": "assets/FeatureData/A5.jpg"
     },
     "6": {
-        "name": "4-1 号户型",
-        "feature_url": "assets/FeatureData/4-1_feature.json",
-        "image_url": "assets/FeatureData/4-1.jpg"
+        "name": "B2 号户型",
+        "feature_url": "assets/FeatureData/B2_feature.json",
+        "image_url": "assets/FeatureData/B2.jpg"
     },
     "7": {
-        "name": "4-2 号户型",
-        "feature_url": "assets/FeatureData/4-2_feature.json",
-        "image_url": "assets/FeatureData/4-2.jpg"
+        "name": "B3 号户型",
+        "feature_url": "assets/FeatureData/B3_feature.json",
+        "image_url": "assets/FeatureData/B3.jpg"
     },
     "8": {
-        "name": "4-3 号户型",
-        "feature_url": "assets/FeatureData/4-3_feature.json",
-        "image_url": "assets/FeatureData/4-3.jpg"
+        "name": "D1 号户型",
+        "feature_url": "assets/FeatureData/D1_feature.json",
+        "image_url": "assets/FeatureData/D1.jpg"
     },
     "9": {
-        "name": "5-1 号户型",
-        "feature_url": "assets/FeatureData/5-1_feature.json",
-        "image_url": "assets/FeatureData/5-1.jpg"
-    },
-    "10": {
-        "name": "5-2 号户型",
-        "feature_url": "assets/FeatureData/5-2_feature.json",
-        "image_url": "assets/FeatureData/5-2.jpg"
-    },
-    "11": {
-        "name": "5-3 号户型",
-        "feature_url": "assets/FeatureData/5-3_feature.json",
-        "image_url": "assets/FeatureData/5-3.jpg"
+        "name": "D2 号户型",
+        "feature_url": "assets/FeatureData/D2_feature.json",
+        "image_url": "assets/FeatureData/D2.jpg"
     }
 }
