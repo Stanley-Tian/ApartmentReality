@@ -29,7 +29,7 @@ MatchResult RelicScn::Match_an_Obj(RelicObj obj)
 		scn_points.push_back(this->keypoints[good_matches[i].trainIdx].pt);
 	}
 	Mat H = cv::findHomography(obj_points, scn_points, RANSAC);
-	cout << H << endl;
+	BOOST_LOG_TRIVIAL(info)<<"变换矩阵"<< H << endl;
 	if (H.dims==0)
 	{//变换矩阵计算失败
 		BOOST_LOG_TRIVIAL(info) << "变换矩阵计算失败" << endl;

@@ -21,6 +21,7 @@
 #include "JsonCPPHeader\json.h"
 #include "..\Console Demo\RelicHelper.h"
 #include "..\Console Demo\opencv_serialization.hpp"
+#include <boost/timer.hpp>
 
 namespace logging = boost::log;
 namespace logging = boost::log;
@@ -33,8 +34,15 @@ namespace keywords = boost::log::keywords;
 using namespace cv;
 using namespace cv::xfeatures2d;
 using namespace std;
+using boost::timer;
+
+void SetFilter() {
+	logging::core::get()->set_filter(logging::trivial::severity >= logging::trivial::fatal);
+}
 int main()
 {
+	SetFilter();
+	vector<RelicObj> objs = RelicAPI::getObjs("..\\..\\assets\\FeatureData");
 	VideoCapture cap(1); // open the default camera
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
@@ -45,7 +53,9 @@ int main()
 		if (waitKey(30) == 32)
 		{
 			Mat scene_color = frame;
-			cout << "best Match ID:" << RelicAPI::detect(frame) << endl;
+			timer t0;
+			cout << "best Match ID:" << RelicAPI::detect(frame,objs) << endl;  cout << "timer::elapsed_min() reports " << t0.elapsed_min() << " seconds\n";
+			cout << "本次计算匹配耗时 " << t0.elapsed()<<" 秒"<<endl;
 		}
 		imshow("aka", frame);
 		waitKey(10);
