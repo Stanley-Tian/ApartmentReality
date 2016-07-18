@@ -2,10 +2,7 @@
  * Created by rwp on 2016/7/12.
  */
 angular.module('myApp.controllers', [])
-
-
-
-  .controller('selectorController', function($scope) {
+    .controller('selectorController', function($scope) {
     $scope.title='请扫描户型图';
 
       $scope.$on('$ionicView.loaded', function (viewInfo, state) {
