@@ -6,7 +6,7 @@
 #include <string>
 #include <filesystem>
 #include <boost/timer.hpp>
-#include <vector>
+#include <boost/progress.hpp>
 namespace fs = std::tr2::sys;
 using namespace std;
 using boost::timer;

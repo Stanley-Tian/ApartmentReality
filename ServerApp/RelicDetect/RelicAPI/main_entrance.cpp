@@ -22,8 +22,9 @@
 #include "..\Console Demo\RelicHelper.h"
 #include "..\Console Demo\opencv_serialization.hpp"
 #include <boost/timer.hpp>
+#include <boost/thread.hpp> 
+#include <boost/chrono.hpp>
 
-namespace logging = boost::log;
 namespace logging = boost::log;
 namespace sinks = boost::log::sinks;
 namespace src = boost::log::sources;
@@ -39,10 +40,11 @@ using boost::timer;
 void SetFilter() {
 	logging::core::get()->set_filter(logging::trivial::severity >= logging::trivial::fatal);
 }
-int main()
+
+int test_match()
 {
 	SetFilter();
-	vector<RelicObj> objs = RelicAPI::getObjs("..\\..\\assets\\FeatureData");
+	vector<RelicObj> objs = RelicAPI::getObjs("..\\..\\assets\\FeatureData");//获取已经提取过的json feature
 	VideoCapture cap(1); // open the default camera
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
@@ -54,15 +56,19 @@ int main()
 		{
 			Mat scene_color = frame;
 			timer t0;
-			cout << "best Match ID:" << RelicAPI::detect(frame,objs) << endl;  cout << "timer::elapsed_min() reports " << t0.elapsed_min() << " seconds\n";
-			cout << "本次计算匹配耗时 " << t0.elapsed()<<" 秒"<<endl;
+			cout << "best Match ID:" << RelicAPI::detect(frame, objs) << endl;
+			cout << "本次匹配总耗时 " << t0.elapsed() << " 秒" << endl;
 		}
 		imshow("aka", frame);
 		waitKey(10);
 		//if (waitKey(30) == 0) break;
 	}
-	//Mat test_img =imread("A1-test.jpg");
+}
 
+
+int main()
+{
+	test_match();
 	system("pause");
     return 0;
 }

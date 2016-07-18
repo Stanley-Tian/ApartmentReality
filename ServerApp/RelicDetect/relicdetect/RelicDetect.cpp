@@ -23,11 +23,8 @@ void RelicDetect::Load_Img(InputArray img)
 	{//若为彩图
 		this->img_color = img.getMat();
 	}
-	//RelicDetect::img_color = img.getMat();
-	
 	cout <<"color image cols:"<< img_color.cols << endl;
 	cout << "color image rows:" << img_color.rows << endl;
-
 	cvtColor(this->img_color, this->img_gray, CV_BGR2GRAY);
 }
 
@@ -51,14 +48,6 @@ void RelicDetect::Calc_Keypoints_and_Descriptors()
 	//detector->compute(input_img, keypoints, descriptors);
 }
 
-//vector<vector<int>> RelicDetect::Get_Descriptors(Mat img)
-//{
-//	pair<vector<KeyPoint>, Mat> feature = calc_image_keypoints_and_descriptors(img);
-//	Mat descriptors = feature.second;
-//	vector<vector<int>> descriptors_vecvec;
-//	Mat_to_VecVec(descriptors, descriptors_vecvec);
-//	return descriptors_vecvec;
-//}
 void RelicDetect::Mat_to_VecVec(Mat inmat, vector<vector<int>> &outvecvec)
 {
 	int rows = inmat.rows;
