@@ -146,13 +146,19 @@ function openCamera(selection) {
 
   }, options);
 }
-
+//--end
 function wait(ms){
   var start = new Date().getTime();
   var end = start;
   while(end < start + ms) {
     end = new Date().getTime();
   }
+}
+function fuck() {
+  cordova.plugins.camerapreview.setOnPictureTakenHandler(function(result){
+    document.getElementById('originalPicture').src = result[0];//originalPicturePath;
+    document.getElementById('previewPicture').src = result[1];//previewPicturePath;
+  });
 }
 function sendImage() {
   while(true){
