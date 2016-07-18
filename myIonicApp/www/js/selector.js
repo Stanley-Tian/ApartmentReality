@@ -109,7 +109,7 @@ function getImage(){
     alert('Failed because: ' + message);
   }
 }
-//official sample
+//official sample of cordova-camera
 function setOptions(srcType) {
   var options = {
     // Some common settings are 20, 50, and 100
@@ -126,23 +126,37 @@ function setOptions(srcType) {
 }
 function displayImage(imgUri) {
 
-  var elem = document.getElementById('imageFile');
+  var elem = document.getElementById('taken_image');
   elem.src = imgUri;
 }
 function openCamera(selection) {
 
   var srcType = Camera.PictureSourceType.CAMERA;
   var options = setOptions(srcType);
-  var func = createNewFileEntry;
+  //var func = createNewFileEntry;
 
   navigator.camera.getPicture(function cameraSuccess(imageUri) {
 
     displayImage(imageUri);
     // You may choose to copy the picture, save it somewhere, or upload.
-    func(imageUri);
+    //func(imageUri);
 
   }, function cameraError(error) {
     console.debug("Unable to obtain picture: " + error, "app");
 
   }, options);
+}
+
+function wait(ms){
+  var start = new Date().getTime();
+  var end = start;
+  while(end < start + ms) {
+    end = new Date().getTime();
+  }
+}
+function sendImage() {
+  while(true){
+    //openCamera();
+    wait(3000);
+  }
 }

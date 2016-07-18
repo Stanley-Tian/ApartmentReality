@@ -25,14 +25,21 @@ angular.module('myApp.controllers', [])
           }
         })();
         initWebSQL();//初始化WebSQL
-        saveFeaturesToSessionStorage();//初始化SessionStorage
+        //saveFeaturesToSessionStorage();//初始化SessionStorage
+        var taken_img =  document.getElementById("test_image");
+        taken_img.onload = function () {
+          var c = document.getElementById("resize_image_canvas");
+          var ctx = c.getContext("2d");
+          ctx.drawImage(taken_img, 0, 0, 800, 800);
+        };
         TmtWebSocket.Http("222.28.39.64:9002");
-        $("#take_pic").click(function () {
-          getImage();
-
-          detectImage2();
-          var this_canvas = document.getElementById("#resize_image_canvas");
-          TmtWebSocket.sendMsg(this_canvas.toDataURL('image/jpeg'));
+        $("#send_to_server").click(function () {
+          //getImage();
+          //detectImage2();
+          console.log("send info to server");
+            //var dataurl = c.toDataURL();
+            var this_canvas = document.getElementById("resize_image_canvas");
+            TmtWebSocket.sendMsg(this_canvas.toDataURL('image/jpeg'));
         });
         $("#test_local").click(function () {
           detectImage();
@@ -40,14 +47,16 @@ angular.module('myApp.controllers', [])
         $("#clear_log").click(function () {
           $("#log").html("");
         });
+        $("#start_scan").click(function () {
+          initCamera();
+          sendImage();
+        });
       });
       $scope.$on('$ionicView.afterEnter', function (viewInfo, state) {
           //selectImg();\
-          //initCamera();
-
       });
       $scope.$on('$ionicView.afterLeave', function (viewInfo, state) {
-          //releaseCamera();
+          releaseCamera();
       });
   })
   .controller('show3DController', function($scope) {
