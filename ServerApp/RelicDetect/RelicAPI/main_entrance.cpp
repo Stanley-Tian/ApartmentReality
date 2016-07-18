@@ -3,6 +3,19 @@
 
 #include "stdafx.h"
 
+
+#include "RelicDetect.hpp"
+#include "RelicObj.hpp"
+#include "RelicScn.hpp"
+#include "RelicAPI.hpp"
+#include "JsonCPPHeader\json.h"
+#include "..\Console Demo\RelicHelper.h"
+#include "..\Console Demo\opencv_serialization.hpp"
+#include <boost/timer.hpp>
+#include <boost/thread.hpp>
+#include <boost/chrono.hpp>
+
+//websocket 
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
@@ -14,16 +27,7 @@
 #include "opencv2/calib3d.hpp"
 #include "opencv2/xfeatures2d.hpp"
 
-#include "RelicDetect.hpp"
-#include "RelicObj.hpp"
-#include "RelicScn.hpp"
-#include "RelicAPI.hpp"
-#include "JsonCPPHeader\json.h"
-#include "..\Console Demo\RelicHelper.h"
-#include "..\Console Demo\opencv_serialization.hpp"
-#include <boost/timer.hpp>
-#include <boost/thread.hpp> 
-#include <boost/chrono.hpp>
+
 
 namespace logging = boost::log;
 namespace sinks = boost::log::sinks;
@@ -37,6 +41,10 @@ using namespace cv::xfeatures2d;
 using namespace std;
 using boost::timer;
 
+
+
+
+
 void SetFilter() {
 	logging::core::get()->set_filter(logging::trivial::severity >= logging::trivial::fatal);
 }
@@ -45,7 +53,7 @@ int test_match()
 {
 	SetFilter();
 	vector<RelicObj> objs = RelicAPI::getObjs("..\\..\\assets\\FeatureData");//获取已经提取过的json feature
-	VideoCapture cap(1); // open the default camera
+	VideoCapture cap(0); // open the default camera
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
 	for (;;)
@@ -66,10 +74,11 @@ int test_match()
 }
 
 
+
 int main()
 {
 	test_match();
 	system("pause");
-    return 0;
+	return 0;
 }
 
