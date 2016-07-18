@@ -46,7 +46,7 @@ function initCamera() {
         previewDrag: true,
         toBack: false});
   cordova.plugins.camerapreview.show();
-  cordova.plugins.camerapreview.focus();
+  //cordova.plugins.camerapreview.focus();
 }
 function releaseCamera() {
   cordova.plugins.camerapreview.stopCamera();
@@ -155,14 +155,13 @@ function wait(ms){
   }
 }
 function fuck() {
-  cordova.plugins.camerapreview.setOnPictureTakenHandler(function(result){
-    document.getElementById('originalPicture').src = result[0];//originalPicturePath;
-    document.getElementById('previewPicture').src = result[1];//previewPicturePath;
-  });
+  cordova.plugins.camerapreview.takePicture({maxWidth:640, maxHeight:640});
 }
 function sendImage() {
   while(true){
     //openCamera();
+    fuck();
     wait(3000);
+
   }
 }

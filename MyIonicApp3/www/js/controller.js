@@ -10,28 +10,42 @@ angular.module('myApp.controllers', [])
 
       $scope.$on('$ionicView.loaded', function (viewInfo, state) {
         //save log to html
-        (function () {
-          if (!console) {
-            console = {};
-          }
-          var old = console.log;
-          var logger = document.getElementById('log');
-          console.log = function (message) {
-            if (typeof message == 'object') {
-              logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(message) : String(message)) + '<br />';
-            } else {
-              logger.innerHTML += message + '<br />';
-            }
-          }
-        })();
+        // (function () {
+        //   if (!console) {
+        //     console = {};
+        //   }
+        //   var old = console.log;
+        //   var logger = document.getElementById('log');
+        //   console.log = function (message) {
+        //     if (typeof message == 'object') {
+        //       logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(message) : String(message)) + '<br />';
+        //     } else {
+        //       logger.innerHTML += message + '<br />';
+        //     }
+        //   }
+        // })();
         initWebSQL();//初始化WebSQL
         //saveFeaturesToSessionStorage();//初始化SessionStorage
-        var taken_img =  document.getElementById("test_image");
-        taken_img.onload = function () {
-          var c = document.getElementById("resize_image_canvas");
-          var ctx = c.getContext("2d");
-          ctx.drawImage(taken_img, 0, 0, 800, 800);
-        };
+        // var taken_img =  document.getElementById("test_image");
+        // taken_img.onload = function () {
+        //   var c = document.getElementById("resize_image_canvas");
+        //   var ctx = c.getContext("2d");
+        //   ctx.drawImage(taken_img, 0, 0, 800, 800);
+        // };
+        document.addEventListener('deviceready', function(){
+          cordova.plugins.camerapreview.setOnPictureTakenHandler(function(result){
+            document.getElementById('taken_image').src = result[0];//originalPicturePath;
+            //document.getElementById('previewPicture').src = result[1];//previewPicturePath;
+            //console.log("sending..");
+            //TmtWebSocket.sendMsg("sending origin image..");
+            //console.log(result[0]);
+            //TmtWebSocket.sendMsg(result[0]);
+            //TmtWebSocket.sendMsg("sending preview image..");
+            //TmtWebSocket.sendMsg(result[1]);
+
+          });
+        }, false);
+
         TmtWebSocket.Http("222.28.39.64:9002");
         $("#send_to_server").click(function () {
           //getImage();
