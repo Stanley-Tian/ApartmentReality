@@ -66,7 +66,7 @@ public:
 	bool GetDataItem(DataItem *pDataItem);
 	void Task();
 private:
-	AppServerThread* m_pParent;
+	AppServerThreadManagement* m_pParent;
 	vector<DataItem> m_DataItemVec;
 };
 
@@ -80,7 +80,7 @@ AppServerThread::~AppServerThread()
 void AppServerThread::Initial(void *pParent)
 {
 	if (pParent == NULL) return;
-	m_pParent = (AppServerThread*)pParent;
+	m_pParent = (AppServerThreadManagement*)pParent;
 	Create();
 	Resume();
 }
@@ -114,7 +114,7 @@ bool AppServerThread::GetDataItem(DataItem *pDataItem)
 void AppServerThread::Task()
 {
 	DataItem mDataItem;
-	GetDataItem(&DataItem);
+	GetDataItem(&mDataItem);
 
 
 
