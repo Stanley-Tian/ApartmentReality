@@ -1,9 +1,0 @@
-﻿  Create_Json_Features.cpp
-e:\program files\opencv\include\opencv2\core\mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-e:\program files\opencv\include\opencv2\core\persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-e:\program files\opencv\include\opencv2\core\utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-e:\program files\opencv\include\opencv2\core\utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-f:\tdevelop\tmt\apartmentreality\serverapp\relicdetect\create_json_features\create_json_features.cpp(57): warning C4930: “std::experimental::filesystem::v1::path new_dir(void)”: 未调用原型函数(是否是有意用变量定义的?)
-f:\tdevelop\tmt\apartmentreality\serverapp\relicdetect\create_json_features\create_json_features.cpp(89): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
-f:\tdevelop\tmt\apartmentreality\serverapp\relicdetect\create_json_features\create_json_features.cpp(111): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
-  Create_Json_Features.vcxproj -> F:\Tdevelop\TMT\ApartmentReality\ServerApp\RelicDetect\x64\Debug\Create_Json_Features.exe
