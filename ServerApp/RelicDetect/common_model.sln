@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Create_Json_Features", "Cre
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RelicAPI", "RelicAPI\RelicAPI.vcxproj", "{66A8F6BC-F21D-4893-9702-3AB7C6CF3AA6}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AppServer", "AppServer\AppServer.vcxproj", "{AF4262D9-6D44-4F61-A14F-99F1C02B3EC7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -77,6 +79,16 @@ Global
 		{66A8F6BC-F21D-4893-9702-3AB7C6CF3AA6}.Release|Win32.Build.0 = Release|Win32
 		{66A8F6BC-F21D-4893-9702-3AB7C6CF3AA6}.Release|x64.ActiveCfg = Release|x64
 		{66A8F6BC-F21D-4893-9702-3AB7C6CF3AA6}.Release|x64.Build.0 = Release|x64
+		{AF4262D9-6D44-4F61-A14F-99F1C02B3EC7}.Debug|ARM.ActiveCfg = Debug|Win32
+		{AF4262D9-6D44-4F61-A14F-99F1C02B3EC7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AF4262D9-6D44-4F61-A14F-99F1C02B3EC7}.Debug|Win32.Build.0 = Debug|Win32
+		{AF4262D9-6D44-4F61-A14F-99F1C02B3EC7}.Debug|x64.ActiveCfg = Debug|x64
+		{AF4262D9-6D44-4F61-A14F-99F1C02B3EC7}.Debug|x64.Build.0 = Debug|x64
+		{AF4262D9-6D44-4F61-A14F-99F1C02B3EC7}.Release|ARM.ActiveCfg = Release|Win32
+		{AF4262D9-6D44-4F61-A14F-99F1C02B3EC7}.Release|Win32.ActiveCfg = Release|Win32
+		{AF4262D9-6D44-4F61-A14F-99F1C02B3EC7}.Release|Win32.Build.0 = Release|Win32
+		{AF4262D9-6D44-4F61-A14F-99F1C02B3EC7}.Release|x64.ActiveCfg = Release|x64
+		{AF4262D9-6D44-4F61-A14F-99F1C02B3EC7}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
