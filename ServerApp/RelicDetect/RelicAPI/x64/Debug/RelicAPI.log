@@ -1,0 +1,10 @@
+﻿  main_entrance.cpp
+e:\program files\opencv\include\opencv2\core\mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\program files\opencv\include\opencv2\core\persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\program files\opencv\include\opencv2\core\utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\program files\opencv\include\opencv2\core\utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+    正在创建库 F:\Tdevelop\TMT\ApartmentReality\ServerApp\RelicDetect\x64\Debug\RelicAPI.lib 和对象 F:\Tdevelop\TMT\ApartmentReality\ServerApp\RelicDetect\x64\Debug\RelicAPI.exp
+lib_jsond.lib(json_reader.obj) : warning LNK4099: 未找到 PDB“lib_json.pdb”(使用“lib_jsond.lib(json_reader.obj)”或在“F:\Tdevelop\TMT\ApartmentReality\ServerApp\RelicDetect\x64\Debug\lib_json.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+lib_jsond.lib(json_value.obj) : warning LNK4099: 未找到 PDB“lib_json.pdb”(使用“lib_jsond.lib(json_value.obj)”或在“F:\Tdevelop\TMT\ApartmentReality\ServerApp\RelicDetect\x64\Debug\lib_json.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+lib_jsond.lib(json_writer.obj) : warning LNK4099: 未找到 PDB“lib_json.pdb”(使用“lib_jsond.lib(json_writer.obj)”或在“F:\Tdevelop\TMT\ApartmentReality\ServerApp\RelicDetect\x64\Debug\lib_json.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+  RelicAPI.vcxproj -> F:\Tdevelop\TMT\ApartmentReality\ServerApp\RelicDetect\x64\Debug\RelicAPI.exe

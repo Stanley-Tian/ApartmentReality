@@ -1,0 +1,126 @@
+﻿  stdafx.cpp
+  RelicHelper.cpp
+f:\tdevelop\tmt\apartmentreality\serverapp\relicdetect\console demo\relichelper.cpp(28): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  Console Demo.cpp
+e:\program files\opencv\include\opencv2\core\mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\program files\opencv\include\opencv2\core\persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\program files\opencv\include\opencv2\core\utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\program files\opencv\include\opencv2\core\utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  RelicScn.cpp
+e:\program files\opencv\include\opencv2\core\mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\program files\opencv\include\opencv2\core\persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\program files\opencv\include\opencv2\core\utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\program files\opencv\include\opencv2\core\utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  RelicObj.cpp
+e:\program files\opencv\include\opencv2\core\mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\program files\opencv\include\opencv2\core\persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\program files\opencv\include\opencv2\core\utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\program files\opencv\include\opencv2\core\utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+f:\tdevelop\tmt\apartmentreality\serverapp\relicdetect\console demo\opencv_serialization.hpp(31): warning C4267: “初始化”: 从“size_t”转换到“unsigned int”，可能丢失数据
+  e:\program files\boost_1_61_0\boost\serialization\serialization.hpp(126): note: 参见对正在编译的函数 模板 实例化“void boost::serialization::serialize<Archive>(Archive &,cv::Mat &,const unsigned int)”的引用
+          with
+          [
+              Archive=boost::archive::text_oarchive
+          ]
+  e:\program files\boost_1_61_0\boost\archive\detail\oserializer.hpp(153): note: 参见对正在编译的函数 模板 实例化“void boost::serialization::serialize_adl<Archive,T>(Archive &,T &,const unsigned int)”的引用
+          with
+          [
+              Archive=boost::archive::text_oarchive,
+              T=cv::Mat
+          ]
+  e:\program files\boost_1_61_0\boost\archive\detail\oserializer.hpp(145): note: 编译类 模板 成员函数“void boost::archive::detail::oserializer<Archive,T>::save_object_data(boost::archive::detail::basic_oarchive &,const void *) const”时
+          with
+          [
+              Archive=boost::archive::text_oarchive,
+              T=cv::Mat
+          ]
+  e:\program files\boost_1_61_0\boost\archive\detail\oserializer.hpp(259): note: 参见对正在编译的类 模板 实例化“boost::archive::detail::oserializer<Archive,T>”的引用
+          with
+          [
+              Archive=boost::archive::text_oarchive,
+              T=cv::Mat
+          ]
+  e:\program files\boost_1_61_0\boost\archive\detail\oserializer.hpp(309): note: 参见对正在编译的函数 模板 实例化“void boost::archive::detail::save_non_pointer_type<Archive>::save_standard::invoke<T>(Archive &,const T &)”的引用
+          with
+          [
+              Archive=boost::archive::text_oarchive,
+              T=cv::Mat
+          ]
+  e:\program files\boost_1_61_0\boost\archive\detail\oserializer.hpp(309): note: 参见对正在编译的函数 模板 实例化“void boost::archive::detail::save_non_pointer_type<Archive>::save_standard::invoke<T>(Archive &,const T &)”的引用
+          with
+          [
+              Archive=boost::archive::text_oarchive,
+              T=cv::Mat
+          ]
+  e:\program files\boost_1_61_0\boost\archive\detail\oserializer.hpp(526): note: 参见对正在编译的函数 模板 实例化“void boost::archive::detail::save_non_pointer_type<Archive>::invoke<const T>(Archive &,const T &)”的引用
+          with
+          [
+              Archive=boost::archive::text_oarchive,
+              T=cv::Mat
+          ]
+  e:\program files\boost_1_61_0\boost\archive\detail\oserializer.hpp(526): note: 参见对正在编译的函数 模板 实例化“void boost::archive::detail::save_non_pointer_type<Archive>::invoke<const T>(Archive &,const T &)”的引用
+          with
+          [
+              Archive=boost::archive::text_oarchive,
+              T=cv::Mat
+          ]
+  e:\program files\boost_1_61_0\boost\archive\detail\common_oarchive.hpp(70): note: 参见对正在编译的函数 模板 实例化“void boost::archive::save<Archive,T>(Archive &,T &)”的引用
+          with
+          [
+              Archive=boost::archive::text_oarchive,
+              T=cv::Mat
+          ]
+  e:\program files\boost_1_61_0\boost\archive\basic_text_oarchive.hpp(83): note: 参见对正在编译的函数 模板 实例化“void boost::archive::detail::common_oarchive<Archive>::save_override<T>(T &)”的引用
+          with
+          [
+              Archive=boost::archive::text_oarchive,
+              T=cv::Mat
+          ]
+  e:\program files\boost_1_61_0\boost\archive\basic_text_oarchive.hpp(83): note: 参见对正在编译的函数 模板 实例化“void boost::archive::detail::common_oarchive<Archive>::save_override<T>(T &)”的引用
+          with
+          [
+              Archive=boost::archive::text_oarchive,
+              T=cv::Mat
+          ]
+  e:\program files\boost_1_61_0\boost\archive\detail\interface_oarchive.hpp(70): note: 参见对正在编译的函数 模板 实例化“void boost::archive::basic_text_oarchive<Archive>::save_override<const T>(T &)”的引用
+          with
+          [
+              Archive=boost::archive::text_oarchive,
+              T=cv::Mat
+          ]
+  e:\program files\boost_1_61_0\boost\archive\detail\interface_oarchive.hpp(70): note: 参见对正在编译的函数 模板 实例化“void boost::archive::basic_text_oarchive<Archive>::save_override<const T>(T &)”的引用
+          with
+          [
+              Archive=boost::archive::text_oarchive,
+              T=cv::Mat
+          ]
+  f:\tdevelop\tmt\apartmentreality\serverapp\relicdetect\relicdetect\relicobj.cpp(60): note: 参见对正在编译的函数 模板 实例化“Archive &boost::archive::detail::interface_oarchive<Archive>::operator <<<cv::Mat>(const T &)”的引用
+          with
+          [
+              Archive=boost::archive::text_oarchive,
+              T=cv::Mat
+          ]
+  f:\tdevelop\tmt\apartmentreality\serverapp\relicdetect\relicdetect\relicobj.cpp(60): note: 参见对正在编译的函数 模板 实例化“Archive &boost::archive::detail::interface_oarchive<Archive>::operator <<<cv::Mat>(const T &)”的引用
+          with
+          [
+              Archive=boost::archive::text_oarchive,
+              T=cv::Mat
+          ]
+f:\tdevelop\tmt\apartmentreality\serverapp\relicdetect\console demo\opencv_serialization.hpp(31): warning C4267: “初始化”: 从“size_t”转换到“const unsigned int”，可能丢失数据
+f:\tdevelop\tmt\apartmentreality\serverapp\relicdetect\console demo\opencv_serialization.hpp(38): warning C4267: “初始化”: 从“size_t”转换到“unsigned int”，可能丢失数据
+f:\tdevelop\tmt\apartmentreality\serverapp\relicdetect\console demo\opencv_serialization.hpp(38): warning C4267: “初始化”: 从“size_t”转换到“const unsigned int”，可能丢失数据
+  RelicDetect.cpp
+e:\program files\opencv\include\opencv2\core\mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\program files\opencv\include\opencv2\core\persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\program files\opencv\include\opencv2\core\utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\program files\opencv\include\opencv2\core\utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+f:\tdevelop\tmt\apartmentreality\serverapp\relicdetect\relicdetect\relicdetect.cpp(155): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+f:\tdevelop\tmt\apartmentreality\serverapp\relicdetect\relicdetect\relicdetect.cpp(156): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+f:\tdevelop\tmt\apartmentreality\serverapp\relicdetect\relicdetect\relicdetect.cpp(157): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+f:\tdevelop\tmt\apartmentreality\serverapp\relicdetect\relicdetect\relicdetect.cpp(158): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+  正在生成代码...
+    正在创建库 F:\Tdevelop\TMT\ApartmentReality\ServerApp\RelicDetect\x64\Debug\Console Demo.lib 和对象 F:\Tdevelop\TMT\ApartmentReality\ServerApp\RelicDetect\x64\Debug\Console Demo.exp
+lib_jsond.lib(json_reader.obj) : warning LNK4099: 未找到 PDB“lib_json.pdb”(使用“lib_jsond.lib(json_reader.obj)”或在“F:\Tdevelop\TMT\ApartmentReality\ServerApp\RelicDetect\x64\Debug\lib_json.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+lib_jsond.lib(json_value.obj) : warning LNK4099: 未找到 PDB“lib_json.pdb”(使用“lib_jsond.lib(json_value.obj)”或在“F:\Tdevelop\TMT\ApartmentReality\ServerApp\RelicDetect\x64\Debug\lib_json.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+lib_jsond.lib(json_writer.obj) : warning LNK4099: 未找到 PDB“lib_json.pdb”(使用“lib_jsond.lib(json_writer.obj)”或在“F:\Tdevelop\TMT\ApartmentReality\ServerApp\RelicDetect\x64\Debug\lib_json.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+  Console Demo.vcxproj -> F:\Tdevelop\TMT\ApartmentReality\ServerApp\RelicDetect\x64\Debug\Console Demo.exe
