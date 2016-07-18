@@ -1,0 +1,47 @@
+{
+    "1": {
+        "name": "A1 户型",
+        "feature_url": "assets/FeatureData/A1_feature.json",
+        "image_url": "assets/FeatureData/A1.jpg"
+    },
+    "2": {
+        "name": "A2 号户型",
+        "feature_url": "assets/FeatureData/A2_feature.json",
+        "image_url": "assets/FeatureData/A2.jpg"
+    },
+    "3": {
+        "name": "A3 号户型",
+        "feature_url": "assets/FeatureData/A3_feature.json",
+        "image_url": "assets/FeatureData/A3.jpg"
+    },
+    "4": {
+        "name": "A4 号户型",
+        "feature_url": "assets/FeatureData/A4_feature.json",
+        "image_url": "assets/FeatureData/A4.jpg"
+    },
+    "5": {
+        "name": "A5 号户型",
+        "feature_url": "assets/FeatureData/A5_feature.json",
+        "image_url": "assets/FeatureData/A5.jpg"
+    },
+    "6": {
+        "name": "B1 号户型",
+        "feature_url": "assets/FeatureData/B1_feature.json",
+        "image_url": "assets/FeatureData/B1.jpg"
+    },
+    "7": {
+        "name": "B2 号户型",
+        "feature_url": "assets/FeatureData/B2_feature.json",
+        "image_url": "assets/FeatureData/B2.jpg"
+    },
+    "8": {
+        "name": "D1 号户型",
+        "feature_url": "assets/FeatureData/D1_feature.json",
+        "image_url": "assets/FeatureData/D1.jpg"
+    },
+    "9": {
+        "name": "D2 号户型",
+        "feature_url": "assets/FeatureData/D2_feature.json",
+        "image_url": "assets/FeatureData/D2.jpg"
+    }
+}
