@@ -1,9 +1,6 @@
 /**
  * Created by rwp on 2016/7/12.
  */
-function OnClick() {
-  console.log("haha");
-}
 function selectImg() {
   var cv  = document.getElementById('mCv');
   var cans = cv.getContext('2d');
@@ -36,6 +33,18 @@ function initCamera() {
   showed_cam.x = content_offset.left+(content_width - showed_cam.width)/2;
   showed_cam.y = content_offset.top + (content_height - showed_cam.height)/2;
 
+  cordova.plugins.camerapreview.setOnPictureTakenHandler(function(result){
+    console.log("开始处理拍到的照片");
+    //document.getElementById('taken_image').src = result[0];//originalPicturePath;
+    //document.getElementById('previewPicture').src = result[1];//previewPicturePath;
+    //console.log("sending..");
+    //TmtWebSocket.sendMsg("sending origin image..");
+    console.log(result);
+    //TmtWebSocket.sendMsg(result[0]);
+    //TmtWebSocket.sendMsg("sending preview image..");
+    //TmtWebSocket.sendMsg(result[1]);
+    console.log("照片处理结束");
+  });
   cordova.plugins.camerapreview.startCamera(
       { x: showed_cam.x,
         y: showed_cam.y,
@@ -47,6 +56,7 @@ function initCamera() {
         toBack: false});
   cordova.plugins.camerapreview.show();
   //cordova.plugins.camerapreview.focus();
+
 }
 function releaseCamera() {
   cordova.plugins.camerapreview.stopCamera();
@@ -157,11 +167,25 @@ function wait(ms){
 function fuck() {
   cordova.plugins.camerapreview.takePicture({maxWidth:640, maxHeight:640});
 }
+function stateChange(newState) {
+  setTimeout(function () {
+    if (newState == -1) {
+      alert('VIDEO HAS STOPPED');
+    }
+  }, 5000);
+}
+var delay = ( function() {
+  var timer = 0;
+  return function(callback, ms) {
+    clearTimeout (timer);
+    timer = setTimeout(callback, ms);
+  };
+})();
 function sendImage() {
+  console.log("start while loop");
   while(true){
-    //openCamera();
-    fuck();
-    wait(3000);
-
+      fuck();
+      console.log("one picture taken");
+      wait(3000);
   }
 }

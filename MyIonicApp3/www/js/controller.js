@@ -32,37 +32,22 @@ angular.module('myApp.controllers', [])
         //   var ctx = c.getContext("2d");
         //   ctx.drawImage(taken_img, 0, 0, 800, 800);
         // };
-        document.addEventListener('deviceready', function(){
-          cordova.plugins.camerapreview.setOnPictureTakenHandler(function(result){
-            document.getElementById('taken_image').src = result[0];//originalPicturePath;
-            //document.getElementById('previewPicture').src = result[1];//previewPicturePath;
-            //console.log("sending..");
-            //TmtWebSocket.sendMsg("sending origin image..");
-            //console.log(result[0]);
-            //TmtWebSocket.sendMsg(result[0]);
-            //TmtWebSocket.sendMsg("sending preview image..");
-            //TmtWebSocket.sendMsg(result[1]);
-
-          });
-        }, false);
 
         TmtWebSocket.Http("222.28.39.64:9002");
         $("#send_to_server").click(function () {
-          //getImage();
-          //detectImage2();
-          console.log("send info to server");
-            //var dataurl = c.toDataURL();
+            console.log("send info to server");
             var this_canvas = document.getElementById("resize_image_canvas");
             TmtWebSocket.sendMsg(this_canvas.toDataURL('image/jpeg'));
-        });
-        $("#test_local").click(function () {
-          detectImage();
         });
         $("#clear_log").click(function () {
           $("#log").html("");
         });
-        $("#start_scan").click(function () {
+        $("#init_camera").click(function () {
           initCamera();
+          console.log("init camera complete");
+          sendImage();
+        });
+        $("#start_scan").click(function () {
           sendImage();
         });
       });

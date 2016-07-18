@@ -133,6 +133,41 @@ string RelicAPI::detect(const Mat origin_image,vector <RelicObj> relic_objs)
 	return str;
 }
 
+MatchResult RelicAPI::detectSingle(const Mat origin_image, RelicObj relic_obj)
+{
+	//将图像转为灰度图
+	Mat gray_img;
+	if (origin_image.channels() != 1){
+		cvtColor(origin_image, gray_img, CV_BGR2GRAY);
+	}else{
+		gray_img = origin_image;
+	};
+	RelicScn scene;
+	scene.Load_Img(gray_img);
+	scene.Calc_Keypoints_and_Descriptors();
+	MatchResult cur_mr = scene.Match_an_Obj(relic_obj);
+
+	return cur_mr;
+}
+RelicScn RelicAPI::loadAndCalcScene(Mat origin_image)
+{
+	//将图像转为灰度图
+	Mat gray_img;
+	if (origin_image.channels() != 1) {
+		cvtColor(origin_image, gray_img, CV_BGR2GRAY);
+	}
+	else {
+		gray_img = origin_image;
+	};
+	RelicScn scene;
+	scene.Load_Img(gray_img);
+	scene.Calc_Keypoints_and_Descriptors();
+	return scene;
+}
+MatchResult RelicAPI::detectSingle(RelicScn relic_scn, RelicObj relic_obj)
+{
+	return relic_scn.Match_an_Obj(relic_obj);
+}
 vector<RelicObj> RelicAPI::getObjs(string feature_directory) 
 {
 	fs::path p("..\\..\\assets\\FeatureData");
