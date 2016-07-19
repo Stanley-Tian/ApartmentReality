@@ -158,7 +158,12 @@ function sendImage(send_image_timespan) {
         //console.log(origin_data);
       };
 
-
+      // window.resolveLocalFileSystemURL(the_path, function (result) {
+      //   alert("I'm in");
+      //   result.remove(function(){
+      //     alert("removed image");
+      //   });
+      // });
       // TmtWebSocket.sendMsg("sending preview image..");
       // var preview_data = getImageDataURL("previewPicture","canvas_preview")
       // TmtWebSocket.sendMsg(preview_data);
@@ -168,4 +173,5 @@ function sendImage(send_image_timespan) {
   setInterval(function(){
     cordova.plugins.camerapreview.takePicture();
   },send_image_timespan);
+  
 }

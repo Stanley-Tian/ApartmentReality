@@ -6,7 +6,7 @@ function initConfig() {
     htmlobj=$.ajax({url:"config.json",async:false});
     var config_info=htmlobj.responseText;
     tmt_config =JSON.parse(config_info);
-    //saveConfig();
+    saveConfig();
     //$("#all_config_info").html(config_info);
     //file_op.readFile("config.json");
     // file_op.onLoadedFile = function (filedata) {
