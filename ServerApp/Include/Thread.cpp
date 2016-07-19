@@ -124,7 +124,7 @@ void  Thread::Create(long times, long waiteTime, bool includeTaskTime)//2.0
 	{
 		m_hEvt = ::CreateEvent(0, true, false, 0);
 	}
-	if (m_hThread == 0)
+	if (m_hThread == INVALID_HANDLE_VALUE)
 	{
 		m_times = times;
 		m_bExit = false;

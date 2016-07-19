@@ -3,7 +3,8 @@ struct MatchResult
 {
 	bool ObjectFound;
 	double ObjectRatio;
-	MatchResult() :ObjectFound(false),ObjectRatio(0.0)
+	int mID;
+	MatchResult() :ObjectFound(false),ObjectRatio(0.0),mID(0)
 	{
 
 	}

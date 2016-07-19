@@ -3,6 +3,7 @@
  */
 function show3D() {
   initControls('viewport');
-  loadModel('assets/HouseModles/basic_scene.json');
+  setupScene();
+  loadJsonObject('assets/HouseModles/BS01_full.json');
   animate();
 }

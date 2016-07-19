@@ -75,7 +75,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <ExecutablePath>$(BOOST_PATH)\lib64-msvc-14.0;$(OPENCV_PATH)\x64\vc14\bin;$(VC_ExecutablePath_x64);$(WindowsSDK_ExecutablePath);$(VS_ExecutablePath);$(MSBuild_ExecutablePath);$(FxCopDir);$(PATH);</ExecutablePath>
-    <IncludePath>$(BOOST_PATH);$(OPENSSL_PATH)\include;..\..\Include;..\relicdetect;$(OPENCV_PATH)\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>$(BOOST_PATH);$(OPENSSL_PATH)\include;..\..\Include;..\relicdetect;$(OPENCV_PATH)\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <LibraryPath>$(BOOST_PATH)\lib64-msvc-14.0;..\..\Lib\jsoncpp\x64\vc14;$(OPENCV_PATH)\x64\vc14\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -84,7 +84,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <ExecutablePath>$(BOOST_PATH)\lib64-msvc-14.0;$(OPENCV_PATH)\x64\vc14\bin;$(VC_ExecutablePath_x64);$(WindowsSDK_ExecutablePath);$(VS_ExecutablePath);$(MSBuild_ExecutablePath);$(FxCopDir);$(PATH);</ExecutablePath>
-    <IncludePath>$(BOOST_PATH);$(OPENSSL_PATH)\include;..\..\Include;..\relicdetect;$(OPENCV_PATH)\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>$(BOOST_PATH);$(OPENSSL_PATH)\include;..\..\Include;..\relicdetect;$(OPENCV_PATH)\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <LibraryPath>$(BOOST_PATH)\lib64-msvc-14.0;..\..\Lib\jsoncpp\x64\vc14;$(OPENCV_PATH)\x64\vc14\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -157,15 +157,20 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Include\ArWatch.h" />
+    <ClInclude Include="..\..\Include\Thread.h" />
     <ClInclude Include="..\Console Demo\RelicHelper.h" />
     <ClInclude Include="..\relicdetect\RelicAPI.hpp" />
     <ClInclude Include="..\relicdetect\RelicDetect.hpp" />
     <ClInclude Include="..\relicdetect\RelicObj.hpp" />
     <ClInclude Include="..\relicdetect\RelicScn.hpp" />
+    <ClInclude Include="AppServerThread.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Include\ArWatch.cpp" />
+    <ClCompile Include="..\..\Include\Thread.cpp" />
     <ClCompile Include="..\Console Demo\RelicHelper.cpp" />
     <ClCompile Include="..\relicdetect\RelicAPI.cpp" />
     <ClCompile Include="..\relicdetect\RelicDetect.cpp" />
