@@ -4,6 +4,6 @@
 function show3D() {
   initControls('viewport');
   setupScene();
-  loadJsonObject('assets/HouseModles/basic_scene.json');
+  loadJsonObject('assets/HouseModles/BS01_full.json');
   animate();
 }
