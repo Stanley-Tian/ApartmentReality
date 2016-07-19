@@ -16,7 +16,7 @@ function render() {
 }
 function setupScene() {
     scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper( 10, 2.5 ) );
+    //scene.add( new THREE.GridHelper( 10, 2.5 ) );
     var ambientLight = new THREE.AmbientLight( 0x222222 );
     ambientLight.intensity = 1.0;
     scene.add( ambientLight );
@@ -33,7 +33,7 @@ function loadJsonObject(path) {
     loader.load( path,
         // Function when resource is loaded
         function ( object ) {
-            scene.add( new THREE.GridHelper( 10, 2.5 ) );
+            object.castShadow = true;
             scene.add( object );
         },onProgress,onError
     );
@@ -60,8 +60,8 @@ function initControls(element_id) {
     camera = new THREE.PerspectiveCamera( 60, aspect, 0.01, 50 );
     orbit = new THREE.OrbitControls( camera, container );
     orbit.addEventListener( 'change', render );
-    camera.position.z = 5;
-    camera.position.x = 5;
+    camera.position.z = 20;
+    camera.position.x = 0;
     camera.position.y = 5;
     var target = new THREE.Vector3( 0, 1, 0 );
     camera.lookAt( target );
@@ -70,10 +70,10 @@ function initControls(element_id) {
     window.addEventListener( 'resize', onWindowResize, false );
     //console.dir(container);
 }
-function loadModel(model_url) {
-    setupScene();
-    loadJsonObject(model_url);
-}
+// function loadModel(model_url) {
+//     setupScene();
+//     loadJsonObject(model_url);
+// }
 function animate() {
     // Read more about requestAnimationFrame at http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
     requestAnimationFrame(animate);
