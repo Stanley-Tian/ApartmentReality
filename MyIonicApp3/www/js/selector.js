@@ -150,45 +150,32 @@ function wait(ms){
     end = new Date().getTime();
   }
 }
-function fuck() {
 
-}
-function stateChange(newState) {
-  setTimeout(function () {
-    if (newState == -1) {
-      alert('VIDEO HAS STOPPED');
-    }
-  }, 5000);
-}
-var delay = ( function() {
-  var timer = 0;
-  return function(callback, ms) {
-    clearTimeout (timer);
-    timer = setTimeout(callback, ms);
-  };
-})();
 function sendImage() {
   console.log("set on pic");
-  cordova.plugins.camerapreview.setOnPictureTakenHandler(function(result){
-    console.log("开始处理拍到的照片");
-    //document.getElementById('taken_image').src = result[0];//originalPicturePath;
-    //document.getElementById('previewPicture').src = result[1];//previewPicturePath;
-    //console.log("sending..");
-    //TmtWebSocket.sendMsg("sending origin image..");
-    //console.log(result[0]);
-    document.getElementById('originalPicture').src = result[0]; //originalPicturePath;
-    document.getElementById('previewPicture').src = result[1]; //previewPicturePath;
-    //TmtWebSocket.sendMsg(result[0]);
-    //TmtWebSocket.sendMsg("sending preview image..");
-    //TmtWebSocket.sendMsg(result[1]);
-    console.log("照片处理结束");
-  });
-  console.log("start while loop");
-  cordova.plugins.camerapreview.takePicture({maxWidth:640, maxHeight:640});
 
-  // while(true){
-  //   cordova.plugins.camerapreview.takePicture({maxWidth:640, maxHeight:640});
-  //     console.log("one picture taken");
-  //     wait(3000);
-  // }
+  console.log("start while loop");
+  //cordova.plugins.camerapreview.takePicture({maxWidth:640, maxHeight:640});
+    cordova.plugins.camerapreview.setOnPictureTakenHandler(function(result){
+      console.log("开始处理拍到的照片");
+      document.getElementById('originalPicture').src = result[0]; //originalPicturePath;
+      document.getElementById('previewPicture').src = result[1]; //previewPicturePath;
+
+      document.getElementById("originalPicture").onload = function() {
+        TmtWebSocket.sendMsg("sending origin image..");
+        var origin_data = getImageDataURL("originalPicture","canvas_original");
+        TmtWebSocket.sendMsg(origin_data);
+        console.log(origin_data);
+      };
+
+
+      // TmtWebSocket.sendMsg("sending preview image..");
+      // var preview_data = getImageDataURL("previewPicture","canvas_preview")
+      // TmtWebSocket.sendMsg(preview_data);
+
+      console.log("照片处理结束");
+    });
+  setInterval(function(){
+    cordova.plugins.camerapreview.takePicture({maxWidth:640, maxHeight:640});
+  },3000);
 }

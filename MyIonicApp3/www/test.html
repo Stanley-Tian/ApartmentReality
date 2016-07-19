@@ -5,29 +5,15 @@
     <title>Title</title>
 </head>
 <body>
-<img id="image" src="assets/FeatureData/1-1.JPG" alt="">
-<canvas id="cc" width="400" height="400"  style="border:1px solid #d3d3d3;background:#ffffff;"></canvas>
-<img id="image_small">
+<h3>测试用html，里面的内容随时可能会被删除，不要放置重要代码！！</h3>
+<img id="img_A1" src="assets/FeatureData/A1.jpg" alt="">
 </body>
 <script src="js/jquery.min.js"></script>
+<script src="js/funcs.js"></script>
 <script>
-    window.onload =function () {
+
         $(document).ready(function () {
-//            var ori_img = $("#image");
-//            var cc = $("#cc");
-//            var ctx = cc.getContext("2d");
-//            ctx.drawImage(ori_img,0,0,50,50);
-//            alert("ddd");
-            var c=document.getElementById("cc");
-            var ctx=c.getContext("2d");
-            var img=document.getElementById("image");
-            ctx.drawImage(img,0,0,400,400);
-            var dataurl = c.toDataURL();
-
-            var img2= document.getElementById("image_small");
-            img2.src = dataurl;
+            $("body").append("ffffff");
         });
-    };
-
 </script>
 </html>

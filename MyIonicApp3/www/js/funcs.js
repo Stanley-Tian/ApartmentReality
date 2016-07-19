@@ -160,4 +160,25 @@ function matchFeaturesFromSessionStorage(scene_img,onSuccess,onFailed) {
         onFailed();
     }
 }
-
+/**
+ * 获取一张图片的base64格式信息
+ * @param img_id    img元素的id
+ * @param canvas_id 将绘制所在的canvas_id值，不指定则使用默认值
+ * @returns {string} 返回base64字符串
+ */
+function getImageDataURL(img_id,canvas_id = "canvas_for_dataurl") {
+    var taken_img =  document.getElementById(img_id);
+    var h = taken_img.naturalHeight;
+    var w = taken_img.naturalWidth;
+    var ratio = w/h;
+    console.log("img height:"+h+" img width:"+w);
+    if(!$(`#${canvas_id}`).length)
+    {//if this element does not exist
+        $("#selector-content").append(`<canvas width='${w}' height='${h}' id='${canvas_id}' hidden></canvas>`);//增加canvas元素
+    }
+      var c = document.getElementById(canvas_id);
+      var ctx = c.getContext("2d");
+      ctx.drawImage(taken_img, 0, 0, w, h);
+    var this_canvas = document.getElementById(canvas_id);
+    return this_canvas.toDataURL('image/jpeg');
+}

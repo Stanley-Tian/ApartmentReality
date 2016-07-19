@@ -39,12 +39,9 @@ angular.module('myApp.controllers', [])
         $("#clear_log").click(function () {
           $("#log").html("");
         });
-        $("#init_camera").click(function () {
+        $("#start_scan").click(function () {
           initCamera();
           console.log("init camera complete");
-          sendImage();
-        });
-        $("#start_scan").click(function () {
           sendImage();
         });
       });
