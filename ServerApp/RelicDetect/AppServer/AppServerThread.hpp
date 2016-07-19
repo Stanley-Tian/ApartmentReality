@@ -174,7 +174,7 @@ bool AppServerThread::GetDataItem(DataItem *pDataItem)
 void AppServerThread::Task()
 {
 	OutputDebugString(L"进入分线程");
-	cout << m_ID << "进入线程"<<endl;
+	//cout << m_ID << "进入线程"<<endl;
 	DataItem mDataItem;
 	if (GetDataItem(&mDataItem))
 	{
@@ -209,14 +209,14 @@ void AppServerThreadManagement::Initial(string feature_directory, server* s)
 	AppServerThread* pThread;
 	AppServerThreadNum = 0;
 	vector<RelicObj>::iterator it = relic_objs.begin();
-	cout << "创建工作线程"<<endl;
+	cout << "创建工作线程:"<<endl;
 	for (; it != relic_objs.end(); it++)
 	{
 		pThread = new AppServerThread;
 		pThread->Initial(this, &(*it),AppServerThreadNum);
 		AppServerThreadPointerVec.push_back(pThread);
 		AppServerThreadNum++;
-		cout << "线程 " << AppServerThreadNum << " 已启动"<<endl;
+		cout << "线程 " << AppServerThreadNum << " 已启动;" << endl;
 		Sleep(100);
 	}
 	this->s = s;
