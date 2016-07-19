@@ -2,7 +2,7 @@
  * Created by rwp on 2016/7/12.
  */
 angular.module('myApp.controllers', [])
-    .controller('selectorController', function($scope) {
+  .controller('selectorController', function($scope) {
     $scope.title='请扫描户型图';
 
       $scope.$on('$ionicView.loaded', function (viewInfo, state) {
@@ -21,6 +21,7 @@ angular.module('myApp.controllers', [])
         //     }
         //   }
         // })();
+        initConfig();
         initWebSQL();//初始化WebSQL
         //saveFeaturesToSessionStorage();//初始化SessionStorage
         // var taken_img =  document.getElementById("test_image");
@@ -30,7 +31,7 @@ angular.module('myApp.controllers', [])
         //   ctx.drawImage(taken_img, 0, 0, 800, 800);
         // };
 
-        TmtWebSocket.Http("222.28.39.64:9002");
+        TmtWebSocket.Http(tmt_config.server_ip);
         $("#send_to_server").click(function () {
             console.log("send info to server");
             var this_canvas = document.getElementById("resize_image_canvas");
@@ -42,7 +43,7 @@ angular.module('myApp.controllers', [])
         $("#start_scan").click(function () {
           initCamera();
           console.log("init camera complete");
-          sendImage();
+          sendImage(tmt_config.send_image_timespan);
         });
       });
       $scope.$on('$ionicView.afterEnter', function (viewInfo, state) {
@@ -62,7 +63,22 @@ angular.module('myApp.controllers', [])
   })
   .controller('showDetailController', function($scope) {
     $scope.title='户型细节';
-      
+    $scope.$on('$ionicView.loaded', function (viewInfo, state) {
+      showConfig();
+      $("#change_config").click(function () {
+          var server_ip = $("#server_ip_input").val();
+          var send_image_timespan = $("#send_image_timespan_input").val();
+          if(server_ip.length>10)
+          {
+            tmt_config.server_ip = server_ip;
+          }
+        if(send_image_timespan>0)
+        {
+          tmt_config.send_image_timespan = send_image_timespan;
+        }
+      });
+    });
+
     $scope.$on('$ionicView.afterEnter', function (viewInfo, state) {
       showDt();
     });

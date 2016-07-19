@@ -10,9 +10,6 @@
         "com.mbppower.camerapreview": {
             "PACKAGE_NAME": "com.tmtvision.mobilapp"
         },
-        "cordova-base64-to-gallery": {
-            "PACKAGE_NAME": "com.tmtvision.mobilapp"
-        },
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.tmtvision.mobilapp"
         },
@@ -32,6 +29,9 @@
             "PACKAGE_NAME": "com.tmtvision.mobilapp"
         },
         "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.tmtvision.mobilapp"
+        },
+        "cordova-plugin-file": {
             "PACKAGE_NAME": "com.tmtvision.mobilapp"
         }
     },

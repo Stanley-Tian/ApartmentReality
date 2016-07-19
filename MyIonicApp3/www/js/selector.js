@@ -143,29 +143,19 @@ function openCamera(selection) {
   }, options);
 }
 //--end
-function wait(ms){
-  var start = new Date().getTime();
-  var end = start;
-  while(end < start + ms) {
-    end = new Date().getTime();
-  }
-}
 
-function sendImage() {
-  console.log("set on pic");
-
-  console.log("start while loop");
+function sendImage(send_image_timespan) {
   //cordova.plugins.camerapreview.takePicture({maxWidth:640, maxHeight:640});
     cordova.plugins.camerapreview.setOnPictureTakenHandler(function(result){
       console.log("开始处理拍到的照片");
       document.getElementById('originalPicture').src = result[0]; //originalPicturePath;
-      document.getElementById('previewPicture').src = result[1]; //previewPicturePath;
+      //document.getElementById('previewPicture').src = result[1]; //previewPicturePath;
 
       document.getElementById("originalPicture").onload = function() {
-        TmtWebSocket.sendMsg("sending origin image..");
+        //TmtWebSocket.sendMsg("sending origin image..");
         var origin_data = getImageDataURL("originalPicture","canvas_original");
         TmtWebSocket.sendMsg(origin_data);
-        console.log(origin_data);
+        //console.log(origin_data);
       };
 
 
@@ -176,6 +166,6 @@ function sendImage() {
       console.log("照片处理结束");
     });
   setInterval(function(){
-    cordova.plugins.camerapreview.takePicture({maxWidth:640, maxHeight:640});
-  },3000);
+    cordova.plugins.camerapreview.takePicture();
+  },send_image_timespan);
 }
