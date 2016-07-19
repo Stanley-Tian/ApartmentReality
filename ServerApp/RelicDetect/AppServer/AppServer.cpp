@@ -1,87 +1,92 @@
 // AppServer.cpp : 定义控制台应用程序的入口点。
 //
-
-#include <websocketpp/config/asio_no_tls.hpp>
-#include <websocketpp/server.hpp>
-#include <websocketpp/base64/base64.hpp>
-
 #include "stdafx.h"
-#include "RelicDetect.hpp"
-#include "RelicObj.hpp"
-#include "RelicScn.hpp"
-#include "RelicAPI.hpp"
-#include "JsonCPPHeader\json.h"
-#include "..\Console Demo\RelicHelper.h"
-#include "..\Console Demo\opencv_serialization.hpp"
-#include <boost/timer.hpp>
-#include <boost/thread.hpp>
-#include <boost/chrono.hpp>
+#include "AppServerThread.hpp"
 
-//websocket 
-#include <stdio.h>
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include "opencv2/core.hpp"
-#include "opencv2/imgproc.hpp"
-#include "opencv2/features2d.hpp"
-#include "opencv2/highgui.hpp"
-#include "opencv2/calib3d.hpp"
-#include "opencv2/xfeatures2d.hpp"
+//#include <websocketpp/config/asio_no_tls.hpp>
+//#include <websocketpp/server.hpp>
+//#include <websocketpp/base64/base64.hpp>
+//
+//
+//#include "RelicDetect.hpp"
+//#include "RelicObj.hpp"
+//#include "RelicScn.hpp"
+//#include "RelicAPI.hpp"
+//#include "JsonCPPHeader\json.h"
+//#include "..\Console Demo\RelicHelper.h"
+//#include "..\Console Demo\opencv_serialization.hpp"
+//#include <boost/timer.hpp>
+//#include <boost/thread.hpp>
+//#include <boost/chrono.hpp>
+//
+////websocket 
+//#include <stdio.h>
+//#include <iostream>
+//#include <fstream>
+//#include <sstream>
+//#include "opencv2/core.hpp"
+//#include "opencv2/imgproc.hpp"
+//#include "opencv2/features2d.hpp"
+//#include "opencv2/highgui.hpp"
+//#include "opencv2/calib3d.hpp"
+//#include "opencv2/xfeatures2d.hpp"
+//
+//
+//
+//namespace logging = boost::log;
+//namespace sinks = boost::log::sinks;
+//namespace src = boost::log::sources;
+//namespace expr = boost::log::expressions;
+//namespace attrs = boost::log::attributes;
+//namespace keywords = boost::log::keywords;
+//
+//using namespace cv;
+//using namespace cv::xfeatures2d;
+//using namespace std;
+//using boost::timer;
+//
+//typedef websocketpp::server<websocketpp::config::asio> server;
+//
+//using websocketpp::lib::placeholders::_1;
+//using websocketpp::lib::placeholders::_2;
+//using websocketpp::lib::bind;
+//// pull out the type of messages sent by our config
+//typedef server::message_ptr message_ptr;
+//
+//
+//vector<RelicObj> objs;
 
 
+//void SetFilter() {
+//	logging::core::get()->set_filter(logging::trivial::severity >= logging::trivial::fatal);
+//}
+//
+//int test_match()
+//{
+//	SetFilter();
+//	objs = RelicAPI::getObjs("..\\..\\assets\\FeatureData");//获取已经提取过的json feature
+//	VideoCapture cap(0); // open the default camera
+//	if (!cap.isOpened())  // check if we succeeded
+//		return -1;
+//	for (;;)
+//	{
+//		Mat frame;
+//		cap >> frame; // get a new frame from camera
+//		if (waitKey(30) == 32)
+//		{
+//			Mat scene_color = frame;
+//			timer t0;
+//			cout << "best Match ID:" << RelicAPI::detect(frame, objs) << endl;
+//			cout << "本次匹配总耗时 " << t0.elapsed() << " 秒" << endl;
+//		}
+//		imshow("aka", frame);
+//		waitKey(10);
+//		//if (waitKey(30) == 0) break;
+//	}
+//}
 
-namespace logging = boost::log;
-namespace sinks = boost::log::sinks;
-namespace src = boost::log::sources;
-namespace expr = boost::log::expressions;
-namespace attrs = boost::log::attributes;
-namespace keywords = boost::log::keywords;
 
-using namespace cv;
-using namespace cv::xfeatures2d;
-using namespace std;
-using boost::timer;
-
-typedef websocketpp::server<websocketpp::config::asio> server;
-
-using websocketpp::lib::placeholders::_1;
-using websocketpp::lib::placeholders::_2;
-using websocketpp::lib::bind;
-// pull out the type of messages sent by our config
-typedef server::message_ptr message_ptr;
-
-
-vector<RelicObj> objs;
-
-
-void SetFilter() {
-	logging::core::get()->set_filter(logging::trivial::severity >= logging::trivial::fatal);
-}
-
-int test_match()
-{
-	SetFilter();
-	objs = RelicAPI::getObjs("..\\..\\assets\\FeatureData");//获取已经提取过的json feature
-	VideoCapture cap(0); // open the default camera
-	if (!cap.isOpened())  // check if we succeeded
-		return -1;
-	for (;;)
-	{
-		Mat frame;
-		cap >> frame; // get a new frame from camera
-		if (waitKey(30) == 32)
-		{
-			Mat scene_color = frame;
-			timer t0;
-			cout << "best Match ID:" << RelicAPI::detect(frame, objs) << endl;
-			cout << "本次匹配总耗时 " << t0.elapsed() << " 秒" << endl;
-		}
-		imshow("aka", frame);
-		waitKey(10);
-		//if (waitKey(30) == 0) break;
-	}
-}
+AppServerThreadManagement mManager;
 
 void on_message(server* s, websocketpp::connection_hdl hdl, message_ptr msg) {
 	std::cout << "on_message called with hdl: " << hdl.lock().get()
@@ -131,19 +136,12 @@ void on_message(server* s, websocketpp::connection_hdl hdl, message_ptr msg) {
 		cout << "Decoded data invalidate! will return!" << endl;
 		return;
 	}
-	//if (len<1000)
-	//{
-	//	std::cout << "Too SHort !" << std::endl;
-	//	return;
-	//}
-
 	std::cout << "Length: " << len << std::endl;
 	byte* imgbuffer = new byte[len];
 	for (int i = 0; i < len; i++)
 	{
 		buff.push_back(mstr1[i]);
 	}
-	//memcpy(imgbuffer, mstr.data(), len);
 	Mat mMat;
 	try
 	{
@@ -166,39 +164,20 @@ void on_message(server* s, websocketpp::connection_hdl hdl, message_ptr msg) {
 		std::cout << "image error!" << std::endl;
 		return;
 	}
-	string Jstr;
-	try
-	{
-		Jstr = RelicAPI::detect(mMat, objs);
-		std::cout << "detect over!" << std::endl;
-	}
-	catch (...)
-	{
-		std::cout << "detect error!" << std::endl;
-		return;
-	}
-	//int imagesize = len / 3;
-	//Mat mMat(2, &imagesize, CV_8UC3, imgbuffer);
-	//CImage mimg(imgbuffer,len, CXIMAGE_FORMAT_JPG)
-	cout << Jstr << endl;
-	try {
-		s->send(hdl, Jstr/*msg->get_payload()*/, websocketpp::frame::opcode::text/*msg->get_opcode()*/);
-	}
-	catch (const websocketpp::lib::error_code& e) {
-		std::cout << "Echo failed because: " << e
-			<< "(" << e.message() << ")" << std::endl;
-	}
+
+	mManager.RegImg(mMat, hdl);
+
 }
 
 int main() {
-
 	//Create a server endpoint
-	SetFilter();
-	objs = RelicAPI::getObjs("..\\..\\assets\\FeatureData");//获取已经提取过的json feature
-	cout << "加载的图像特征数据数量：" << objs.size()<<endl;
-
-
+	//SetFilter();
+	//objs = RelicAPI::getObjs("..\\..\\assets\\FeatureData");//获取已经提取过的json feature
+	//cout << "加载的图像特征数据数量：" << objs.size()<<endl;
+	cout << "程序运行成功" << endl;
 	server echo_server;
+	cout << "创建网络服务成功" << endl;
+	mManager.Initial("..\\..\\assets\\FeatureData",&echo_server);
 
 	try {
 		// Set logging settings

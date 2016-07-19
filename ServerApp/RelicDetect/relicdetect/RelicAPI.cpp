@@ -170,7 +170,7 @@ MatchResult RelicAPI::detectSingle(RelicScn relic_scn, RelicObj relic_obj)
 }
 vector<RelicObj> RelicAPI::getObjs(string feature_directory) 
 {
-	fs::path p("..\\..\\assets\\FeatureData");
+	fs::path p(/*"..\\..\\assets\\FeatureData"*/feature_directory);
 	vector<fs::path> feature_filenames;
 	RelicHelper::getFilenames(system_complete(p), feature_filenames);
 
