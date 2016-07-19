@@ -6,12 +6,12 @@ function initConfig() {
     htmlobj=$.ajax({url:"config.json",async:false});
     var config_info=htmlobj.responseText;
     tmt_config =JSON.parse(config_info);
-    saveConfig();
-    //$("#all_config_info").html(config_info);
-    //file_op.readFile("config.json");
-    // file_op.onLoadedFile = function (filedata) {
-    //     console.log("readeddata:"+filedata);
-    // }
+    //saveConfig();
+    $("#all_config_info").html(config_info);
+    file_op.readFile("config.json");
+    file_op.onLoadedFile = function (filedata) {
+        console.log("readeddata:"+filedata);
+    }
 }
 function showConfig() {
     $("#server_ip").html(tmt_config.server_ip);

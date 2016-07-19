@@ -80,7 +80,7 @@ var file_op = {
             console.log("读取文件失败！");
         });
     },
-    
+
     readFile: function (filepath){
        // alert("enter the func");
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
@@ -106,10 +106,10 @@ var file_op = {
         });
     },
     onLoadedFile: function(fileData){}
-    
-    
 
-    
+
+
+
 };
 
 

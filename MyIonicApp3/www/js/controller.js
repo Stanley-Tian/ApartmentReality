@@ -21,7 +21,9 @@ angular.module('myApp.controllers', [])
         //     }
         //   }
         // })();
-        initConfig();
+        document.addEventListener("deviceready", function() {
+          initConfig();
+        }, false);
         initWebSQL();//初始化WebSQL
         //saveFeaturesToSessionStorage();//初始化SessionStorage
         // var taken_img =  document.getElementById("test_image");
@@ -64,6 +66,7 @@ angular.module('myApp.controllers', [])
   .controller('showDetailController', function($scope) {
     $scope.title='户型细节';
     $scope.$on('$ionicView.loaded', function (viewInfo, state) {
+      initConfig();
       showConfig();
       $("#change_config").click(function () {
           var server_ip = $("#server_ip_input").val();
