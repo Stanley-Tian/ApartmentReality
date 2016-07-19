@@ -188,7 +188,7 @@ function getImageDataURL(img_id,canvas_id,target_width ) {
     var c = document.getElementById(canvas_id);
     var ctx = c.getContext("2d");
     ctx.drawImage(taken_img, 0, 0, target_width, target_height);
-    console.log("origin img height:"+target_height+" origin img width:"+target_width);
+    console.log("resized img height:"+target_height+" resized img width:"+target_width);
 
     var this_canvas = document.getElementById(canvas_id);
     return this_canvas.toDataURL('image/jpeg');
