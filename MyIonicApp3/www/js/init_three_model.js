@@ -3,7 +3,7 @@
  */
 /**
  * 用法：
- *     initModel('viewport');
+ *     initControls('viewport');
  loadModel('assets/HouseModles/basic_scene.json');
  animate();
  */
@@ -49,7 +49,7 @@ var onProgress =function ( xhr ) {
 var onError =function ( xhr ) {
     console.log( 'An error happened' );
 };
-function initModel(element_id) {
+function initControls(element_id) {
     container = document.getElementById( element_id );
     renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true	} );
     renderer.setClearColor( 0x000000, 0 );
