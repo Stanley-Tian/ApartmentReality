@@ -55,6 +55,9 @@ angular.module('myApp.controllers', [])
           releaseCamera();
       });
   })
+
+////////////////////////////////////////////////////////////////////////////////
+  //3D显示控制
   .controller('show3DController', function($scope) {
 
     $scope.title='户型3D视图';
@@ -66,6 +69,9 @@ angular.module('myApp.controllers', [])
       stopRender();
     });
   })
+
+  ///////////////////////////////////////////////////////////////////////////////
+  //显示细节控制
   .controller('showDetailController', function($scope) {
     $scope.title='户型细节';
     $scope.$on('$ionicView.loaded', function (viewInfo, state) {
@@ -82,11 +88,15 @@ angular.module('myApp.controllers', [])
         {
           tmt_config.send_image_timespan = send_image_timespan;
         }
+        saveConfig();
+        showConfig();
       });
     });
 
     $scope.$on('$ionicView.afterEnter', function (viewInfo, state) {
       showDt();
+      initConfig();
+      showConfig();
     });
   });
 

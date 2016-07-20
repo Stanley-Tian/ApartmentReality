@@ -3,14 +3,16 @@
  */
 var tmt_config ={};
 function initConfig() {
-    htmlobj=$.ajax({url:"config.json",async:false});
-    var config_info=htmlobj.responseText;
-    tmt_config =JSON.parse(config_info);
+    // htmlobj=$.ajax({url:"config.json",async:false});
+    // var config_info=htmlobj.responseText;
+    //tmt_config =JSON.parse(config_info);
     //saveConfig();
-    $("#all_config_info").html(config_info);
+    //$("#all_config_info").html(config_info);
     file_op.readFile("config.json");
     file_op.onLoadedFile = function (filedata) {
         console.log("readeddata:"+filedata);
+      tmt_config =JSON.parse(filedata);
+      console.log("读取文件成功");
     }
 }
 function showConfig() {
@@ -20,5 +22,4 @@ function showConfig() {
 function saveConfig() {
     var config_json = JSON.stringify(tmt_config);
     file_op.createFile("config.json",config_json);
-    console.log("写文件成功");
 }
