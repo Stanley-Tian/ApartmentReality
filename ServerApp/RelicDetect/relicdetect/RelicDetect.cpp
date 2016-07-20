@@ -23,8 +23,8 @@ void RelicDetect::Load_Img(InputArray img)
 	{//若为彩图
 		this->img_color = img.getMat();
 	}
-	cout <<"color image cols:"<< img_color.cols << endl;
-	cout << "color image rows:" << img_color.rows << endl;
+	//cout <<"color image cols:"<< img_color.cols << endl;
+	//cout << "color image rows:" << img_color.rows << endl;
 	cvtColor(this->img_color, this->img_gray, CV_BGR2GRAY);
 }
 

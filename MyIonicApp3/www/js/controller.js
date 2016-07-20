@@ -21,7 +21,9 @@ angular.module('myApp.controllers', [])
         //     }
         //   }
         // })();
-        initConfig();
+        document.addEventListener("deviceready", function() {
+          initConfig();
+        }, false);
         initWebSQL();//初始化WebSQL
         //saveFeaturesToSessionStorage();//初始化SessionStorage
         // var taken_img =  document.getElementById("test_image");
@@ -53,17 +55,27 @@ angular.module('myApp.controllers', [])
           releaseCamera();
       });
   })
+
+////////////////////////////////////////////////////////////////////////////////
+  //3D显示控制
   .controller('show3DController', function($scope) {
 
     $scope.title='户型3D视图';
-    show3D();
+    reloadModles();
     $scope.$on('$ionicView.afterEnter', function (viewInfo, state) {
-
+      startRender();
+    });
+    $scope.$on('$ionicView.afterLeave', function (viewInfo, state) {
+      stopRender();
     });
   })
+
+  ///////////////////////////////////////////////////////////////////////////////
+  //显示细节控制
   .controller('showDetailController', function($scope) {
     $scope.title='户型细节';
     $scope.$on('$ionicView.loaded', function (viewInfo, state) {
+      initConfig();
       showConfig();
       $("#change_config").click(function () {
           var server_ip = $("#server_ip_input").val();
@@ -76,11 +88,15 @@ angular.module('myApp.controllers', [])
         {
           tmt_config.send_image_timespan = send_image_timespan;
         }
+        saveConfig();
+        showConfig();
       });
     });
 
     $scope.$on('$ionicView.afterEnter', function (viewInfo, state) {
       showDt();
+      initConfig();
+      showConfig();
     });
   });
 

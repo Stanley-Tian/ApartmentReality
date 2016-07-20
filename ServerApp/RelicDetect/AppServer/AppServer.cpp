@@ -164,9 +164,9 @@ void on_message(server* s, websocketpp::connection_hdl hdl, message_ptr msg) {
 		std::cout << "image error!" << std::endl;
 		return;
 	}
-
+	cout << "ImgWidth" << mMat.cols<<endl;
+	cout << "ImgHeight" << mMat.rows << endl;
 	mManager.RegImg(mMat, hdl);
-
 }
 
 int main() {
