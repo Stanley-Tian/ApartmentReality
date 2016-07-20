@@ -58,9 +58,12 @@ angular.module('myApp.controllers', [])
   .controller('show3DController', function($scope) {
 
     $scope.title='户型3D视图';
-    show3D();
+    reloadModles();
     $scope.$on('$ionicView.afterEnter', function (viewInfo, state) {
-
+      startRender();
+    });
+    $scope.$on('$ionicView.afterLeave', function (viewInfo, state) {
+      stopRender();
     });
   })
   .controller('showDetailController', function($scope) {

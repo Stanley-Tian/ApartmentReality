@@ -9,6 +9,7 @@
  */
 if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 var container, scene, camera, renderer,ambientLight,directionalLight;
+var active = false;
 function render() {
     if ( scene !== undefined ) {
         renderer.render( scene, camera );
@@ -18,18 +19,18 @@ function setupScene() {
     scene = new THREE.Scene();
     scene.add( new THREE.AxisHelper(5) );
     ambientLight = new THREE.AmbientLight( 0xffffff );
-    ambientLight.intensity = 0.6;
+    ambientLight.intensity = 0.5;
     scene.add( ambientLight );
     directionalLight = new THREE.DirectionalLight( 0xb8b8b8 );
-    directionalLight.position.set( -5, 10, -5 );
+    directionalLight.position.set( -10, 5, -10 );
     directionalLight.intensity = 1.2;
     directionalLight.castShadow = true;
-    directionalLight.shadow.mapSize.width = 4096;
-    directionalLight.shadow.mapSize.height = 4096;
-    directionalLight.shadowCameraLeft = -20;
-    directionalLight.shadowCameraRight = 20;
-    directionalLight.shadowCameraTop = 20;
-    directionalLight.shadowCameraBottom = -20;
+    directionalLight.shadow.mapSize.width = 1024;
+    directionalLight.shadow.mapSize.height = 1024;
+    directionalLight.shadowCameraLeft = -15;
+    directionalLight.shadowCameraRight = 15;
+    directionalLight.shadowCameraTop = 15;
+    directionalLight.shadowCameraBottom = -15;
     directionalLight.shadowBias = false;
     scene.add( directionalLight );
     scene.add( new THREE.DirectionalLightHelper( directionalLight ) );
@@ -108,7 +109,6 @@ function HideObject(nameStr) {
             objectList[index].IsHide = true;
         }
     }
-    render();
 }
 function ShowObject(nameStr) {
     var index=-1;
@@ -128,7 +128,6 @@ function ShowObject(nameStr) {
             objectList[index].IsHide = false;
         }
     }
-    render();
 }
 function ShowAllObject() {
     //find object, if exist do nothing
@@ -141,13 +140,14 @@ function ShowAllObject() {
             }
         }
     }
-    render();
 }
 function onWindowResize() {
     camera.aspect = container.offsetWidth / container.offsetHeight;
     camera.updateProjectionMatrix();
     renderer.setSize( window.innerWidth, window.innerHeight );
-    render();
+    if(active){
+        render();
+    }
 }
 var onProgress =function ( xhr ) {
 };
@@ -158,7 +158,7 @@ function initControls(element_id) {
     container = document.getElementById( element_id );
     renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true	} );
     renderer.shadowMapEnabled=true;
-    renderer.shadowMapType=THREE.PCFShadowMap;
+    //renderer.shadowMapType=THREE.PCFShadowMap;
     renderer.setClearColor( 0x000000, 0 );
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
@@ -177,14 +177,12 @@ function initControls(element_id) {
     window.addEventListener( 'resize', onWindowResize, false );
     //console.dir(container);
 }
-// function loadModel(model_url) {
-//     setupScene();
-//     AddJsonObject(model_url);
-// }
 function animate() {
-    // Read more about requestAnimationFrame at http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
-    requestAnimationFrame(animate);
-    // Render the scene.
-    render();
-    //orbit.update();
+    if(active){
+        // Read more about requestAnimationFrame at http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
+        requestAnimationFrame(animate);
+        // Render the scene.
+        render();
+        //orbit.update();
+    }
 }
