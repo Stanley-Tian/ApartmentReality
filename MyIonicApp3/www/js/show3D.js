@@ -9,25 +9,25 @@ function reloadModles() {
   AddJsonObject('assets/HouseModles/BS_0_top.json','BS_0_top');
   //sleep(100);
   //HideObject('BS_0_first');
-  startRender();
+  requestAnimationFrame(render);
 }
 function show1st() {
   ShowObject('BS_0_first');
   HideObject('BS_0_second');
   HideObject('BS_0_top');
-  startRender();
+  requestAnimationFrame(render);
 }
 function show2nd() {
   ShowObject('BS_0_first');
   ShowObject('BS_0_second');
   HideObject('BS_0_top');
-  startRender();
+  requestAnimationFrame(render);
 }
 function showfull() {
   ShowObject('BS_0_first');
   ShowObject('BS_0_second');
   ShowObject('BS_0_top');
-  startRender();
+  requestAnimationFrame(render);
 }
 function startRender() {
   active=true;
