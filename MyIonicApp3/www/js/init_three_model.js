@@ -21,11 +21,11 @@ function setupScene() {
     ambientLight.intensity = 0.6;
     scene.add( ambientLight );
     directionalLight = new THREE.DirectionalLight( 0xb8b8b8 );
-    directionalLight.position.set( -5, 10, -5 );
+    directionalLight.position.set( -10, 5, -10 );
     directionalLight.intensity = 1.2;
     directionalLight.castShadow = true;
-    directionalLight.shadow.mapSize.width = 4096;
-    directionalLight.shadow.mapSize.height = 4096;
+    directionalLight.shadow.mapSize.width = 1024;
+    directionalLight.shadow.mapSize.height = 1024;
     directionalLight.shadowCameraLeft = -20;
     directionalLight.shadowCameraRight = 20;
     directionalLight.shadowCameraTop = 20;
@@ -158,7 +158,7 @@ function initControls(element_id) {
     container = document.getElementById( element_id );
     renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true	} );
     renderer.shadowMapEnabled=true;
-    renderer.shadowMapType=THREE.PCFShadowMap;
+    //renderer.shadowMapType=THREE.PCFShadowMap;
     renderer.setClearColor( 0x000000, 0 );
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
