@@ -13,6 +13,8 @@ function initConfig() {
         console.log("readeddata:"+filedata);
       tmt_config =JSON.parse(filedata);
       console.log("读取文件成功");
+        TmtWebSocket.Http(tmt_config.server_ip);
+
     }
 }
 function showConfig() {

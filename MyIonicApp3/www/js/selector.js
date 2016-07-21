@@ -28,7 +28,7 @@ function initCamera() {
   var content_height = $("#selector-content").height();
 
   var showed_cam ={};
-  showed_cam.width = content_width*(3/4);
+  showed_cam.width = content_width*(4/5);
   showed_cam.height = showed_cam.width;
   showed_cam.x = content_offset.left+(content_width - showed_cam.width)/2;
   showed_cam.y = content_offset.top + (content_height - showed_cam.height)/2;
@@ -146,32 +146,45 @@ function openCamera(selection) {
 
 function sendImage(send_image_timespan) {
   //cordova.plugins.camerapreview.takePicture({maxWidth:640, maxHeight:640});
-    cordova.plugins.camerapreview.setOnPictureTakenHandler(function(result){
-      console.log("开始处理拍到的照片");
-      document.getElementById('originalPicture').src = result[0]; //originalPicturePath;
-      //document.getElementById('previewPicture').src = result[1]; //previewPicturePath;
+  // try {
+  //   cordova.plugins.camerapreview.setOnPictureTakenHandler(function (result) {
+  //     console.log("开始处理拍到的照片");
+  //     document.getElementById('originalPicture').src = result[0]; //originalPicturePath;
+  //     //document.getElementById('previewPicture').src = result[1]; //previewPicturePath;
+  //
+  //     document.getElementById("originalPicture").onload = function () {
+  //       //TmtWebSocket.sendMsg("sending origin image..");
+  //       var origin_data = getImageDataURL("originalPicture", "canvas_original");
+  //       //TmtWebSocket.sendMsg(origin_data);
+  //       //console.log(origin_data);
+  //     };
+  //
+  //     // window.resolveLocalFileSystemURL(the_path, function (result) {
+  //     //   alert("I'm in");
+  //     //   result.remove(function(){
+  //     //     alert("removed image");
+  //     //   });
+  //     // });
+  //     // TmtWebSocket.sendMsg("sending preview image..");
+  //     // var preview_data = getImageDataURL("previewPicture","canvas_preview")
+  //     // TmtWebSocket.sendMsg(preview_data);
+  //
+  //     console.log("照片处理结束");
+  //   });
+  // }catch(err){
+  //   console.log("照片处理出错："+err.message);
+  // }
+  // setInterval(function(){
+  //   cordova.plugins.camerapreview.takePicture();
+  // },send_image_timespan);
+  var camera_ready = true;
+  setTimeout(function () {
+    try{
+      cordova.plugins.camerapreview.takePicture();
+    }catch(err) {
+      console.log("拍照出错："+err.message);
+    }
 
-      document.getElementById("originalPicture").onload = function() {
-        //TmtWebSocket.sendMsg("sending origin image..");
-        var origin_data = getImageDataURL("originalPicture","canvas_original");
-        TmtWebSocket.sendMsg(origin_data);
-        //console.log(origin_data);
-      };
-
-      // window.resolveLocalFileSystemURL(the_path, function (result) {
-      //   alert("I'm in");
-      //   result.remove(function(){
-      //     alert("removed image");
-      //   });
-      // });
-      // TmtWebSocket.sendMsg("sending preview image..");
-      // var preview_data = getImageDataURL("previewPicture","canvas_preview")
-      // TmtWebSocket.sendMsg(preview_data);
-
-      console.log("照片处理结束");
-    });
-  setInterval(function(){
-    cordova.plugins.camerapreview.takePicture();
+    setTimeout(arguments.callee,send_image_timespan);
   },send_image_timespan);
-  
 }

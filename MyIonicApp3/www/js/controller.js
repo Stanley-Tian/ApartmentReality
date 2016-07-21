@@ -33,7 +33,6 @@ angular.module('myApp.controllers', [])
         //   ctx.drawImage(taken_img, 0, 0, 800, 800);
         // };
 
-        TmtWebSocket.Http(tmt_config.server_ip);
         $("#send_to_server").click(function () {
             console.log("send info to server");
             var this_canvas = document.getElementById("resize_image_canvas");
