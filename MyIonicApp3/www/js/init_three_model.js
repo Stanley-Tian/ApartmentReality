@@ -8,8 +8,8 @@
  animate();
  */
 if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
-var container, scene, camera, renderer,ambientLight,directionalLight,planeMesh,skyMesh;
-var sky, sunSphere;
+var orbit, container, scene, camera, renderer,ambientLight,directionalLight,connerLight,planeMesh,skyMesh;
+//var sky, sunSphere;
 var active = false;
 function render() {
     if ( scene !== undefined ) {
@@ -19,7 +19,7 @@ function render() {
 
 function setupScene() {
     scene = new THREE.Scene();
-    scene.add( new THREE.AxisHelper(5) );
+    //scene.add( new THREE.AxisHelper(5) );
 
     //light
     ambientLight = new THREE.AmbientLight( 0xffffff );
@@ -37,12 +37,35 @@ function setupScene() {
     directionalLight.shadowCameraBottom = -15;
     directionalLight.shadowBias = false;
     scene.add( directionalLight );
-    scene.add( new THREE.DirectionalLightHelper( directionalLight ) );
+
+    var directionalLight2 = new THREE.DirectionalLight( 0xb8a0a0 );
+    directionalLight2.position.set( 10, -5, -10 );
+    directionalLight2.intensity = 0.2;
+    directionalLight2.castShadow = false;
+    scene.add( directionalLight2 );
+    //scene.add( new THREE.DirectionalLightHelper( directionalLight ) );
+
+    // connerLight = new THREE.SpotLight( 0xffffff);
+    // connerLight.intensity = 10.0;
+    // connerLight.position.set( -2, 0.5, 1 );
+    // connerLight.shadow.mapSize.width = 1024;
+    // connerLight.shadow.mapSize.height = 1024;
+    // connerLight.distance=0;
+    // connerLight.shadow.camera.near = 0;
+    // connerLight.shadow.camera.far = 2;
+    // connerLight.angle = Math.PI/4;
+    // connerLight.castShadow = true;
+    // var innerLighttarget = new THREE.Object3D();
+    // innerLighttarget.position=new THREE.Vector3( -2, -10, 0 );
+    // scene.add( innerLighttarget);
+    // connerLight.target=innerLighttarget;
+    // scene.add( connerLight);
+    // scene.add( new THREE.SpotLightHelper( connerLight ) );
 
     //ground
-    var planeGeometry = new THREE.CylinderGeometry( 1000, 1000, 1000, 32, 1 );
+    var planeGeometry = new THREE.CylinderGeometry( 10000, 10000, 100, 32, 1 );
     //planeGeometry.rotateX( - Math.PI / 2 );
-    planeGeometry.translate(0,-503.01,0);
+    planeGeometry.translate(0,-53.01,0);
     //var planeTexture = new THREE.TextureLoader().load( "assets/HouseModles/ground.jpg" ); , map: planeTexture} 
     var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x009900, side: THREE.DoubleSide });
     planeMesh = new THREE.Mesh( planeGeometry, planeMaterial );
@@ -51,38 +74,40 @@ function setupScene() {
 
     //sky
     // method 1
-    // var skyGeometry = new THREE.SphereBufferGeometry( 1000, 32, 32 );
-    // skyGeometry.translate(0,-3,0);
-    // var skyTexture = new THREE.TextureLoader().load( "assets/HouseModles/blue.jpg" );
-    // var skyMaterial = new THREE.MeshBasicMaterial( { color: 0xffffff , map: skyTexture} );
-    // skyMesh = new THREE.Mesh( skyGeometry, skyMaterial );
+    var skyGeometry = new THREE.SphereBufferGeometry( 1000, 32, 32 );
+    skyGeometry.translate(0,-3,0);
+    var skyTexture = new THREE.TextureLoader().load( "assets/Textures/sky.jpg" );
+    var skyMaterial = new THREE.MeshBasicMaterial( { color: 0xffffff, map: skyTexture , side: THREE.BackSide} );
+    skyMesh = new THREE.Mesh( skyGeometry, skyMaterial );
+    scene.add( skyMesh);
     // method 2
-    var textureCube = new THREE.CubeTextureLoader()
-        .setPath( 'assets/Textures/cube/Bridge2/')
-        .load( [ 'posx.jpg', 'negx.jpg', 'posy.jpg', 'negy.jpg', 'posz.jpg', 'negz.jpg' ] );
-    scene.background = textureCube;
+    // var textureCube = new THREE.CubeTextureLoader()
+    //     .setPath( 'assets/Textures/cube/Bridge2/')
+    //     .load( [ 'posx.jpg', 'negx.jpg', 'posy.jpg', 'negy.jpg', 'posz.jpg', 'negz.jpg' ] );
+    // scene.background = textureCube;
     // method 3
-    //initSky();
-
+    // var sky = new THREE.Sky();
+    // scene.add( sky.mesh );
+    
     //objectList
     objectList = new Array();
 
-    // innerLight = new THREE.SpotLight( 0xffffff);
-    // innerLight.intensity = 10.0;
-    // innerLight.position.set( -2, 0.5, 1 );
-    // innerLight.shadow.mapSize.width = 1024;
-    // innerLight.shadow.mapSize.height = 1024;
-    // innerLight.distance=0;
-    // innerLight.shadow.camera.near = 0;
-    // innerLight.shadow.camera.far = 2;
-    // innerLight.angle = Math.PI/4;
-    // innerLight.castShadow = true;
+    // connerLight = new THREE.SpotLight( 0xffffff);
+    // connerLight.intensity = 10.0;
+    // connerLight.position.set( -2, 0.5, 1 );
+    // connerLight.shadow.mapSize.width = 1024;
+    // connerLight.shadow.mapSize.height = 1024;
+    // connerLight.distance=0;
+    // connerLight.shadow.camera.near = 0;
+    // connerLight.shadow.camera.far = 2;
+    // connerLight.angle = Math.PI/4;
+    // connerLight.castShadow = true;
     // var innerLighttarget = new THREE.Object3D();
     // innerLighttarget.position=new THREE.Vector3( -2, -10, 0 );
     // scene.add( innerLighttarget);
-    // innerLight.target=innerLighttarget;
-    // scene.add( innerLight);
-    // scene.add( new THREE.SpotLightHelper( innerLight ) );
+    // connerLight.target=innerLighttarget;
+    // scene.add( connerLight);
+    // scene.add( new THREE.SpotLightHelper( connerLight ) );
 }
 var objectList;
 function AddJsonObject(path, nameStr) {
@@ -185,8 +210,11 @@ function initControls(element_id) {
     renderer.setSize( window.innerWidth, window.innerHeight );
     container.appendChild( renderer.domElement );
     var aspect = container.offsetWidth / container.offsetHeight;
-    camera = new THREE.PerspectiveCamera( 60, aspect, 0.01, 5000 );
+    camera = new THREE.PerspectiveCamera( 60, aspect );
     orbit = new THREE.OrbitControls( camera, container );
+    orbit.maxPolarAngle = Math.PI/2;
+    orbit.minDistance = 8;
+    orbit.maxDistance = 100;
     orbit.addEventListener( 'change', render );
     camera.position.z = -20;
     camera.position.x = 0;
