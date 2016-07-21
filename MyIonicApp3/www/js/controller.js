@@ -6,21 +6,6 @@ angular.module('myApp.controllers', [])
     $scope.title='请扫描户型图';
 
       $scope.$on('$ionicView.loaded', function (viewInfo, state) {
-        //save log to html
-        // (function () {
-        //   if (!console) {
-        //     console = {};
-        //   }
-        //   var old = console.log;
-        //   var logger = document.getElementById('log');
-        //   console.log = function (message) {
-        //     if (typeof message == 'object') {
-        //       logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(message) : String(message)) + '<br />';
-        //     } else {
-        //       logger.innerHTML += message + '<br />';
-        //     }
-        //   }
-        // })();
         document.addEventListener("deviceready", function() {
           initConfig();
         }, false);
@@ -45,6 +30,9 @@ angular.module('myApp.controllers', [])
           initCamera();
           console.log("init camera complete");
           sendImage(tmt_config.send_image_timespan);
+        });
+        $("#stop_scan").click(function () {
+          releaseCamera();
         });
       });
       $scope.$on('$ionicView.afterEnter', function (viewInfo, state) {

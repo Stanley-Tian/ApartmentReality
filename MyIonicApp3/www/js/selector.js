@@ -1,6 +1,7 @@
 /**
  * Created by rwp on 2016/7/12.
  */
+var camera_ready = false;
 function selectImg() {
   var cv  = document.getElementById('mCv');
   var cans = cv.getContext('2d');
@@ -43,6 +44,7 @@ function initCamera() {
         previewDrag: true,
         toBack: false});
   cordova.plugins.camerapreview.show();
+  camera_ready=true;
 }
 function releaseCamera() {
   cordova.plugins.camerapreview.stopCamera();
@@ -146,41 +148,44 @@ function openCamera(selection) {
 
 function sendImage(send_image_timespan) {
   //cordova.plugins.camerapreview.takePicture({maxWidth:640, maxHeight:640});
-  // try {
-  //   cordova.plugins.camerapreview.setOnPictureTakenHandler(function (result) {
-  //     console.log("开始处理拍到的照片");
-  //     document.getElementById('originalPicture').src = result[0]; //originalPicturePath;
-  //     //document.getElementById('previewPicture').src = result[1]; //previewPicturePath;
-  //
-  //     document.getElementById("originalPicture").onload = function () {
-  //       //TmtWebSocket.sendMsg("sending origin image..");
-  //       var origin_data = getImageDataURL("originalPicture", "canvas_original");
-  //       //TmtWebSocket.sendMsg(origin_data);
-  //       //console.log(origin_data);
-  //     };
-  //
-  //     // window.resolveLocalFileSystemURL(the_path, function (result) {
-  //     //   alert("I'm in");
-  //     //   result.remove(function(){
-  //     //     alert("removed image");
-  //     //   });
-  //     // });
-  //     // TmtWebSocket.sendMsg("sending preview image..");
-  //     // var preview_data = getImageDataURL("previewPicture","canvas_preview")
-  //     // TmtWebSocket.sendMsg(preview_data);
-  //
-  //     console.log("照片处理结束");
-  //   });
-  // }catch(err){
-  //   console.log("照片处理出错："+err.message);
-  // }
-  // setInterval(function(){
-  //   cordova.plugins.camerapreview.takePicture();
-  // },send_image_timespan);
-  var camera_ready = true;
+  try {
+    cordova.plugins.camerapreview.setOnPictureTakenHandler(function (result) {
+      console.log("开始处理拍到的照片");
+      document.getElementById('originalPicture').src = result[0]; //originalPicturePath;
+      //document.getElementById('previewPicture').src = result[1]; //previewPicturePath;
+
+      document.getElementById("originalPicture").onload = function () {
+        //TmtWebSocket.sendMsg("sending origin image..");
+        var origin_data = getImageDataURL("originalPicture", "canvas_original");
+        TmtWebSocket.sendMsg(origin_data);
+        camera_ready =true;
+        //console.log(origin_data);
+      };
+
+      // window.resolveLocalFileSystemURL(the_path, function (result) {
+      //   alert("I'm in");
+      //   result.remove(function(){
+      //     alert("removed image");
+      //   });
+      // });
+      // TmtWebSocket.sendMsg("sending preview image..");
+      // var preview_data = getImageDataURL("previewPicture","canvas_preview")
+      // TmtWebSocket.sendMsg(preview_data);
+
+      console.log("照片处理结束");
+    });
+  }catch(err){
+    console.log("照片处理出错："+err.message);
+  }
+
   setTimeout(function () {
     try{
-      cordova.plugins.camerapreview.takePicture();
+      if(camera_ready)
+      {
+        camera_ready = false;
+        cordova.plugins.camerapreview.takePicture({maxWidth:640, maxHeight:640});
+      }
+
     }catch(err) {
       console.log("拍照出错："+err.message);
     }

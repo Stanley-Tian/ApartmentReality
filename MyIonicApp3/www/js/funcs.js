@@ -193,3 +193,21 @@ function getImageDataURL(img_id,canvas_id,target_width ) {
     var this_canvas = document.getElementById(canvas_id);
     return this_canvas.toDataURL('image/jpeg');
 }
+function showLogOnHtml(tag_id) {
+    if(!tag_id)
+        tag_id="log";
+    (function () {
+        if (!console) {
+            console = {};
+        }
+        var old = console.log;
+        var logger = document.getElementById(tag_id);
+        console.log = function (message) {
+            if (typeof message == 'object') {
+                logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(message) : String(message)) + '<br />';
+            } else {
+                logger.innerHTML += message + '<br />';
+            }
+        }
+    })();
+}
