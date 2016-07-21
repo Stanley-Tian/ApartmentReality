@@ -26,7 +26,7 @@ function setupScene() {
     ambientLight.intensity = 0.5;
     scene.add( ambientLight );
     directionalLight = new THREE.DirectionalLight( 0xb8b8b8 );
-    directionalLight.position.set( -10, 5, -10 );
+    directionalLight.position.set( -9, 8, -12 );
     directionalLight.intensity = 1.2;
     directionalLight.castShadow = true;
     directionalLight.shadow.mapSize.width = 1024;
@@ -37,13 +37,14 @@ function setupScene() {
     directionalLight.shadowCameraBottom = -15;
     directionalLight.shadowBias = false;
     scene.add( directionalLight );
-
-    var directionalLight2 = new THREE.DirectionalLight( 0xb8a0a0 );
-    directionalLight2.position.set( 10, -5, -10 );
-    directionalLight2.intensity = 0.2;
-    directionalLight2.castShadow = false;
-    scene.add( directionalLight2 );
     //scene.add( new THREE.DirectionalLightHelper( directionalLight ) );
+
+    // var directionalLight2 = new THREE.DirectionalLight( 0xb8a0a0 );
+    // directionalLight2.position.set( 5, 5, -10 );
+    // directionalLight2.intensity = 0.6;
+    // directionalLight2.castShadow = false;
+    // scene.add( directionalLight2 );
+    // scene.add( new THREE.DirectionalLightHelper( directionalLight2 ) );
 
     // connerLight = new THREE.SpotLight( 0xffffff);
     // connerLight.intensity = 10.0;
@@ -151,7 +152,8 @@ function HideObject(nameStr) {
         if(objectList[index].IsHide == false){
             //scene;
             //scene.removeObject(objectList[index].Object);
-            objectList[index].Object.position.x=40;
+            //objectList[index].Object.position.x=40;
+            objectList[index].Object.visible=false;
             objectList[index].IsHide = true;
         }
     }
@@ -170,7 +172,8 @@ function ShowObject(nameStr) {
         if(objectList[index].IsHide == true){
             //scene;
             //scene.add(objectList[index].Object);
-            objectList[index].Object.position.x=0;
+            //objectList[index].Object.position.x=0;
+            objectList[index].Object.visible=true;
             objectList[index].IsHide = false;
         }
     }
@@ -181,7 +184,8 @@ function ShowAllObject() {
         if (objectList[i].Name == nameStr) {
             if(objectList[i].IsHide == true){
                 //scene.add(objectList[index].Object);
-                objectList[index].Object.position.x=0;
+                // objectList[index].Object.position.x=0;
+                objectList[index].Object.visible=true;
                 objectList[index].IsHide = false;
             }
         }
