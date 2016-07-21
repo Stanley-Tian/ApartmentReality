@@ -8,16 +8,20 @@
  animate();
  */
 if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
-var container, scene, camera, renderer,ambientLight,directionalLight;
+var container, scene, camera, renderer,ambientLight,directionalLight,planeMesh,skyMesh;
+var sky, sunSphere;
 var active = false;
 function render() {
     if ( scene !== undefined ) {
         renderer.render( scene, camera );
     }
 }
+
 function setupScene() {
     scene = new THREE.Scene();
     scene.add( new THREE.AxisHelper(5) );
+
+    //light
     ambientLight = new THREE.AmbientLight( 0xffffff );
     ambientLight.intensity = 0.5;
     scene.add( ambientLight );
@@ -34,17 +38,34 @@ function setupScene() {
     directionalLight.shadowBias = false;
     scene.add( directionalLight );
     scene.add( new THREE.DirectionalLightHelper( directionalLight ) );
-    objectList = new Array();
-    // innerLight = new THREE.PointLight( 0xffffff,5);
-    // innerLight.position.set( 0, 0, 0);
-    // innerLight.distance = 0;
-    // // innerLight.decay = 2;
-    // // innerLight.castShadow = true;
-    // // innerLight.shadow.mapSize.width = 1024;
-    // // innerLight.shadow.mapSize.height = 1024;
-    // scene.add( innerLight);
-    // scene.add( new THREE.PointLightHelper( innerLight ) );
 
+    //ground
+    var planeGeometry = new THREE.CylinderGeometry( 1000, 1000, 1000, 32, 1 );
+    //planeGeometry.rotateX( - Math.PI / 2 );
+    planeGeometry.translate(0,-503.01,0);
+    //var planeTexture = new THREE.TextureLoader().load( "assets/HouseModles/ground.jpg" ); , map: planeTexture} 
+    var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x009900, side: THREE.DoubleSide });
+    planeMesh = new THREE.Mesh( planeGeometry, planeMaterial );
+    planeMesh.receiveShadow=true;
+    scene.add( planeMesh );
+
+    //sky
+    // method 1
+    // var skyGeometry = new THREE.SphereBufferGeometry( 1000, 32, 32 );
+    // skyGeometry.translate(0,-3,0);
+    // var skyTexture = new THREE.TextureLoader().load( "assets/HouseModles/blue.jpg" );
+    // var skyMaterial = new THREE.MeshBasicMaterial( { color: 0xffffff , map: skyTexture} );
+    // skyMesh = new THREE.Mesh( skyGeometry, skyMaterial );
+    // method 2
+    var textureCube = new THREE.CubeTextureLoader()
+        .setPath( 'assets/Textures/cube/Bridge2/')
+        .load( [ 'posx.jpg', 'negx.jpg', 'posy.jpg', 'negy.jpg', 'posz.jpg', 'negz.jpg' ] );
+    scene.background = textureCube;
+    // method 3
+    //initSky();
+
+    //objectList
+    objectList = new Array();
 
     // innerLight = new THREE.SpotLight( 0xffffff);
     // innerLight.intensity = 10.0;
@@ -158,13 +179,13 @@ function initControls(element_id) {
     container = document.getElementById( element_id );
     renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true	} );
     renderer.shadowMapEnabled=true;
-    //renderer.shadowMapType=THREE.PCFShadowMap;
+    renderer.shadowMapType=THREE.PCFSoftShadowMap;
     renderer.setClearColor( 0x000000, 0 );
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
     container.appendChild( renderer.domElement );
     var aspect = container.offsetWidth / container.offsetHeight;
-    camera = new THREE.PerspectiveCamera( 60, aspect, 0.01, 500 );
+    camera = new THREE.PerspectiveCamera( 60, aspect, 0.01, 5000 );
     orbit = new THREE.OrbitControls( camera, container );
     orbit.addEventListener( 'change', render );
     camera.position.z = -20;
@@ -175,7 +196,6 @@ function initControls(element_id) {
     orbit.target = target;
     camera.updateProjectionMatrix();
     window.addEventListener( 'resize', onWindowResize, false );
-    //console.dir(container);
 }
 function animate() {
     if(active){
