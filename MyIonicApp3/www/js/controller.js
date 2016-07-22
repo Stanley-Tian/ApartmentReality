@@ -18,7 +18,7 @@ angular.module('myApp.controllers', [])
         //   ctx.drawImage(taken_img, 0, 0, 800, 800);
         // };
 
-        
+        //$("#stop_scan").hide();
         $("#send_to_server").click(function () {
             console.log("send info to server");
             var this_canvas = document.getElementById("resize_image_canvas");
@@ -29,12 +29,16 @@ angular.module('myApp.controllers', [])
           //$location.path('/show3DController'); // working
         });
         $("#start_scan").click(function () {
+          $(this).hide();
           initCamera();
+          $("#stop_scan").show();
           console.log("init camera complete");
           sendImage(tmt_config.send_image_timespan);
         });
         $("#stop_scan").click(function () {
           releaseCamera();
+          $(this).hide();
+          $("#start_scan").show();
         });
       });
       $scope.$on('$ionicView.afterEnter', function (viewInfo, state) {

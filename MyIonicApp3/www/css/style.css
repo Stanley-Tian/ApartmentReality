@@ -1,1 +1,9 @@
 /* Empty. Add your own CSS if you like */
+#start_scan{
+    width:50%;
+    margin-left: 25%;
+}
+#stop_scan{
+    width:50%;
+    margin-left: 25%;
+}
