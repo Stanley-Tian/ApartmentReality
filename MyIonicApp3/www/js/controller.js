@@ -17,6 +17,7 @@ angular.module('myApp.controllers', [])
         //   var ctx = c.getContext("2d");
         //   ctx.drawImage(taken_img, 0, 0, 800, 800);
         // };
+
         
         $("#send_to_server").click(function () {
             console.log("send info to server");
@@ -26,7 +27,6 @@ angular.module('myApp.controllers', [])
         $("#clear_log").click(function () {
           //$("#log").html("");
           //$location.path('/show3DController'); // working
-          
         });
         $("#start_scan").click(function () {
           initCamera();
