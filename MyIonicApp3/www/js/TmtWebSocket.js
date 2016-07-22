@@ -8,6 +8,7 @@
 //
 
 var TmtWs;
+
 var TmtWebSocket =
 {
   Http: function (Url) {
@@ -27,5 +28,15 @@ var TmtWebSocket =
   },
   onMsg:function (Msg){
     console.log(Msg);
+    if(isNum(Msg))
+    {
+      if (Msg!=-1)
+      {
+        tmt_house_id = Msg;
+        window.location.href='#/tab/show3D';
+      }
+    }
+
+
   }
 };

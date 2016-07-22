@@ -45,6 +45,7 @@ function initCamera() {
         toBack: false});
   cordova.plugins.camerapreview.show();
   camera_ready=true;
+  tmt_house_id = -1;
 }
 function releaseCamera() {
   cordova.plugins.camerapreview.stopCamera();
@@ -146,7 +147,7 @@ function openCamera(selection) {
 }
 //--end
 
-function sendImage(send_image_timespan) {
+function sendImage(send_image_timespan,onSuccess) {
   //cordova.plugins.camerapreview.takePicture({maxWidth:640, maxHeight:640});
   try {
     cordova.plugins.camerapreview.setOnPictureTakenHandler(function (result) {
