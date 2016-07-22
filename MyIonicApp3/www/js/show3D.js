@@ -4,9 +4,9 @@
 function reloadModles() {
   initControls('viewport');
   setupScene();
-  AddJsonObject('assets/HouseModles/BS_0_first.json','BS_0_first');
-  AddJsonObject('assets/HouseModles/BS_0_second.json','BS_0_second');
-  AddJsonObject('assets/HouseModles/BS_0_top.json','BS_0_top');
+  AddJsonObject('assets/Models/BS_0_first.json','BS_0_first');
+  AddJsonObject('assets/Models/BS_0_second.json','BS_0_second');
+  AddJsonObject('assets/Models/BS_0_top.json','BS_0_top');
   //sleep(100);
   //HideObject('BS_0_first');
   requestAnimationFrame(render);
