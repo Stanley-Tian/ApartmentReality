@@ -155,7 +155,6 @@ function openCamera(selection) {
 //--end
 
 function sendImage(send_image_timespan,onSuccess) {
-  //cordova.plugins.camerapreview.takePicture({maxWidth:640, maxHeight:640});
   try {
     cordova.plugins.camerapreview.setOnPictureTakenHandler(function (result) {
       console.log("开始处理拍到的照片");
