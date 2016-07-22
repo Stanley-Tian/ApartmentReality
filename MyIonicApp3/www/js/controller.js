@@ -24,7 +24,9 @@ angular.module('myApp.controllers', [])
             TmtWebSocket.sendMsg(this_canvas.toDataURL('image/jpeg'));
         });
         $("#clear_log").click(function () {
-          $("#log").html("");
+          //$("#log").html("");
+          //$location.path('/show3DController'); // working
+          
         });
         $("#start_scan").click(function () {
           initCamera();
@@ -51,6 +53,9 @@ angular.module('myApp.controllers', [])
     reloadModles();
     $scope.$on('$ionicView.afterEnter', function (viewInfo, state) {
       startRender();
+      //alert("当前户型ID: "+tmt_house_id);
+      $("#house_id").html("house id: "+tmt_house_id);
+      tmt_house_id;
     });
     $scope.$on('$ionicView.afterLeave', function (viewInfo, state) {
       stopRender();

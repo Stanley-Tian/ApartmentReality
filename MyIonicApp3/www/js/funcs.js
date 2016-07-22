@@ -211,3 +211,11 @@ function showLogOnHtml(tag_id) {
         }
     })();
 }
+function isNum(s)
+{
+    if (s!=null && s!="")
+    {
+        return !isNaN(s);
+    }
+    return false;
+}

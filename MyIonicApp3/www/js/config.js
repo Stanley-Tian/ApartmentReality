@@ -2,6 +2,7 @@
  * Created by Tevil on 2016/7/19 0019.
  */
 var tmt_config ={};
+var tmt_house_id = -1;
 function initConfig() {
     // htmlobj=$.ajax({url:"config.json",async:false});
     // var config_info=htmlobj.responseText;
