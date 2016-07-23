@@ -29,7 +29,7 @@ angular.module('myApp.controllers', [])
           //$location.path('/show3DController'); // working
         });
         $("#start_scan").click(function () {
-          $(this).hide();
+          $("#start_scan").hide();
           initCamera();
           $("#stop_scan").show();
           console.log("init camera complete");

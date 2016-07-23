@@ -158,11 +158,13 @@ function sendImage(send_image_timespan,onSuccess) {
   try {
     cordova.plugins.camerapreview.setOnPictureTakenHandler(function (result) {
       console.log("开始处理拍到的照片");
+      console.log("照片地址:"+result[0]);
+      //注:此处ios所拍到的照片都存在了相册内,非标准jpg格式,无法直接读取.如若关闭相册访问权限则更本存不下照片
+      //此处camerapreview可能对ios无解
       document.getElementById('originalPicture').src = result[0]; //originalPicturePath;
       //document.getElementById('previewPicture').src = result[1]; //previewPicturePath;
-
       document.getElementById("originalPicture").onload = function () {
-        //TmtWebSocket.sendMsg("sending origin image..");
+        TmtWebSocket.sendMsg("sending origin image..");
         var origin_data = getImageDataURL("originalPicture", "canvas_original");
         TmtWebSocket.sendMsg(origin_data);
         camera_ready =true;
