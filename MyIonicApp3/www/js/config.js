@@ -27,9 +27,26 @@ function initConfig() {
 }
 function showConfig() {
     $("#server_ip").html(tmt_config.server_ip);
-    $("#send_image_timespan").html(tmt_config.send_image_timespan);
+    $("#send_image_timespan").html(tmt_config.send_image_timespan/1000 + "秒");
 }
 function saveConfig() {
     var config_json = JSON.stringify(tmt_config);
     file_op.createFile("config.json", config_json);
+}
+function changeConfig() {
+    var server_ip = $("#server_ip_input").val();
+    var send_image_timespan = $("#send_image_timespan_select").val();
+    if(server_ip.length>10)
+    {
+        tmt_config.server_ip = server_ip;
+    }
+    if(send_image_timespan>0)
+    {
+        tmt_config.send_image_timespan = send_image_timespan;
+    }
+    clearConfigInput();
+}
+function clearConfigInput() {
+    $("#server_ip_input").val("");
+    $("#send_image_timespan_select").val(0);
 }

@@ -83,16 +83,8 @@ angular.module('myApp.controllers', [])
       initConfig();
       showConfig();
       $("#change_config").click(function () {
-          var server_ip = $("#server_ip_input").val();
-          var send_image_timespan = $("#send_image_timespan_input").val();
-          if(server_ip.length>10)
-          {
-            tmt_config.server_ip = server_ip;
-          }
-        if(send_image_timespan>0)
-        {
-          tmt_config.send_image_timespan = send_image_timespan;
-        }
+        //alert("changing config");
+        changeConfig();
         saveConfig();
         showConfig();
       });

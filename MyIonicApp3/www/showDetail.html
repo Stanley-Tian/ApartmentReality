@@ -1,13 +1,27 @@
 <ion-view view-title="设置">
   <ion-content id="showDetail-content">
-    <ul>
-      <li>当前服务器ip: <span id="server_ip"></span>
-        <input id="server_ip_input"></li>
-      <li>图像发送时间间隔（ms）: <span id="send_image_timespan"></span>
-        <input id="send_image_timespan_input">
-        </li>
-    </ul>
-    <button id="change_config">改变</button>
+    <ion-list id="settings-list1" class=" ">
+      <ion-item class="item-icon-right  "><strong>当前服务器ip</strong> <span id="server_ip"></span>
+        <i class="icon ion-ios-world"></i>
+      </ion-item>
+      <label class="item item-input " id="settings-input2">
+        <span class="input-label">新的服务器ip</span>
+        <input type="text" id="server_ip_input" placeholder="">
+      </label>
+      <ion-item class="item-icon-right  "><strong>图片发送间隔</strong> <span id="send_image_timespan"></span>
+        <i class="icon ion-ios-clock"></i>
+      </ion-item>
+      <label class="item item-select " >
+        <span class="input-label">新的发送间隔</span>
+        <select id="send_image_timespan_select">
+          <option value="0"></option>
+          <option value="1000">1秒</option>
+          <option value="3000">3秒</option>
+          <option value="5000">5秒</option>
+        </select>
+      </label>
+    </ion-list>
+    <button id="change_config" class=" button button-balanced  button-block ">保存更改</button>
     <div id="all_config_info"></div>
 
   </ion-content>
