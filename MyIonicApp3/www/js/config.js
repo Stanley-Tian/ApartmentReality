@@ -1,7 +1,7 @@
 /**
  * Created by Tevil on 2016/7/19 0019.
  */
-var tmt_config ={};
+var tmt_config = {};
 var tmt_house_id = -1;
 function initConfig() {
     // htmlobj=$.ajax({url:"config.json",async:false});
@@ -11,11 +11,18 @@ function initConfig() {
     //$("#all_config_info").html(config_info);
     file_op.readFile("config.json");
     file_op.onLoadedFile = function (filedata) {
-        console.log("readeddata:"+filedata);
-      tmt_config =JSON.parse(filedata);
-      console.log("读取文件成功");
+        console.log("readeddata:" + filedata);
+        tmt_config = JSON.parse(filedata);
+        console.log("读取文件成功");
         TmtWebSocket.Http(tmt_config.server_ip);
 
+    }
+    file_op.onLoadFileFailed=function () {
+        $.get("origin_config.json",function (data, status) {
+            tmt_config =JSON.parse(data);
+        });
+        // var htmlobj=$.ajax({url:"origin_config.json",async:false});
+        // var config_info=htmlobj.responseText;
     }
 }
 function showConfig() {
@@ -24,5 +31,5 @@ function showConfig() {
 }
 function saveConfig() {
     var config_json = JSON.stringify(tmt_config);
-    file_op.createFile("config.json",config_json);
+    file_op.createFile("config.json", config_json);
 }
