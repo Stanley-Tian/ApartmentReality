@@ -10,17 +10,20 @@
 #show1st{
     width:20%;
     margin-left: 75%;
+    opacity: 0.6;
     z-index: 999;
 }
 #show2nd{
     width:20%;
     margin-left: 75%;
+    opacity: 0.6;
     z-index: 999;
 }
 #showfull{
     width:20%;
     margin-left: 75%;
     z-index: 999;
+    opacity: 0.6;
 }
 #viewport{
 position: absolute;

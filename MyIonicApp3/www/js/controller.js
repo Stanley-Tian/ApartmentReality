@@ -58,6 +58,15 @@ angular.module('myApp.controllers', [])
     $scope.$on('$ionicView.afterEnter', function (viewInfo, state) {
       startRender();
       //alert("当前户型ID: "+tmt_house_id);
+      $("#show1st").click(function () {
+        show1st();
+      });
+      $("#show2nd").click(function () {
+        show2nd();
+      });
+      $("#showfull").click(function () {
+        showfull();
+      });
       $("#house_id").html("house id: "+tmt_house_id);
       tmt_house_id;
     });
