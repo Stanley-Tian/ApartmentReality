@@ -7,27 +7,27 @@
     width:50%;
     margin-left: 25%;
 }
-#show1st{
+#switchTo{
     width:20%;
     margin-left: 75%;
     opacity: 0.6;
     z-index: 999;
     border-radius:12px 12px 12px 12px;
 }
-#show2nd{
-    width:20%;
-    margin-left: 75%;
-    opacity: 0.6;
-    z-index: 999;
-    border-radius:12px 12px 12px 12px;
-}
-#showfull{
-    width:20%;
-    margin-left: 75%;
-    z-index: 999;
-    opacity: 0.6;
-    border-radius:12px 12px 12px 12px;
-}
+/*#show2nd{*/
+    /*width:20%;*/
+    /*margin-left: 75%;*/
+    /*opacity: 0.6;*/
+    /*z-index: 999;*/
+    /*border-radius:12px 12px 12px 12px;*/
+/*}*/
+/*#showfull{*/
+    /*width:20%;*/
+    /*margin-left: 75%;*/
+    /*z-index: 999;*/
+    /*opacity: 0.6;*/
+    /*border-radius:12px 12px 12px 12px;*/
+/*}*/
 
 #viewport{
 position: absolute;

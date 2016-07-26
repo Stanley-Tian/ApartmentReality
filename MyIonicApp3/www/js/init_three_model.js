@@ -19,7 +19,7 @@ function render() {
 
 function setupScene() {
     scene = new THREE.Scene();
-    scene.add( new THREE.AxisHelper(5) );
+    //scene.add( new THREE.AxisHelper(5) );
 
     //light
     ambientLight = new THREE.AmbientLight( 0xffffff );
@@ -97,7 +97,7 @@ function AddJsonObject(path, nameStr) {
         } ,onProgress,onError
     );
 }
-function AddOBJMTL(path, obj, mtl,nameStr) {
+function AddOBJMTLObject(nameStr,path, obj, mtl,onLoaded) {
     //find object, if exist do nothing
     for (var i = 0; i < objectList.length; i++) {
         if (objectList[i].Name == nameStr) {
@@ -112,12 +112,6 @@ function AddOBJMTL(path, obj, mtl,nameStr) {
         objLoader.setMaterials( materials );
         objLoader.setPath( path );
         objLoader.load( obj, function ( object ) {
-            // object.position.x = 200;
-            // object.position.y = 200;
-            // object.position.z = 0;
-            // object.position.setX(-7);
-            // object.position.setZ(-6);
-            // object.scale.set(0.01,0.01,0.01);
             objectList.push(
                 {
                     Name: nameStr,
@@ -126,11 +120,14 @@ function AddOBJMTL(path, obj, mtl,nameStr) {
                 }
             );
             scene.add( object );
+            onLoaded();
         }, onProgress, onError );
 
     });
 }
-
+function ClearObject(){
+    objectList = new Array();
+}
 function HideObject(nameStr) {
     var index=-1;
     //find object, if exist do nothing
