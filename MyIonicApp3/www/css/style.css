@@ -1,1 +1,36 @@
 /* Empty. Add your own CSS if you like */
+#start_scan{
+    width:50%;
+    margin-left: 25%;
+}
+#stop_scan{
+    width:50%;
+    margin-left: 25%;
+}
+#show1st{
+    width:20%;
+    margin-left: 75%;
+    opacity: 0.6;
+    z-index: 999;
+    border-radius:12px 12px 12px 12px;
+}
+#show2nd{
+    width:20%;
+    margin-left: 75%;
+    opacity: 0.6;
+    z-index: 999;
+    border-radius:12px 12px 12px 12px;
+}
+#showfull{
+    width:20%;
+    margin-left: 75%;
+    z-index: 999;
+    opacity: 0.6;
+    border-radius:12px 12px 12px 12px;
+}
+
+#viewport{
+position: absolute;
+    top: 0;
+    left: 0;
+}

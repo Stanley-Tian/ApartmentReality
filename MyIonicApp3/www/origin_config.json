@@ -1,0 +1,4 @@
+{
+  "server_ip":"0.0.0.0:9002",
+  "send_image_timespan":"3000"
+}

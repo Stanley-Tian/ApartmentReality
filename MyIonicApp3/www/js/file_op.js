@@ -97,19 +97,15 @@ var file_op = {
 
             }, function onErrorCreateFile(){
                 console.log("读取文件失败！");
-                alert("读取文件失败");
+                //alert("读取文件失败");
+                file_op.onLoadFileFailed();
             });
 
         }, function onErrorLoadFs(){
             console.log("打开文件系统失败！");
-            alert("打开文件系统失败");
+            //alert("打开文件系统失败");
         });
     },
-    onLoadedFile: function(fileData){}
-
-
-
-
+    onLoadedFile: function(fileData){},
+    onLoadFileFailed:function () {}
 };
-
-

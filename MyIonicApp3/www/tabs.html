@@ -1,20 +1,18 @@
 
-<ion-tabs class="tabs-positive tabs-striped tabs-bottom">
+<ion-tabs class="tabs-positive tabs-striped tabs-bottom tabs-icon-top ">
 
   <!-- Dashboard Tab -->
-  <ion-tab title="查找户型" ui-sref="tab.selector">
+  <ion-tab  title="扫描户型"  icon-on="ion-camera" icon-off="ion-camera" ui-sref="tab.selector">
     <ion-nav-view name="tab-view-selector"></ion-nav-view>
   </ion-tab>
 
   <!-- Chats Tab -->
-  <ion-tab title="户型概廓"  href="#/tab/show3D">
+  <ion-tab title="户型概廓" icon-on="ion-ios-home" icon-off="ion-ios-home" href="#/tab/show3D">
     <ion-nav-view name="tab-view-show3D"></ion-nav-view>
   </ion-tab>
 
   <!-- Account Tab -->
-  <ion-tab title="户型细节" href="#/tab/showDetail">
+  <ion-tab title="设置" icon-on="ion-ios-gear" icon-off="ion-ios-gear" href="#/tab/showDetail">
     <ion-nav-view name="tab-view-showDetail"></ion-nav-view>
   </ion-tab>
-
-
 </ion-tabs>

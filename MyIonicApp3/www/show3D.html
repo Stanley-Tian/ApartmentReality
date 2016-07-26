@@ -1,9 +1,11 @@
-<ion-view view-title="3D模型">
+<ion-view view-title="三维户型">
     <ion-content id="show3D-content">
-        <button id="show1st" onclick="show1st()">展示一层</button>
-        <button id="show2nd" onclick="show2nd()">展示二层</button>
-        <button id="showfull" onclick="showfull()">展示全部</button>
+        <div class="spacer" style="width: 300px; height: 146px;"></div>
+        <button id="showfull" class=" button button-light  button-block">外景</button>
+        <button id="show2nd" class=" button button-light  button-block ">二层</button>
+        <button id="show1st" class=" button button-light  button-block ">一层</button>
+
         <span id="house_id"></span>
-        <div id="viewport"> </div>
+        <div id="viewport"></div>
     </ion-content>
 </ion-view>

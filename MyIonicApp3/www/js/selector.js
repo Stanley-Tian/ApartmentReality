@@ -24,13 +24,18 @@ function drawWindow() {
   cxt.stroke();
 }
 function initCamera() {
+
+  setBackgroudTransparent();
+
   var content_offset = $("#selector-content").offset();
   var content_width = $("#selector-content").width();
   var content_height = $("#selector-content").height();
 
   var showed_cam ={};
-  showed_cam.width = content_width*(4/5);
-  showed_cam.height = showed_cam.width;
+  // showed_cam.width = content_width*(4/5);
+  // showed_cam.height = showed_cam.width;
+  showed_cam.width = content_width;
+  showed_cam.height = content_height;
   showed_cam.x = content_offset.left+(content_width - showed_cam.width)/2;
   showed_cam.y = content_offset.top + (content_height - showed_cam.height)/2;
   
@@ -38,17 +43,19 @@ function initCamera() {
       { x: showed_cam.x,
         y: showed_cam.y,
         width: showed_cam.width,
-        height: showed_cam.height,
-        camera: "back",
-        tapPhoto: true,
-        previewDrag: true,
-        toBack: false});
+        height: showed_cam.height},
+        "back",
+        false,
+        false,
+        false);
+
   cordova.plugins.camerapreview.show();
   camera_ready=true;
-  tmt_house_id = -1;
+  tmt_house_id = -1;//设置默认house id
 }
 function releaseCamera() {
   cordova.plugins.camerapreview.stopCamera();
+  resetBackground();
 }
 function detectImage() {
       var taken_img_400 = document.getElementById("test_image");
@@ -148,15 +155,16 @@ function openCamera(selection) {
 //--end
 
 function sendImage(send_image_timespan,onSuccess) {
-  //cordova.plugins.camerapreview.takePicture({maxWidth:640, maxHeight:640});
   try {
     cordova.plugins.camerapreview.setOnPictureTakenHandler(function (result) {
       console.log("开始处理拍到的照片");
+      console.log("照片地址:"+result[0]);
+      //注:此处ios所拍到的照片都存在了相册内,非标准jpg格式,无法直接读取.如若关闭相册访问权限则更本存不下照片
+      //此处camerapreview可能对ios无解
       document.getElementById('originalPicture').src = result[0]; //originalPicturePath;
       //document.getElementById('previewPicture').src = result[1]; //previewPicturePath;
-
       document.getElementById("originalPicture").onload = function () {
-        //TmtWebSocket.sendMsg("sending origin image..");
+        TmtWebSocket.sendMsg("sending origin image..");
         var origin_data = getImageDataURL("originalPicture", "canvas_original");
         TmtWebSocket.sendMsg(origin_data);
         camera_ready =true;

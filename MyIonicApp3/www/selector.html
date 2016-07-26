@@ -1,18 +1,13 @@
-
 <ion-view view-title="请扫描户型" >
-  <ion-content id = "selector-content">
-    <button id="clear_log">Clear Log</button>
-    <a class="button icon icon-right ion-chevron-right">Scientific Facts</a>
-    <button id="start_scan">开始扫描</button>
-    <button id="stop_scan">停止扫描</button>
+  <ion-content id = "selector-content" scroll="false">
+    <div class="spacer" style="width: 300px; height: 163px;"></div>
+    <button id="start_scan" style="border-radius:12px 12px 12px 12px;" class=" button button-positive  button-block icon-left ion-camera ">扫一扫</button>
+    <div class="spacer" style="width: 300px; height: 160px;"></div>
+    <button id="stop_scan" style="border-radius:12px 12px 12px 12px;" class=" button button-assertive  button-block icon-left ion-camera ">停止</button>
     <p><img id="previewPicture" width="200" hidden/></p>
     <p><img id="originalPicture" width="200" hidden/></p>
     <div id="log"></div>
     <img id="taken_image" src="" alt="" hidden>
-    <!--<img id="test_image" src="../www/assets/FeatureData/A1.jpg" hidden>-->
-    <!--<canvas id="resize_image_canvas" width="800" height="1067" hidden></canvas>-->
     <img id="small_image" hidden>
   </ion-content>
 </ion-view>
-
-

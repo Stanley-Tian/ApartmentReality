@@ -18,6 +18,7 @@ angular.module('myApp.controllers', [])
         //   ctx.drawImage(taken_img, 0, 0, 800, 800);
         // };
 
+        $("#stop_scan").hide();
         $("#send_to_server").click(function () {
             console.log("send info to server");
             var this_canvas = document.getElementById("resize_image_canvas");
@@ -26,15 +27,18 @@ angular.module('myApp.controllers', [])
         $("#clear_log").click(function () {
           //$("#log").html("");
           //$location.path('/show3DController'); // working
-          
         });
         $("#start_scan").click(function () {
+          $("#start_scan").hide();
           initCamera();
+          $("#stop_scan").show();
           console.log("init camera complete");
           sendImage(tmt_config.send_image_timespan);
         });
         $("#stop_scan").click(function () {
           releaseCamera();
+          $(this).hide();
+          $("#start_scan").show();
         });
       });
       $scope.$on('$ionicView.afterEnter', function (viewInfo, state) {
@@ -54,6 +58,15 @@ angular.module('myApp.controllers', [])
     $scope.$on('$ionicView.afterEnter', function (viewInfo, state) {
       startRender();
       //alert("当前户型ID: "+tmt_house_id);
+      $("#show1st").click(function () {
+        show1st();
+      });
+      $("#show2nd").click(function () {
+        show2nd();
+      });
+      $("#showfull").click(function () {
+        showfull();
+      });
       $("#house_id").html("house id: "+tmt_house_id);
       tmt_house_id;
     });
@@ -70,16 +83,8 @@ angular.module('myApp.controllers', [])
       initConfig();
       showConfig();
       $("#change_config").click(function () {
-          var server_ip = $("#server_ip_input").val();
-          var send_image_timespan = $("#send_image_timespan_input").val();
-          if(server_ip.length>10)
-          {
-            tmt_config.server_ip = server_ip;
-          }
-        if(send_image_timespan>0)
-        {
-          tmt_config.send_image_timespan = send_image_timespan;
-        }
+        //alert("changing config");
+        changeConfig();
         saveConfig();
         showConfig();
       });

@@ -219,3 +219,19 @@ function isNum(s)
     }
     return false;
 }
+function setBackgroudTransparent() {
+    $("#selector-content").css("background-color","transparent");
+    $("ion-nav-view").css("background-color","transparent");
+    $("ion-tabs").css("background-color","transparent");
+    $("ion-content").css("background-color","transparent");
+    $("ion-view").css("background-color","transparent");
+    $("body").css("background-color","transparent");
+}
+function resetBackground() {
+    $("#selector-content").removeAttr("style");
+    $("ion-nav-view").removeAttr("style");
+    $("ion-tabs").removeAttr("style");
+    $("ion-content").removeAttr("style");
+    $("ion-view").removeAttr("style");
+    $("body").removeAttr("style");
+}
