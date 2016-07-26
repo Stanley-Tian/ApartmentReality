@@ -19,7 +19,7 @@ function render() {
 
 function setupScene() {
     scene = new THREE.Scene();
-    //scene.add( new THREE.AxisHelper(5) );
+    scene.add( new THREE.AxisHelper(5) );
 
     //light
     ambientLight = new THREE.AmbientLight( 0xffffff );
@@ -66,25 +66,8 @@ function setupScene() {
     // var sky = new THREE.Sky();
     // scene.add( sky.mesh );
     
-    //objectList
+    //meshList
     objectList = new Array();
-
-    // connerLight = new THREE.SpotLight( 0xffffff);
-    // connerLight.intensity = 10.0;
-    // connerLight.position.set( -2, 0.5, 1 );
-    // connerLight.shadow.mapSize.width = 1024;
-    // connerLight.shadow.mapSize.height = 1024;
-    // connerLight.distance=0;
-    // connerLight.shadow.camera.near = 0;
-    // connerLight.shadow.camera.far = 2;
-    // connerLight.angle = Math.PI/4;
-    // connerLight.castShadow = true;
-    // var innerLighttarget = new THREE.Object3D();
-    // innerLighttarget.position=new THREE.Vector3( -2, -10, 0 );
-    // scene.add( innerLighttarget);
-    // connerLight.target=innerLighttarget;
-    // scene.add( connerLight);
-    // scene.add( new THREE.SpotLightHelper( connerLight ) );
 }
 var objectList;
 function AddJsonObject(path, nameStr) {
@@ -101,7 +84,7 @@ function AddJsonObject(path, nameStr) {
             object3D.castShadow = true;
             object3D.receiveShadow=true;
             //console.log("onLoadJson");
-            //add object and name into objectList
+            //add object and name into meshList
             objectList.push(
                 {
                     Name: nameStr,
@@ -114,6 +97,40 @@ function AddJsonObject(path, nameStr) {
         } ,onProgress,onError
     );
 }
+function AddOBJMTL(path, obj, mtl,nameStr) {
+    //find object, if exist do nothing
+    for (var i = 0; i < objectList.length; i++) {
+        if (objectList[i].Name == nameStr) {
+            return;
+        }
+    }
+    var mtlLoader = new THREE.MTLLoader();
+    mtlLoader.setPath( path );
+    mtlLoader.load( mtl, function( materials ) {
+        materials.preload();
+        var objLoader = new THREE.OBJLoader();
+        objLoader.setMaterials( materials );
+        objLoader.setPath( path );
+        objLoader.load( obj, function ( object ) {
+            // object.position.x = 200;
+            // object.position.y = 200;
+            // object.position.z = 0;
+            // object.position.setX(-7);
+            // object.position.setZ(-6);
+            // object.scale.set(0.01,0.01,0.01);
+            objectList.push(
+                {
+                    Name: nameStr,
+                    Object: object,
+                    IsHide: false
+                }
+            );
+            scene.add( object );
+        }, onProgress, onError );
+
+    });
+}
+
 function HideObject(nameStr) {
     var index=-1;
     //find object, if exist do nothing
@@ -123,12 +140,12 @@ function HideObject(nameStr) {
             break;
         }
     }
-    //hide object from scene and objectList
+    //hide object from scene and meshList
     if(index>=0) {
         if(objectList[index].IsHide == false){
             //scene;
-            //scene.removeObject(objectList[index].Object);
-            //objectList[index].Object.position.x=40;
+            //scene.removeObject(meshList[index].Object);
+            //meshList[index].Object.position.x=40;
             objectList[index].Object.visible=false;
             objectList[index].IsHide = true;
         }
@@ -143,12 +160,12 @@ function ShowObject(nameStr) {
             break;
         }
     }
-    //show object from scene and objectList
+    //show object from scene and meshList
     if(index>=0) {
         if(objectList[index].IsHide == true){
             //scene;
-            //scene.add(objectList[index].Object);
-            //objectList[index].Object.position.x=0;
+            //scene.add(meshList[index].Object);
+            //meshList[index].Object.position.x=0;
             objectList[index].Object.visible=true;
             objectList[index].IsHide = false;
         }
@@ -159,8 +176,8 @@ function ShowAllObject() {
     for (var i = 0; i < objectList.length; i++) {
         if (objectList[i].Name == nameStr) {
             if(objectList[i].IsHide == true){
-                //scene.add(objectList[index].Object);
-                // objectList[index].Object.position.x=0;
+                //scene.add(meshList[index].Object);
+                // meshList[index].Object.position.x=0;
                 objectList[index].Object.visible=true;
                 objectList[index].IsHide = false;
             }
