@@ -1,7 +1,7 @@
 # Blender MTL File: 'House01_2nd_blender.blend'
 # Material Count: 40
 
-newmtl 89
+newmtl 89.001
 Ns 0.000000
 Ka 1.000000 1.000000 1.000000
 Kd 0.020379 0.020379 0.020379
@@ -11,7 +11,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Baluster_bottom_left.002
+newmtl Baluster_bottom_left
 Ns 78.431373
 Ka 0.680000 0.680000 0.680000
 Kd 0.680000 0.680000 0.680000
@@ -21,7 +21,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Baluster_bottom_right.002
+newmtl Baluster_bottom_right
 Ns 78.431373
 Ka 0.680000 0.680000 0.680000
 Kd 0.680000 0.680000 0.680000
@@ -31,7 +31,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Baluster_landing.002
+newmtl Baluster_landing
 Ns 78.431373
 Ka 0.680000 0.680000 0.680000
 Kd 0.680000 0.680000 0.680000
@@ -41,7 +41,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Baluster_landing_2.002
+newmtl Baluster_landing_2
 Ns 78.431373
 Ka 0.680000 0.680000 0.680000
 Kd 0.680000 0.680000 0.680000
@@ -51,7 +51,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Baluster_top_left.002
+newmtl Baluster_top_left
 Ns 78.431373
 Ka 0.680000 0.680000 0.680000
 Kd 0.680000 0.680000 0.680000
@@ -61,7 +61,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Baluster_top_right.002
+newmtl Baluster_top_right
 Ns 78.431373
 Ka 0.680000 0.680000 0.680000
 Kd 0.680000 0.680000 0.680000
@@ -71,7 +71,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Cage_in.002
+newmtl Cage_in
 Ns 0.000000
 Ka 0.200000 0.200000 0.200000
 Kd 0.930000 0.920000 0.900000
@@ -81,7 +81,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Cage_in_99
+newmtl Cage_in_99.001
 Ns 0.000000
 Ka 1.000000 1.000000 1.000000
 Kd 0.900000 0.900000 0.900000
@@ -91,7 +91,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Cage_out.002
+newmtl Cage_out
 Ns 0.000000
 Ka 0.200000 0.200000 0.200000
 Kd 1.000000 1.000000 1.000000
@@ -101,7 +101,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Cage_out_98
+newmtl Cage_out_98.001
 Ns 0.000000
 Ka 1.000000 1.000000 1.000000
 Kd 0.920000 0.910000 0.860000
@@ -111,7 +111,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Frame_in.002
+newmtl Frame_in
 Ns 0.000000
 Ka 0.200000 0.200000 0.200000
 Kd 0.930000 0.920000 0.900000
@@ -121,7 +121,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Frame_in_88
+newmtl Frame_in_88.001
 Ns 0.000000
 Ka 1.000000 1.000000 1.000000
 Kd 0.900000 0.900000 0.900000
@@ -131,7 +131,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Frame_out.002
+newmtl Frame_out
 Ns 0.000000
 Ka 0.200000 0.200000 0.200000
 Kd 1.000000 1.000000 1.000000
@@ -141,7 +141,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Frame_out_94
+newmtl Frame_out_94.001
 Ns 0.000000
 Ka 1.000000 1.000000 1.000000
 Kd 0.920000 0.910000 0.860000
@@ -151,7 +151,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl GLASS.002
+newmtl GLASS
 Ns 127.450980
 Ka 0.000000 0.000000 0.000000
 Kd 1.000000 1.000000 1.000000
@@ -161,7 +161,7 @@ Ni 1.021455
 d 0.350000
 illum 2
 
-newmtl Glass.002
+newmtl Glass
 Ns 0.000000
 Ka 0.200000 0.200000 0.200000
 Kd 0.824500 0.824500 0.824500
@@ -171,7 +171,7 @@ Ni 1.000000
 d 0.500000
 illum 2
 
-newmtl Glass_92
+newmtl Glass_92.001
 Ns 94.117647
 Ka 0.500000 0.500000 0.500000
 Kd 0.824500 0.824500 0.824500
@@ -181,7 +181,7 @@ Ni 1.000000
 d 0.500000
 illum 3
 
-newmtl Handrail_bottom_left.002
+newmtl Handrail_bottom_left
 Ns 0.000000
 Ka 0.474510 0.474510 0.474510
 Kd 0.749020 0.490196 0.184314
@@ -191,7 +191,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Handrail_bottom_right.002
+newmtl Handrail_bottom_right
 Ns 0.000000
 Ka 0.474510 0.474510 0.474510
 Kd 0.749020 0.490196 0.184314
@@ -201,7 +201,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Handrail_landing.002
+newmtl Handrail_landing
 Ns 0.000000
 Ka 0.474510 0.474510 0.474510
 Kd 0.749020 0.490196 0.184314
@@ -211,7 +211,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Handrail_landing_2.002
+newmtl Handrail_landing_2
 Ns 0.000000
 Ka 0.474510 0.474510 0.474510
 Kd 0.749020 0.490196 0.184314
@@ -221,7 +221,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Handrail_top_left.002
+newmtl Handrail_top_left
 Ns 0.000000
 Ka 0.474510 0.474510 0.474510
 Kd 0.749020 0.490196 0.184314
@@ -231,7 +231,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Handrail_top_right.002
+newmtl Handrail_top_right
 Ns 0.000000
 Ka 0.474510 0.474510 0.474510
 Kd 0.749020 0.490196 0.184314
@@ -241,7 +241,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl PAINT_gloss_white.002
+newmtl PAINT_gloss_white
 Ns 94.117647
 Ka 0.000000 0.000000 0.000000
 Kd 0.900000 0.900000 0.900000
@@ -251,7 +251,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Stringer.002
+newmtl Stringer
 Ns 0.000000
 Ka 0.474510 0.474510 0.474510
 Kd 0.749020 0.490196 0.184314
@@ -261,7 +261,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Tread.002
+newmtl Tread
 Ns 0.000000
 Ka 0.474510 0.474510 0.474510
 Kd 0.749020 0.490196 0.184314
@@ -271,7 +271,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl bone2
+newmtl bone2.001
 Ns 0.000000
 Ka 0.504800 0.504800 0.504800
 Kd 0.983700 0.862000 0.650400
@@ -281,7 +281,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl default.002
+newmtl default
 Ns 127.450980
 Ka 0.400000 0.400000 0.400000
 Kd 0.710200 0.702000 0.653100
@@ -291,7 +291,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl flltgrey.002
+newmtl flltgrey
 Ns 0.000000
 Ka 0.522400 0.522400 0.522400
 Kd 0.824500 0.824500 0.824500
@@ -301,7 +301,7 @@ Ni 1.000000
 d 0.500000
 illum 2
 
-newmtl flyellow
+newmtl flyellow.001
 Ns 0.000000
 Ka 0.410433 0.410433 0.410433
 Kd 1.000000 0.666700 0.000000
@@ -311,7 +311,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl lighttan.002
+newmtl lighttan
 Ns 127.450980
 Ka 0.057867 0.057867 0.057867
 Kd 0.702000 0.421000 0.220600
@@ -321,7 +321,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl ltgrey.002
+newmtl ltgrey
 Ns 64.705882
 Ka 0.500000 0.500000 0.500000
 Kd 0.383700 0.383700 0.383700
@@ -331,7 +331,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl room_1_374
+newmtl room_1_374.001
 Ns 0.000000
 Ka 0.200000 0.200000 0.200000
 Kd 1.000000 1.000000 1.000000
@@ -342,7 +342,7 @@ d 1.000000
 illum 2
 map_Kd House01_2nd_room_1_374.png
 
-newmtl room_1_375
+newmtl room_1_375.001
 Ns 0.000000
 Ka 0.200000 0.200000 0.200000
 Kd 1.000000 1.000000 1.000000
@@ -352,7 +352,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl room_3_377
+newmtl room_3_377.001
 Ns 0.000000
 Ka 0.200000 0.200000 0.200000
 Kd 1.000000 1.000000 1.000000
@@ -363,7 +363,7 @@ d 1.000000
 illum 2
 map_Kd House01_2nd_room_3_377.png
 
-newmtl wall_9_390
+newmtl wall_9_390.001
 Ns 0.000000
 Ka 0.200000 0.200000 0.200000
 Kd 1.000000 1.000000 1.000000
@@ -374,7 +374,7 @@ d 1.000000
 illum 2
 map_Kd House01_2nd_wall_9_390.png
 
-newmtl wall_9_390_NONE
+newmtl wall_9_390.001_NONE
 Ns 0.000000
 Ka 0.200000 0.200000 0.200000
 Kd 1.000000 1.000000 1.000000
@@ -385,7 +385,7 @@ d 1.000000
 illum 2
 map_Kd  House01_2nd_wall_9_390.png
 
-newmtl white.002
+newmtl white
 Ns 58.823529
 Ka 0.400000 0.400000 0.400000
 Kd 1.000000 1.000000 1.000000
@@ -395,7 +395,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl yellowbrt.002
+newmtl yellowbrt
 Ns 58.823529
 Ka 0.400000 0.400000 0.400000
 Kd 1.000000 0.783700 0.000000
