@@ -80,8 +80,8 @@ bool RelicDetect::Match(RelicDetect obj,RelicDetect scn)
 		if (dist < min_dist) min_dist = dist;
 		if (dist > max_dist) max_dist = dist;
 	}
-	printf("-- Max dist : %f \n", max_dist);
-	printf("-- Min dist : %f \n", min_dist);
+	//printf("-- Max dist : %f \n", max_dist);
+	//printf("-- Min dist : %f \n", min_dist);
 	//-- Draw only "good" matches (i.e. whose distance is less than 3*min_dist )
 	std::vector< DMatch > good_matches;
 	for (int i = 0; i < obj.descriptors.rows; i++)
@@ -100,11 +100,11 @@ bool RelicDetect::Match(RelicDetect obj,RelicDetect scn)
 		if (dist > max_dist) max_dist = dist;
 
 	}
-	printf("-- good matches Max dist : %f \n", max_dist);
-	printf("-- good matches Min dist : %f \n", min_dist);
-	printf("-- good matches total Min dist : %f \n", total_min_dist);
-	cout << "-- good matches size " << good_matches.size() << endl;
-	cout << "-- dist per match" << total_min_dist / (double)good_matches.size() << endl;
+	//printf("-- good matches Max dist : %f \n", max_dist);
+	//printf("-- good matches Min dist : %f \n", min_dist);
+	//printf("-- good matches total Min dist : %f \n", total_min_dist);
+	//cout << "-- good matches size " << good_matches.size() << endl;
+	//cout << "-- dist per match" << total_min_dist / (double)good_matches.size() << endl;
 	Mat img_matches;
 	drawMatches(obj.img_color, obj.keypoints, scn.img_color, scn.keypoints,
 		good_matches, img_matches, Scalar::all(-1), Scalar::all(-1),
@@ -120,15 +120,15 @@ bool RelicDetect::Match(RelicDetect obj,RelicDetect scn)
 		scn_points.push_back(scn.keypoints[good_matches[i].trainIdx].pt);
 	}
 	Mat H = cv::findHomography(obj_points, scn_points, RANSAC);
-	cout << "H:" << endl;
-	for (int i = 0;i < H.rows;i++)
-	{
-		for (int j = 0;j < H.cols;j++)
-		{
-			cout << H.at<double>(i, j) << " ";
-		}
-		cout << endl;
-	}
+	//cout << "H:" << endl;
+	//for (int i = 0;i < H.rows;i++)
+	//{
+	//	for (int j = 0;j < H.cols;j++)
+	//	{
+	//		cout << H.at<double>(i, j) << " ";
+	//	}
+	//	cout << endl;
+	//}
 	//-- Get the corners from the image_1 ( the object to be "detected" )
 	std::vector<Point2f> obj_corners(4);
 	obj_corners[0] = cvPoint(0, 0);
@@ -137,8 +137,8 @@ bool RelicDetect::Match(RelicDetect obj,RelicDetect scn)
 	obj_corners[3] = cvPoint(0, obj.img_color.rows);
 	std::vector<Point2f> scene_corners(4);
 	perspectiveTransform(obj_corners, scene_corners, H);
-	cout << "object area" << contourArea(obj_corners) << endl;
-	cout << "scene detected area" << contourArea(scene_corners) << endl;
+	//cout << "object area" << contourArea(obj_corners) << endl;
+	//cout << "scene detected area" << contourArea(scene_corners) << endl;
 	auto scene_area = contourArea(scene_corners);
 	//-- Draw lines between the corners (the mapped object in the scene - image_2 )
 	line(img_matches, scene_corners[0] + Point2f(obj.img_color.cols, 0), scene_corners[1] + Point2f(obj.img_color.cols, 0), Scalar(0, 255, 0), 4);
@@ -146,8 +146,8 @@ bool RelicDetect::Match(RelicDetect obj,RelicDetect scn)
 	line(img_matches, scene_corners[2] + Point2f(obj.img_color.cols, 0), scene_corners[3] + Point2f(obj.img_color.cols, 0), Scalar(0, 255, 0), 4);
 	line(img_matches, scene_corners[3] + Point2f(obj.img_color.cols, 0), scene_corners[0] + Point2f(obj.img_color.cols, 0), Scalar(0, 255, 0), 4);
 	//-- Show detected matches
-	imshow("Good Matches & Object detection", img_matches);
-	waitKey(0);
+	//imshow("Good Matches & Object detection", img_matches);
+	//waitKey(0);
 	if (scene_area>1000)
 	{
 		return true;
