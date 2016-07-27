@@ -54,12 +54,14 @@ typedef server::message_ptr message_ptr;
 class DataItem
 {
 public:
-	websocketpp::connection_hdl hdl;
+	//websocketpp::connection_hdl hdl;
 	RelicScn mImgScn;
+	size_t UniId;
 	DataItem& operator = (DataItem sDI)
 	{
-		hdl = sDI.hdl;
+		//hdl = sDI.hdl;
 		mImgScn = sDI.mImgScn;
+		UniId = sDI.UniId;
 		return *this;
 	}
 };
@@ -71,12 +73,14 @@ class DataResult
 public:
 	websocketpp::connection_hdl hdl;
 	MatchResult mMatchResult[MaxServerThread];
+	size_t UniId;
 	int Index;
-	DataResult():Index(0) {}
+	DataResult() :Index(0), UniId(0) {}
 	DataResult& operator=(DataResult sDR)
 	{
 		hdl = sDR.hdl;
 		Index = sDR.Index;
+		UniId = sDR.UniId;
 		for (int i = 0; (i < sDR.Index)&&(i<MaxServerThread); i++)
 		{
 			mMatchResult[i] = sDR.mMatchResult[i];
@@ -90,9 +94,9 @@ class AppServerThreadManagement
 public:
 	AppServerThreadManagement();
 	void Initial(string feature_directory, server* s);
-	void RegImg(Mat mMat, websocketpp::connection_hdl hdl);
-	void AddResult(MatchResult *pMatchResult, websocketpp::connection_hdl hdl);
-	void DeletDataResult(websocketpp::connection_hdl hdl);//计算出错时调用
+	void RegImg(Mat mMat, websocketpp::connection_hdl hdl,size_t mImgUId);
+	void AddResult(MatchResult *pMatchResult, size_t mUniId);
+	void DeletDataResult(size_t mUniId);//计算出错时调用
 	void UnInitial();
 
 private:
@@ -185,12 +189,12 @@ void AppServerThread::Task()
 		}
 		catch (...)
 		{
-			m_pParent->DeletDataResult(mDataItem.hdl);
-			cout << mDataItem.hdl.lock().get() << "匹配出错！" << endl;
+			m_pParent->DeletDataResult(mDataItem.UniId);
+			cout <<"UniId:"<< mDataItem.UniId << ":匹配出错！" << endl;
 			return;
 		}
 		mMr.mID = m_ID;
-		m_pParent->AddResult(&mMr, mDataItem.hdl);
+		m_pParent->AddResult(&mMr, mDataItem.UniId);
 	}
 }
 
@@ -222,15 +226,17 @@ void AppServerThreadManagement::Initial(string feature_directory, server* s)
 	this->s = s;
 }
 
-void AppServerThreadManagement::RegImg(Mat mMat, websocketpp::connection_hdl hdl)
+void AppServerThreadManagement::RegImg(Mat mMat, websocketpp::connection_hdl hdl,size_t mImgUId)
 {
 	t0.restart();
 	DataItem mDataItem;
 	mDataItem.mImgScn = RelicAPI::loadAndCalcScene(mMat);
-	mDataItem.hdl = hdl;
+	//mDataItem.hdl = hdl;
+	mDataItem.UniId = mImgUId;
 
 	DataResult mDr;
 	mDr.hdl = hdl;
+	mDr.UniId = mImgUId;
 	EnterCriticalSection(&m_cs);
 	DataResultVec.push_back(mDr);
 	LeaveCriticalSection(&m_cs);
@@ -239,21 +245,23 @@ void AppServerThreadManagement::RegImg(Mat mMat, websocketpp::connection_hdl hdl
 	{
 		(*it)->AddDataItem(&mDataItem);
 	}
-	cout << hdl.lock().get() << ":载入图像耗时：" << t0.elapsed() << " s"<<endl;
+	cout << "UniId："<< mImgUId << ":载入图像耗时：" << t0.elapsed() << " s"<<endl;
 
 	t0.restart();
 }
 
-void AppServerThreadManagement::AddResult(MatchResult *pMatchResult, websocketpp::connection_hdl hdl)
+void AppServerThreadManagement::AddResult(MatchResult *pMatchResult, size_t mUniId)
 {
 	MatchResult mMr;
 	EnterCriticalSection(&m_cs);
 	vector<DataResult>::iterator it;
 	bool CompleteFlag = false;
+	websocketpp::connection_hdl hdl;
 	for (it = DataResultVec.begin(); it != DataResultVec.end();it++)
 	{
-		if (hdl.lock().get() == it->hdl.lock().get())
+		if (mUniId == it->UniId)
 		{
+			hdl = it->hdl;
 			it->mMatchResult[it->Index] = *pMatchResult;
 			it->Index++;
 			if (it->Index>= AppServerThreadNum)
@@ -277,26 +285,34 @@ void AppServerThreadManagement::AddResult(MatchResult *pMatchResult, websocketpp
 	{
 		if (mMr.ObjectFound == true)
 		{
-			cout << hdl.lock().get() << "匹配用时:" << t0.elapsed() << "s" << endl;
-			cout << "检测到的ID：" << mMr.mID << endl;
-			SendResult(hdl, boost::lexical_cast<string>(mMr.mID));
+			cout << "UniID:"<< mUniId<< "匹配用时:" << t0.elapsed() << "s" << endl;
+			cout << "检测到的图像ID：" << mMr.mID << endl;
+			try
+			{
+				SendResult(hdl, boost::lexical_cast<string>(mMr.mID));
+			}
+			catch (...)
+			{
+				cout << "发送消息错误";
+			}
+			
 		}
 		else
 		{
-			cout << hdl.lock().get() << ":未找到匹配项" << endl;
-			cout << hdl.lock().get() << "匹配用时:" << t0.elapsed() << "s" << endl;
+			cout << "UniID:" << mUniId << ":未找到匹配项" << endl;
+			cout << "UniID:" << mUniId << ":匹配用时:" << t0.elapsed() << "s" << endl;
 			SendResult(hdl, string("null"));
 		}
 	}
 }
 
-void AppServerThreadManagement::DeletDataResult(websocketpp::connection_hdl hdl)
+void AppServerThreadManagement::DeletDataResult(size_t mUniId)
 {
 	EnterCriticalSection(&m_cs);
 	vector<DataResult>::iterator it;
 	for (it = DataResultVec.begin(); it != DataResultVec.end(); it++)
 	{
-		if (hdl.lock().get() == it->hdl.lock().get())
+		if (mUniId == it->UniId)
 		{
 			DataResultVec.erase(it);
 			break;

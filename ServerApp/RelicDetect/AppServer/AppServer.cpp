@@ -87,7 +87,7 @@
 
 
 AppServerThreadManagement mManager;
-
+size_t ImgUniId;
 void on_message(server* s, websocketpp::connection_hdl hdl, message_ptr msg) {
 	std::cout << "on_message called with hdl: " << hdl.lock().get()
 		//<< " and message: " << msg->get_payload()
@@ -121,7 +121,6 @@ void on_message(server* s, websocketpp::connection_hdl hdl, message_ptr msg) {
 	{
 		//RelicHelper::Base64Decode(mmsg2, &mstr1);
 		mstr1 = websocketpp::base64_decode(mmsg2);
-
 		std::cout << "Base64Decode over!" << std::endl;
 	}
 	catch (...)
@@ -153,20 +152,21 @@ void on_message(server* s, websocketpp::connection_hdl hdl, message_ptr msg) {
 		std::cout << "imdecode error!" << std::endl;
 		return;
 	}
-	try
-	{
-		imshow("接收", mMat);
-		waitKey(1);
-		imwrite("receivedImg.jpg", mMat);
-	}
-	catch (...)
-	{
-		std::cout << "image error!" << std::endl;
-		return;
-	}
-	cout << "ImgWidth" << mMat.cols<<endl;
-	cout << "ImgHeight" << mMat.rows << endl;
-	mManager.RegImg(mMat, hdl);
+	//try
+	//{
+	//	imshow("接收", mMat);
+	//	waitKey(1);
+	//	imwrite("receivedImg.jpg", mMat);
+	//}
+	//catch (...)
+	//{
+	//	std::cout << "image error!" << std::endl;
+	//	return;
+	//}
+	cout << "ImgWidth：" << mMat.cols<<endl;
+	cout << "ImgHeight：" << mMat.rows << endl;
+	mManager.RegImg(mMat, hdl,ImgUniId);
+	ImgUniId++;
 }
 
 int main() {
@@ -175,6 +175,8 @@ int main() {
 	//objs = RelicAPI::getObjs("..\\..\\assets\\FeatureData");//获取已经提取过的json feature
 	//cout << "加载的图像特征数据数量：" << objs.size()<<endl;
 	cout << "程序运行成功" << endl;
+	logging::core::get()->set_filter(logging::trivial::severity >= logging::trivial::fatal);//设置日志级别
+	ImgUniId = 0;
 	server echo_server;
 	cout << "创建网络服务成功" << endl;
 	mManager.Initial("..\\..\\assets\\FeatureData",&echo_server);
