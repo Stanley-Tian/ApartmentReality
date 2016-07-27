@@ -1,6 +1,7 @@
 /**
  * Created by rwp on 2016/7/12.
  */
+var $LoadCtrl;
 angular.module('myApp.controllers', [])
   .controller('selectorController', function($scope) {
     $scope.title='请扫描户型图';
@@ -55,15 +56,15 @@ angular.module('myApp.controllers', [])
 
     $scope.title='户型3D视图';
     tmt_house_id=0;
-    $scope.$on('$ionicView.afterEnter', function (viewInfo, state) {
-      reloadModles(tmt_house_id,
-      function(){
-        startRender();
-      });
-      //alert("当前户型ID: "+tmt_house_id);
+
+    $scope.$on('$ionicView.loaded', function (viewInfo, state) {
+      onChangeModel();
       $("#switchTo").click(function () {
         switchTo();
       });
+    });
+    $scope.$on('$ionicView.afterEnter', function (viewInfo, state) {
+      //alert("当前户型ID: "+tmt_house_id);
       // $("#show2nd").click(function () {
       //   show2nd();
       // });
@@ -98,6 +99,26 @@ angular.module('myApp.controllers', [])
       initConfig();
       showConfig();
     });
+  })
+
+  //加载条
+  .controller('show3DContentCtrl', function($scope, $timeout, $ionicLoading) {
+    // Setup the loader
+    $LoadCtrl = $ionicLoading;
+    // $ionicLoading.show({
+    //   content: 'Loading',
+    //   animation: 'fade-in',
+    //   showBackdrop: true,
+    //   maxWidth: 200,
+    //   showDelay: 0
+    // });
+    //
+    // // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
+    // $timeout(function () {
+    //   $ionicLoading.hide();
+    //   $scope.stooges = [{name: 'Moe'}, {name: 'Larry'}, {name: 'Curly'}];
+    // }, 2000);
+
   });
 
 

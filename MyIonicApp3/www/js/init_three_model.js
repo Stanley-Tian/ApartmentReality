@@ -41,11 +41,11 @@ function setupScene() {
     //scene.add( new THREE.DirectionalLightHelper( directionalLight ) );
 
     //ground
-    var planeGeometry = new THREE.CylinderGeometry( 10000, 10000, 100, 32, 1 );
+    var planeGeometry = new THREE.CylinderGeometry( 100, 100, 10, 32, 1 );
     //planeGeometry.rotateX( - Math.PI / 2 );
-    planeGeometry.translate(0,-53.01,0);
-    //var planeTexture = new THREE.TextureLoader().load( "assets/Models/ground.jpg" ); , map: planeTexture} 
-    var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x009900, side: THREE.DoubleSide });
+    planeGeometry.translate(0,-5.1,0);
+    //var planeTexture = new THREE.TextureLoader().load( "assets/Models/ground.jpg" ); , map: planeTexture}
+    var planeMaterial = new THREE.MeshLambertMaterial( { color: 0xaaaaaa, side: THREE.DoubleSide });
     planeMesh = new THREE.Mesh( planeGeometry, planeMaterial );
     planeMesh.receiveShadow=true;
     scene.add( planeMesh );
@@ -66,7 +66,7 @@ function setupScene() {
     // method 3
     // var sky = new THREE.Sky();
     // scene.add( sky.mesh );
-    
+
     //meshList
     objectList = new Array();
 }
@@ -98,7 +98,7 @@ function AddJsonObject(path, nameStr) {
         } ,onProgress,onError
     );
 }
-function AddOBJMTLObject(nameStr,path, obj, mtl,onLoaded) {
+function AddOBJMTLObject(nameStr,path, obj, mtl,onLoaded,onError) {
     //find object, if exist do nothing
     for (var i = 0; i < objectList.length; i++) {
         if (objectList[i].Name == nameStr) {
@@ -124,8 +124,13 @@ function AddOBJMTLObject(nameStr,path, obj, mtl,onLoaded) {
             );
             scene.add( object );
             onLoaded();
-        }, onProgress, onError );
-
+        }, onProgress, function(){
+          console.log("OBJLoader error!");
+          onError();
+        });
+    }, onProgress, function(){
+      console.log("MTLLoader error!");
+      onError();
     });
 }
 function ClearObject(){

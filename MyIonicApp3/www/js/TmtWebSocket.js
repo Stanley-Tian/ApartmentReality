@@ -33,10 +33,9 @@ var TmtWebSocket =
       if (Msg!=-1)
       {
         tmt_house_id = Msg;
+        onChangeModel();
         window.location.href='#/tab/show3D';
       }
     }
-
-
   }
 };

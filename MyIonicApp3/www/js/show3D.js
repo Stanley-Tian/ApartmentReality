@@ -163,7 +163,7 @@ var scenes = [
 
 var modelsNum=0;
 var modelsLoaded=0;
-function reloadModles(scIndex,onLoaded) {
+function reloadModels(scIndex,onLoaded,onError) {
     if(scenesLoading){
         console.log('Unfinished loading(>_<)');
         return;
@@ -197,7 +197,11 @@ function reloadModles(scIndex,onLoaded) {
                     //requestAnimationFrame(render);
                     onLoaded();
                 }
-            }
+            },
+          function ()
+          {
+            onError();
+          }
         );
     }
 }
@@ -227,4 +231,23 @@ function startRender() {
 }
 function stopRender() {
     active=false;
+}
+function onChangeModel(){
+  $LoadCtrl.show({
+    content: 'Loading',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0
+  });
+  reloadModels(tmt_house_id,
+    function(){
+      startRender();
+      $LoadCtrl.hide();
+    },
+    function() {
+      $LoadCtrl.hide();
+      alert("load error!");
+    }
+  );
 }
