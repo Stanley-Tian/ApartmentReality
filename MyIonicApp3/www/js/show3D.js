@@ -111,6 +111,53 @@ var scenes = [
                     break;
             }
         }
+    },
+    {
+        index:       0,//default object
+        models:[
+            {
+                name: 'A2_real',
+                path: 'assets/Models/A2/',
+                obj:  'A2_real.obj',
+                mtl:  'A2_real.mtl'
+            },
+            {
+                name: 'A2_transport',
+                path: 'assets/Models/A2/',
+                obj:  'A2_transport.obj',
+                mtl:  'A2_transport.mtl'
+            }
+        ],
+        // switch object showed in circular sequence
+        onSwitch:  function(){
+            if(this.index<0 ||this.index>1){
+                this.index=0;
+            }else{
+                this.index=this.index+1;
+            }
+            this.onIndex(this.index);
+        },
+        // switch object showed in circular sequence
+        onIndex:  function(index){
+            if (index<0 || index>1){
+                index=0;
+            }
+            this.index=index;
+            switch(this.index){
+                case 0:
+                    ShowObject('A2_real');
+                    HideObject('A2_transport');
+                    break;
+                case 1:
+                    HideObject('A2_real');
+                    ShowObject('A2_transport');
+                    break;
+                default:
+                    ShowObject('A2_real');
+                    HideObject('A2_transport');
+                    break;
+            }
+        }
     }
 ];
 
@@ -147,7 +194,7 @@ function reloadModles(scIndex,onLoaded) {
                     scenesLoading=false;
                     console.log('Load models completed(^_^)');
                     scenes[scenesIndex].onIndex(0);
-                    requestAnimationFrame(render);
+                    //requestAnimationFrame(render);
                     onLoaded();
                 }
             }

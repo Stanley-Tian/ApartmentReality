@@ -54,10 +54,12 @@ angular.module('myApp.controllers', [])
   .controller('show3DController', function($scope) {
 
     $scope.title='户型3D视图';
-    tmt_house_id=1;
-    reloadModles(tmt_house_id);
+    tmt_house_id=0;
     $scope.$on('$ionicView.afterEnter', function (viewInfo, state) {
-      startRender();
+      reloadModles(tmt_house_id,
+      function(){
+        startRender();
+      });
       //alert("当前户型ID: "+tmt_house_id);
       $("#switchTo").click(function () {
         switchTo();
@@ -69,7 +71,7 @@ angular.module('myApp.controllers', [])
       //   showfull();
       // });
       $("#house_id").html("house id: "+tmt_house_id);
-      tmt_house_id;
+
     });
     $scope.$on('$ionicView.afterLeave', function (viewInfo, state) {
       stopRender();
