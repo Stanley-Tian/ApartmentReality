@@ -274,17 +274,17 @@ function switchTo() {
 // }
 function startRender() {
     active=true;
-    animate();
+    requestAnimationFrame(render);
 }
 function stopRender() {
     active=false;
 }
 function onChangeModel(){
   $LoadCtrl.show({
-    content: 'Loading',
+    
     animation: 'fade-in',
     showBackdrop: true,
-    maxWidth: 200,
+    maxWidth: 600,
     showDelay: 0
   });
   reloadModels(tmt_house_id,

@@ -64,7 +64,8 @@ app.config(function ($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
   $urlRouterProvider.otherwise('/tab/selector');
   $ionicConfigProvider.tabs.position("bottom");
 });
+
 app.constant('$ionicLoadingConfig', {
-  template: 'Loading……'
+  template: '<ion-spinner icon="android"></ion-spinner>'
 });
 

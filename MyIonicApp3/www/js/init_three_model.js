@@ -231,12 +231,12 @@ function initControls(element_id) {
     camera.updateProjectionMatrix();
     window.addEventListener( 'resize', onWindowResize, false );
 }
-function animate() {
-    if(active){
-        // Read more about requestAnimationFrame at http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
-        requestAnimationFrame(animate);
-        // Render the scene.
-        render();
-        //orbit.update();
-    }
-}
+// function animate() {
+//     if(active){
+//         // Read more about requestAnimationFrame at http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
+//         requestAnimationFrame(animate);
+//         // Render the scene.
+//         render();
+//         //orbit.update();
+//     }
+// }
