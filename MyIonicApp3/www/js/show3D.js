@@ -158,6 +158,53 @@ var scenes = [
                     break;
             }
         }
+    },
+    {
+        index:       0,//default object
+        models:[
+            {
+                name: 'A3_all',
+                path: 'assets/Models/A3/',
+                obj:  'A3_all.obj',
+                mtl:  'A3_all.mtl'
+            },
+            {
+                name: 'A3_center',
+                path: 'assets/Models/A3/',
+                obj:  'A3_center.obj',
+                mtl:  'A3_center.mtl'
+            }
+        ],
+        // switch object showed in circular sequence
+        onSwitch:  function(){
+            if(this.index<0 ||this.index>1){
+                this.index=0;
+            }else{
+                this.index=this.index+1;
+            }
+            this.onIndex(this.index);
+        },
+        // switch object showed in circular sequence
+        onIndex:  function(index){
+            if (index<0 || index>1){
+                index=0;
+            }
+            this.index=index;
+            switch(this.index){
+                case 0:
+                    ShowObject('A3_all');
+                    ShowObject('A3_center');
+                    break;
+                case 1:
+                    HideObject('A3_all');
+                    ShowObject('A3_center');
+                    break;
+                default:
+                    ShowObject('A3_all');
+                    ShowObject('A3_center');
+                    break;
+            }
+        }
     }
 ];
 
