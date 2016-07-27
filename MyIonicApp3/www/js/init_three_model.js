@@ -8,7 +8,8 @@
  animate();
  */
 if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
-var orbit, container, scene, camera, renderer,ambientLight,directionalLight,connerLight,planeMesh,skyMesh;
+var orbit, container, scene, camera, renderer,ambientLight,directionalLight,planeMesh,skyMesh;
+var olddom =null;
 //var sky, sunSphere;
 var active = false;
 function render() {
@@ -112,6 +113,8 @@ function AddOBJMTLObject(nameStr,path, obj, mtl,onLoaded) {
         objLoader.setMaterials( materials );
         objLoader.setPath( path );
         objLoader.load( obj, function ( object ) {
+            object.castShadow = true;
+            object.receiveShadow=true;
             objectList.push(
                 {
                     Name: nameStr,
@@ -195,6 +198,9 @@ var onError =function ( xhr ) {
     console.log( 'An error happened' );
 };
 function initControls(element_id) {
+    if(olddom!=null){
+        container.removeChild(olddom);
+    }
     container = document.getElementById( element_id );
     renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true	} );
     renderer.shadowMapEnabled=true;
@@ -203,6 +209,7 @@ function initControls(element_id) {
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
     container.appendChild( renderer.domElement );
+    olddom = renderer.domElement;
     var aspect = container.offsetWidth / container.offsetHeight;
     camera = new THREE.PerspectiveCamera( 60, aspect );
     orbit = new THREE.OrbitControls( camera, container );
