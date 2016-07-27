@@ -41,11 +41,11 @@ function setupScene() {
     //scene.add( new THREE.DirectionalLightHelper( directionalLight ) );
 
     //ground
-    var planeGeometry = new THREE.CylinderGeometry( 100, 100, 10, 32, 1 );
+    var planeGeometry = new THREE.CylinderGeometry( 40, 100, 4, 32, 1 );
     //planeGeometry.rotateX( - Math.PI / 2 );
-    planeGeometry.translate(0,-5.1,0);
+    planeGeometry.translate(0,-2.1,0);
     //var planeTexture = new THREE.TextureLoader().load( "assets/Models/ground.jpg" ); , map: planeTexture}
-    var planeMaterial = new THREE.MeshLambertMaterial( { color: 0xaaaaaa, side: THREE.DoubleSide });
+    var planeMaterial = new THREE.MeshLambertMaterial( { color: 0xabb78c, side: THREE.DoubleSide });
     planeMesh = new THREE.Mesh( planeGeometry, planeMaterial );
     planeMesh.receiveShadow=true;
     scene.add( planeMesh );
