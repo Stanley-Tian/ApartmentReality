@@ -113,6 +113,16 @@ function AddOBJMTLObject(nameStr,path, obj, mtl,onLoaded,onError) {
         objLoader.setMaterials( materials );
         objLoader.setPath( path );
         objLoader.load( obj, function ( object ) {
+            for(k in object.children){
+                childName=object.children[k].name;
+                if(childName.length>4){
+                    var mStr=childName.substr(0,4);
+                    if(mStr=='wall'){
+                        object.children[k].castShadow = true;
+                        object.children[k].receiveShadow = true;
+                    }
+                }
+            }
             object.castShadow = true;
             object.receiveShadow=true;
             objectList.push(

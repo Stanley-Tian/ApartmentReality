@@ -205,6 +205,53 @@ var scenes = [
                     break;
             }
         }
+    },
+    {
+        index:       0,//default object
+        models:[
+            {
+                name: 'A4_real',
+                path: 'assets/Models/A4/',
+                obj:  'A4_real.obj',
+                mtl:  'A4_real.mtl'
+            },
+            {
+                name: 'A4_transport',
+                path: 'assets/Models/A4/',
+                obj:  'A4_transport.obj',
+                mtl:  'A4_transport.mtl'
+            }
+        ],
+        // switch object showed in circular sequence
+        onSwitch:  function(){
+            if(this.index<0 ||this.index>1){
+                this.index=0;
+            }else{
+                this.index=this.index+1;
+            }
+            this.onIndex(this.index);
+        },
+        // switch object showed in circular sequence
+        onIndex:  function(index){
+            if (index<0 || index>1){
+                index=0;
+            }
+            this.index=index;
+            switch(this.index){
+                case 0:
+                    ShowObject('A4_real');
+                    HideObject('A4_transport');
+                    break;
+                case 1:
+                    HideObject('A4_real');
+                    ShowObject('A4_transport');
+                    break;
+                default:
+                    ShowObject('A4_real');
+                    HideObject('A4_transport');
+                    break;
+            }
+        }
     }
 ];
 

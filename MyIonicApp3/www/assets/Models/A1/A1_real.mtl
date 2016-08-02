@@ -1,5 +1,5 @@
 # Blender MTL File: 'None'
-# Material Count: 81
+# Material Count: 83
 
 newmtl 205
 Ns 94.117647
@@ -11,7 +11,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl 459
+newmtl 458
 Ns 80.392157
 Ka 0.200000 0.200000 0.200000
 Kd 1.000000 1.000000 1.000000
@@ -20,9 +20,9 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd A1_real_459.png
+map_Kd A1_real_458.png
 
-newmtl 580
+newmtl 579
 Ns 0.000000
 Ka 0.200000 0.200000 0.200000
 Kd 1.000000 1.000000 1.000000
@@ -31,9 +31,9 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd A1_real_580.png
+map_Kd A1_real_579.png
 
-newmtl 638
+newmtl 604
 Ns 94.117647
 Ka 0.200000 0.200000 0.200000
 Kd 1.000000 1.000000 1.000000
@@ -42,9 +42,9 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd A1_real_638.png
+map_Kd A1_real_604.png
 
-newmtl 641
+newmtl 607
 Ns 94.117647
 Ka 0.200000 0.200000 0.200000
 Kd 1.000000 1.000000 1.000000
@@ -53,9 +53,9 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd A1_real_638.png
+map_Kd A1_real_604.png
 
-newmtl 698
+newmtl 664
 Ns 94.117647
 Ka 0.000000 0.000000 0.000000
 Kd 0.640000 0.640000 0.640000
@@ -76,7 +76,7 @@ d 1.000000
 illum 2
 map_Kd A1_real_BoisBlanc.png
 
-newmtl Box16_4
+newmtl Box16_4.001
 Ns 41.176471
 Ka 0.853567 0.853567 0.853567
 Kd 0.768600 0.878400 0.913700
@@ -86,7 +86,7 @@ Ni 1.500000
 d 0.300000
 illum 2
 
-newmtl Cage_in
+newmtl Cage_in.001
 Ns 0.000000
 Ka 0.200000 0.200000 0.200000
 Kd 0.930000 0.920000 0.900000
@@ -106,7 +106,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Cage_out
+newmtl Cage_out.001
 Ns 0.000000
 Ka 0.200000 0.200000 0.200000
 Kd 1.000000 1.000000 1.000000
@@ -126,7 +126,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Cylinder17_1
+newmtl Cylinder17_1.001
 Ns 31.372549
 Ka 0.451000 0.451000 0.451000
 Kd 0.451000 0.451000 0.451000
@@ -146,7 +146,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Frame_in
+newmtl Frame_in.001
 Ns 0.000000
 Ka 0.200000 0.200000 0.200000
 Kd 0.930000 0.920000 0.900000
@@ -166,7 +166,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Frame_out
+newmtl Frame_out.001
 Ns 0.000000
 Ka 0.200000 0.200000 0.200000
 Kd 1.000000 1.000000 1.000000
@@ -186,7 +186,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl GLASS
+newmtl GLASS.001
 Ns 127.450980
 Ka 0.000000 0.000000 0.000000
 Kd 0.720000 0.840000 0.840000
@@ -206,7 +206,7 @@ Ni 1.021455
 d 0.350000
 illum 2
 
-newmtl Glass
+newmtl Glass.001
 Ns 0.000000
 Ka 0.200000 0.200000 0.200000
 Kd 0.824500 0.824500 0.824500
@@ -226,7 +226,7 @@ Ni 1.000000
 d 0.500000
 illum 3
 
-newmtl Gonds
+newmtl Gonds.001
 Ns 127.450980
 Ka 1.000000 1.000000 1.000000
 Kd 0.900000 0.900000 0.900000
@@ -247,7 +247,7 @@ d 1.000000
 illum 2
 map_Kd A1_real_GrisMat.png
 
-newmtl HingePlate2_37_37
+newmtl HingePlate2_37_37.001
 Ns 7.843137
 Ka 0.200000 0.200000 0.200000
 Kd 1.000000 1.000000 1.000000
@@ -258,7 +258,7 @@ d 1.000000
 illum 2
 map_Kd A1_real_HingePlate2_37_37.png
 
-newmtl HingeTube1_36_36
+newmtl HingeTube1_36_36.001
 Ns 7.843137
 Ka 0.200000 0.200000 0.200000
 Kd 1.000000 1.000000 1.000000
@@ -269,7 +269,7 @@ d 1.000000
 illum 2
 map_Kd A1_real_HingeTube1_36_36.png
 
-newmtl Leaf
+newmtl Leaf.001
 Ns 94.117647
 Ka 0.200000 0.200000 0.200000
 Kd 1.000000 1.000000 1.000000
@@ -280,7 +280,7 @@ d 1.000000
 illum 2
 map_Kd A1_real_Leaf.png
 
-newmtl Lock
+newmtl Lock.001
 Ns 127.450980
 Ka 1.000000 1.000000 1.000000
 Kd 0.429227 0.429227 0.429227
@@ -290,7 +290,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl METAL_aluminum
+newmtl METAL_aluminum.001
 Ns 105.882353
 Ka 0.000000 0.000000 0.000000
 Kd 0.560000 0.560000 0.560000
@@ -300,7 +300,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl METAL_brass_polis
+newmtl METAL_brass_polis.001
 Ns 94.117647
 Ka 0.000000 0.000000 0.000000
 Kd 0.800000 0.640000 0.400000
@@ -310,7 +310,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl METAL_brass_polish
+newmtl METAL_brass_polish.001
 Ns 94.117647
 Ka 0.000000 0.000000 0.000000
 Kd 0.800000 0.640000 0.400000
@@ -320,7 +320,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl PAINT_gloss_black
+newmtl PAINT_gloss_black.001
 Ns 94.117647
 Ka 0.000000 0.000000 0.000000
 Kd 0.000000 0.000000 0.000000
@@ -330,7 +330,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl PAINT_gloss_white
+newmtl PAINT_gloss_white.001
 Ns 94.117647
 Ka 0.000000 0.000000 0.000000
 Kd 0.800000 0.800000 0.800000
@@ -340,7 +340,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl PAINT_gloss_white_Window_1_bottom_Window_1_bottom_PAINT_gloss_w
+newmtl PAINT_gloss_white_Window_1_bottom_Window_1_bottom_PAINT_glo.000
 Ns 94.117647
 Ka 0.000000 0.000000 0.000000
 Kd 0.900000 0.900000 0.900000
@@ -350,7 +350,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl Rectangle06_2
+newmtl Rectangle06_2.001
 Ns 9.803922
 Ka 0.827500 0.827500 0.827500
 Kd 1.000000 1.000000 1.000000
@@ -360,7 +360,7 @@ Ni 1.500000
 d 1.000000
 illum 2
 
-newmtl Rectangle07_3
+newmtl Rectangle07_3.001
 Ns 60.784314
 Ka 0.725500 0.725500 0.725500
 Kd 0.725500 0.725500 0.725500
@@ -370,7 +370,7 @@ Ni 1.500000
 d 1.000000
 illum 2
 
-newmtl Rectangle12_7
+newmtl Rectangle12_7.001
 Ns 31.372549
 Ka 0.843100 0.843100 0.843100
 Kd 0.843100 0.843100 0.843100
@@ -380,7 +380,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl TEXTILE_generic
+newmtl TEXTILE_generic.001
 Ns 15.686275
 Ka 0.000000 0.000000 0.000000
 Kd 1.000000 1.000000 1.000000
@@ -390,7 +390,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl WOOD_walnut
+newmtl WOOD_walnut.001
 Ns 127.450980
 Ka 0.000000 0.000000 0.000000
 Kd 0.364027 0.097947 0.097947
@@ -411,7 +411,7 @@ d 1.000000
 illum 2
 map_Kd A1_real_bclair.png
 
-newmtl bed_venge
+newmtl bed_venge.001
 Ns 19.607843
 Ka 0.200000 0.200000 0.200000
 Kd 1.000000 1.000000 1.000000
@@ -422,7 +422,7 @@ d 1.000000
 illum 2
 map_Kd A1_real_bed_venge.png
 
-newmtl black_iron
+newmtl black_iron.001
 Ns 94.117647
 Ka 0.000000 0.000000 0.000000
 Kd 0.116856 0.110892 0.110892
@@ -432,7 +432,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl coverlet
+newmtl coverlet.001
 Ns 9.803922
 Ka 0.200000 0.200000 0.200000
 Kd 1.000000 1.000000 1.000000
@@ -443,7 +443,7 @@ d 1.000000
 illum 2
 map_Kd A1_real_coverlet.png
 
-newmtl dkgrey
+newmtl dkgrey.001
 Ns 58.823529
 Ka 0.049000 0.049000 0.049000
 Kd 0.049000 0.049000 0.049000
@@ -453,7 +453,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl flltgrey
+newmtl flltgrey.001
 Ns 0.000000
 Ka 0.522400 0.522400 0.522400
 Kd 0.824500 0.824500 0.824500
@@ -463,7 +463,7 @@ Ni 1.000000
 d 0.500000
 illum 2
 
-newmtl flltgrey_704
+newmtl flltgrey_670
 Ns 0.000000
 Ka 0.522400 0.522400 0.522400
 Kd 0.824500 0.824500 0.824500
@@ -473,7 +473,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl flwhite1
+newmtl flwhite1.001
 Ns 0.000000
 Ka 0.930600 0.930600 0.930600
 Kd 1.000000 1.000000 1.000000
@@ -483,7 +483,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl glassblutint
+newmtl glassblutint.001
 Ns 58.823529
 Ka 0.400000 0.400000 0.400000
 Kd 0.555100 0.800000 0.773000
@@ -493,7 +493,7 @@ Ni 1.500000
 d 0.670000
 illum 6
 
-newmtl glasstransparent
+newmtl glasstransparent.001
 Ns 127.450980
 Ka 0.216300 0.216300 0.216300
 Kd 0.469400 0.469400 0.469400
@@ -503,7 +503,7 @@ Ni 1.500000
 d 0.250000
 illum 6
 
-newmtl glasy
+newmtl glasy.001
 Ns 94.117647
 Ka 0.000000 0.000000 0.000000
 Kd 0.538279 0.666044 0.800000
@@ -513,7 +513,7 @@ Ni 1.500000
 d 0.213944
 illum 2
 
-newmtl grey
+newmtl grey.001
 Ns 64.705882
 Ka 0.500000 0.500000 0.500000
 Kd 0.183700 0.183700 0.183700
@@ -523,7 +523,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl ground_1
+newmtl ground_1.001
 Ns 0.000000
 Ka 0.658824 0.658824 0.658824
 Kd 0.658824 0.658824 0.658824
@@ -533,7 +533,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl iron
+newmtl iron.001
 Ns 0.000000
 Ka 1.000000 1.000000 1.000000
 Kd 0.012217 0.012217 0.012217
@@ -543,7 +543,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl leftPillow
+newmtl leftPillow.001
 Ns 9.803922
 Ka 0.000000 0.000000 0.000000
 Kd 0.600000 0.600000 0.600000
@@ -553,7 +553,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl lighttan
+newmtl lighttan.001
 Ns 127.450980
 Ka 0.057867 0.057867 0.057867
 Kd 0.702000 0.421000 0.220600
@@ -563,7 +563,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl ltgrey
+newmtl ltgrey.001
 Ns 64.705882
 Ka 0.500000 0.500000 0.500000
 Kd 0.383700 0.383700 0.383700
@@ -573,7 +573,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl ltgrey_sweethome3d_window_pane_636
+newmtl ltgrey_sweethome3d_window_pane_708
 Ns 64.705882
 Ka 0.500000 0.500000 0.500000
 Kd 0.383700 0.383700 0.383700
@@ -583,7 +583,7 @@ Ni 1.000000
 d 0.500000
 illum 2
 
-newmtl mattress
+newmtl mattress.001
 Ns 9.803922
 Ka 0.000000 0.000000 0.000000
 Kd 0.900000 0.900000 0.900000
@@ -603,7 +603,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl metall
+newmtl metall.001
 Ns 94.117647
 Ka 0.000000 0.000000 0.000000
 Kd 0.050196 0.050196 0.050196
@@ -613,7 +613,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl pCube222_5_5
+newmtl pCube222_5_5.001
 Ns 7.843137
 Ka 0.000000 0.000000 0.000000
 Kd 0.750448 0.750448 0.750448
@@ -623,7 +623,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl pCube55_32_32
+newmtl pCube55_32_32.001
 Ns 7.843137
 Ka 0.000000 0.000000 0.000000
 Kd 0.281600 0.111035 0.091802
@@ -633,7 +633,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl pot
+newmtl pot.001
 Ns 29.411765
 Ka 0.000000 0.000000 0.000000
 Kd 0.480000 0.310000 0.240000
@@ -643,7 +643,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl revolvedSurface41_2_2
+newmtl revolvedSurface41_2_2.001
 Ns 7.843137
 Ka 0.000000 0.000000 0.000000
 Kd 0.647200 0.647200 0.647200
@@ -653,7 +653,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl revolvedSurface42_1_1
+newmtl revolvedSurface42_1_1.001
 Ns 7.843137
 Ka 0.000000 0.000000 0.000000
 Kd 0.647200 0.579584 0.443332
@@ -663,7 +663,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl rightPillow
+newmtl rightPillow.001
 Ns 9.803922
 Ka 0.000000 0.000000 0.000000
 Kd 0.600000 0.600000 0.600000
@@ -717,17 +717,17 @@ d 1.000000
 illum 2
 map_Kd A1_real_room_32_195.png
 
-newmtl ruby
+newmtl ruby.001
 Ns 58.823529
-Ka 1.000000 0.000000 0.000000
+Ka 0.333333 0.333333 0.333333
 Kd 1.000000 0.000000 0.000000
 Ks 0.200000 0.200000 0.200000
 Ke 0.000000 0.000000 0.000000
-Ni 1.500000
+Ni 1.000000
 d 0.250000
-illum 3
+illum 2
 
-newmtl silver
+newmtl silver.001
 Ns 58.823529
 Ka 0.955100 0.955100 0.955100
 Kd 0.616300 0.616300 0.616300
@@ -737,7 +737,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl soil
+newmtl soil.001
 Ns 9.803922
 Ka 0.000000 0.000000 0.000000
 Kd 0.220000 0.160000 0.110000
@@ -747,7 +747,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl stem
+newmtl stem.001
 Ns 94.117647
 Ka 0.000000 0.000000 0.000000
 Kd 0.300000 0.560000 0.130000
@@ -757,7 +757,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl wall_1_2
+newmtl wall_1_2.001
 Ns 0.000000
 Ka 0.200000 0.200000 0.200000
 Kd 1.000000 1.000000 1.000000
@@ -766,6 +766,28 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
+
+newmtl wall_1_3.001
+Ns 0.000000
+Ka 0.200000 0.200000 0.200000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd A1_real_wall_1_3.png
+
+newmtl wall_1_3.001_NONE
+Ns 0.000000
+Ka 0.200000 0.200000 0.200000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd  A1_real_wall_1_3.png
 
 newmtl wall_1_4
 Ns 0.000000
@@ -811,7 +833,7 @@ d 1.000000
 illum 2
 map_Kd  A1_real_wall_4_26.png
 
-newmtl white
+newmtl white.001
 Ns 58.823529
 Ka 0.400000 0.400000 0.400000
 Kd 1.000000 1.000000 1.000000
