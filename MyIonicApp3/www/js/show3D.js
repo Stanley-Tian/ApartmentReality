@@ -11,24 +11,27 @@ var scenes = [
                 name: 'House01_1st',
                 path: 'assets/Models/House01/',
                 obj:  'House01_1st_blender.obj',
-                mtl:  'House01_1st_blender.mtl'
+                mtl:  'House01_1st_blender.mtl',
+                initPosition: [0, 0, 0], initRotation: [0, 0, 0], initScale: [1,1,1]
             },
             {
                 name: 'House01_2nd',
                 path: 'assets/Models/House01/',
                 obj:  'House01_2nd_blender.obj',
-                mtl:  'House01_2nd_blender.mtl'
+                mtl:  'House01_2nd_blender.mtl',
+                initPosition: [0, 0, 0], initRotation: [0, 0, 0], initScale: [1,1,1]
             },
             {
                 name: 'House01_3rd',
                 path: 'assets/Models/House01/',
                 obj:  'House01_3rd_blender.obj',
-                mtl:  'House01_3rd_blender.mtl'
+                mtl:  'House01_3rd_blender.mtl',
+                initPosition: [0, 0, 0], initRotation: [0, 0, 0], initScale: [1,1,1]
             }
         ],
         // switch object showed in circular sequence
         onSwitch:  function(){
-            if(this.index<0 || this.index>2){
+            if(this.index<0 || this.index>1){
                 this.index=0;
             }else{
                 this.index=this.index+1;
@@ -72,8 +75,10 @@ var scenes = [
                 name: 'A1',
                 path: 'assets/Models/A1/',
                 obj:  'A1.obj',
-                mtl:  'A1.mtl'
-            }//,
+                mtl:  'A1.mtl',
+                initPosition: [0, 0, 0], initRotation: [0, 0, 0], initScale: [1,1,1]
+            }
+            //,
             // {
             //     name: 'A1_transport',
             //     path: 'assets/Models/A1/',
@@ -120,8 +125,10 @@ var scenes = [
                 name: 'A2',
                 path: 'assets/Models/A2/',
                 obj:  'A2.obj',
-                mtl:  'A2.mtl'
-            }//,
+                mtl:  'A2.mtl',
+                initPosition: [0, 0, 0], initRotation: [0, 0, 0], initScale: [1,1,1]
+            }
+            //,
             // {
             //     name: 'A2_transport',
             //     path: 'assets/Models/A2/',
@@ -168,8 +175,10 @@ var scenes = [
                 name: 'A3',
                 path: 'assets/Models/A3/',
                 obj:  'A3.obj',
-                mtl:  'A3.mtl'
-            }//,
+                mtl:  'A3.mtl',
+                initPosition: [0, 0, 0], initRotation: [0, 0, 0], initScale: [1,1,1]
+            }
+            //,
             // {
             //     name: 'A3_center',
             //     path: 'assets/Models/A3/',
@@ -216,8 +225,10 @@ var scenes = [
                 name: 'A4',
                 path: 'assets/Models/A4/',
                 obj:  'A4.obj',
-                mtl:  'A4.mtl'
-            }//,
+                mtl:  'A4.mtl',
+                initPosition: [0, 0, 0], initRotation: [0, 0, 0], initScale: [1,1,1]
+            }
+            //,
             // {
             //     name: 'A4_transport',
             //     path: 'assets/Models/A4/',
@@ -256,12 +267,68 @@ var scenes = [
             //         break;
             // }
         }
+    },
+    {
+        index:       0,//default object
+        models:[
+            {
+                name: 'A5',
+                path: 'assets/Models/A5/',
+                obj:  'A3_all.obj',
+                mtl:  'A3_all.mtl',
+                initPosition: [0, 0, 0], initRotation: [0, 0, 0], initScale: [0.5,0.5,0.5]
+            },
+            {
+                name: 'A5_center',
+                path: 'assets/Models/A5/',
+                obj:  'A3_center.obj',
+                mtl:  'A3_center.mtl',
+                initPosition: [0, 0, 0], initRotation: [0, 0, 0], initScale: [0.5,0.5,0.5]
+            }
+        ],
+        // switch object showed in circular sequence
+        onSwitch:  function(){
+            if(this.index<0 ||this.index>0){
+                this.index=0;
+            }else{
+                this.index=this.index+1;
+            }
+            this.onIndex(this.index);
+        },
+        // switch object showed in circular sequence
+        onIndex:  function(index){
+            if (index<0 || index>1){
+                index=0;
+            }
+            this.index=index;
+            switch(this.index){
+                case 0:
+                    ShowObject('A5_all');
+                    ShowObject('A5_center');
+                    break;
+                case 1:
+                    HideObject('A5_all');
+                    ShowObject('A5_center');
+                    break;
+                default:
+                    ShowObject('A5_all');
+                    ShowObject('A5_center');
+                    break;
+            }
+        }
     }
 ];
 
 var modelsNum=0;
 var modelsLoaded=0;
 function reloadModels(scIndex,onLoaded,onError) {
+    var scIndexInter = 0;
+    if(scIndex<0 || scIndex>7){
+        scIndexInter=0;
+    }else{
+        scIndexInter=scIndex+1;
+    }
+    
     if(scenesLoading){
         console.log('Unfinished loading(>_<)');
         return;
@@ -271,9 +338,9 @@ function reloadModels(scIndex,onLoaded,onError) {
     setupScene();
     ClearObject();
     var scenesNum=0;
-    scenesIndex=0;
-    if(scenes[scIndex]!=undefined){
-        scenesIndex=scIndex;
+    scenesIndex=scIndexInter;
+    if(scenes[scIndexInter]!=undefined){
+        scenesIndex=scIndexInter;
     }
     modelsNum=0;
     modelsLoaded=0;
@@ -285,6 +352,9 @@ function reloadModels(scIndex,onLoaded,onError) {
             scenes[scenesIndex].models[i].path,
             scenes[scenesIndex].models[i].obj,
             scenes[scenesIndex].models[i].mtl,
+            scenes[scenesIndex].models[i].initPosition,
+            scenes[scenesIndex].models[i].initRotation,
+            scenes[scenesIndex].models[i].initScale,
             function(){
                 //onLoading();
                 modelsLoaded=modelsLoaded+1;
