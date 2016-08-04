@@ -32,9 +32,15 @@ var TmtWebSocket =
     {
       if (Msg!=-1)
       {
-        tmt_house_id = parseInt(Msg)+1;
+        tmt_house_id = parseInt(Msg);
         //onChangeModel();
-        window.location.href='#/tab/show3D';
+        if(tmt_house_id==tmt_last_house_id)
+        {
+          window.location.href='#/tab/show3D';
+        }
+        tmt_last_house_id = tmt_house_id;
+        tmt_house_id = -1;
+
       }
     }
   }

@@ -3,6 +3,7 @@
  */
 var tmt_config = {};
 var tmt_house_id = -1;
+var tmt_last_house_id = -1;
 function initConfig() {
     // htmlobj=$.ajax({url:"config.json",async:false});
     // var config_info=htmlobj.responseText;
