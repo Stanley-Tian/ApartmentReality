@@ -69,17 +69,17 @@ var scenes = [
         index:       0,//default object
         models:[
             {
-                name: 'A1_real',
+                name: 'A1',
                 path: 'assets/Models/A1/',
-                obj:  'A1_real.obj',
-                mtl:  'A1_real.mtl'
-            },
-            {
-                name: 'A1_transport',
-                path: 'assets/Models/A1/',
-                obj:  'A1_transport.obj',
-                mtl:  'A1_transport.mtl'
-            }
+                obj:  'A1.obj',
+                mtl:  'A1.mtl'
+            }//,
+            // {
+            //     name: 'A1_transport',
+            //     path: 'assets/Models/A1/',
+            //     obj:  'A1_transport.obj',
+            //     mtl:  'A1_transport.mtl'
+            // }
         ],
         // switch object showed in circular sequence
         onSwitch:  function(){
@@ -96,37 +96,38 @@ var scenes = [
                 index=0;
             }
             this.index=index;
-            switch(this.index){
-                case 0:
-                    ShowObject('A1_real');
-                    HideObject('A1_transport');
-                    break;
-                case 1:
-                    HideObject('A1_real');
-                    ShowObject('A1_transport');
-                    break;
-                default:
-                    ShowObject('A1_real');
-                    HideObject('A1_transport');
-                    break;
-            }
+            ShowObject('A1');
+            // switch(this.index){
+            //     case 0:
+            //         ShowObject('A1_real');
+            //         HideObject('A1_transport');
+            //         break;
+            //     case 1:
+            //         HideObject('A1_real');
+            //         ShowObject('A1_transport');
+            //         break;
+            //     default:
+            //         ShowObject('A1_real');
+            //         HideObject('A1_transport');
+            //         break;
+            // }
         }
     },
     {
         index:       0,//default object
         models:[
             {
-                name: 'A2_real',
+                name: 'A2',
                 path: 'assets/Models/A2/',
-                obj:  'A2_real.obj',
-                mtl:  'A2_real.mtl'
-            },
-            {
-                name: 'A2_transport',
-                path: 'assets/Models/A2/',
-                obj:  'A2_transport.obj',
-                mtl:  'A2_transport.mtl'
-            }
+                obj:  'A2.obj',
+                mtl:  'A2.mtl'
+            }//,
+            // {
+            //     name: 'A2_transport',
+            //     path: 'assets/Models/A2/',
+            //     obj:  'A2_transport.obj',
+            //     mtl:  'A2_transport.mtl'
+            // }
         ],
         // switch object showed in circular sequence
         onSwitch:  function(){
@@ -143,37 +144,38 @@ var scenes = [
                 index=0;
             }
             this.index=index;
-            switch(this.index){
-                case 0:
-                    ShowObject('A2_real');
-                    HideObject('A2_transport');
-                    break;
-                case 1:
-                    HideObject('A2_real');
-                    ShowObject('A2_transport');
-                    break;
-                default:
-                    ShowObject('A2_real');
-                    HideObject('A2_transport');
-                    break;
-            }
+            ShowObject('A2');
+            // switch(this.index){
+            //     case 0:
+            //         ShowObject('A2_real');
+            //         HideObject('A2_transport');
+            //         break;
+            //     case 1:
+            //         HideObject('A2_real');
+            //         ShowObject('A2_transport');
+            //         break;
+            //     default:
+            //         ShowObject('A2_real');
+            //         HideObject('A2_transport');
+            //         break;
+            // }
         }
     },
     {
         index:       0,//default object
         models:[
             {
-                name: 'A3_all',
+                name: 'A3',
                 path: 'assets/Models/A3/',
-                obj:  'A3_all.obj',
-                mtl:  'A3_all.mtl'
-            },
-            {
-                name: 'A3_center',
-                path: 'assets/Models/A3/',
-                obj:  'A3_center.obj',
-                mtl:  'A3_center.mtl'
-            }
+                obj:  'A3.obj',
+                mtl:  'A3.mtl'
+            }//,
+            // {
+            //     name: 'A3_center',
+            //     path: 'assets/Models/A3/',
+            //     obj:  'A3_center.obj',
+            //     mtl:  'A3_center.mtl'
+            // }
         ],
         // switch object showed in circular sequence
         onSwitch:  function(){
@@ -190,37 +192,38 @@ var scenes = [
                 index=0;
             }
             this.index=index;
-            switch(this.index){
-                case 0:
-                    ShowObject('A3_all');
-                    ShowObject('A3_center');
-                    break;
-                case 1:
-                    HideObject('A3_all');
-                    ShowObject('A3_center');
-                    break;
-                default:
-                    ShowObject('A3_all');
-                    ShowObject('A3_center');
-                    break;
-            }
+            ShowObject('A3');
+            // switch(this.index){
+            //     case 0:
+            //         ShowObject('A3_all');
+            //         ShowObject('A3_center');
+            //         break;
+            //     case 1:
+            //         HideObject('A3_all');
+            //         ShowObject('A3_center');
+            //         break;
+            //     default:
+            //         ShowObject('A3_all');
+            //         ShowObject('A3_center');
+            //         break;
+            // }
         }
     },
     {
         index:       0,//default object
         models:[
             {
-                name: 'A4_real',
+                name: 'A4',
                 path: 'assets/Models/A4/',
-                obj:  'A4_real.obj',
-                mtl:  'A4_real.mtl'
-            },
-            {
-                name: 'A4_transport',
-                path: 'assets/Models/A4/',
-                obj:  'A4_transport.obj',
-                mtl:  'A4_transport.mtl'
-            }
+                obj:  'A4.obj',
+                mtl:  'A4.mtl'
+            }//,
+            // {
+            //     name: 'A4_transport',
+            //     path: 'assets/Models/A4/',
+            //     obj:  'A4_transport.obj',
+            //     mtl:  'A4_transport.mtl'
+            // }
         ],
         // switch object showed in circular sequence
         onSwitch:  function(){
@@ -237,20 +240,21 @@ var scenes = [
                 index=0;
             }
             this.index=index;
-            switch(this.index){
-                case 0:
-                    ShowObject('A4_real');
-                    HideObject('A4_transport');
-                    break;
-                case 1:
-                    HideObject('A4_real');
-                    ShowObject('A4_transport');
-                    break;
-                default:
-                    ShowObject('A4_real');
-                    HideObject('A4_transport');
-                    break;
-            }
+            ShowObject('A4');
+            // switch(this.index){
+            //     case 0:
+            //         ShowObject('A4_real');
+            //         HideObject('A4_transport');
+            //         break;
+            //     case 1:
+            //         HideObject('A4_real');
+            //         ShowObject('A4_transport');
+            //         break;
+            //     default:
+            //         ShowObject('A4_real');
+            //         HideObject('A4_transport');
+            //         break;
+            // }
         }
     }
 ];
