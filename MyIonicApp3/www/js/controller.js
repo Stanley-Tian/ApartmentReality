@@ -67,7 +67,7 @@ angular.module('myApp.controllers', [])
       // });
     });
     $scope.$on('$ionicView.afterEnter', function (viewInfo, state) {
-      //alert("当前户型ID: "+tmt_house_id);
+      alert("当前户型ID: "+tmt_house_id);
       // $("#show2nd").click(function () {
       //   show2nd();
       // });
@@ -78,7 +78,7 @@ angular.module('myApp.controllers', [])
       $("#switchTo").click(function () {
         switchTo();
       });
-      $("#house_id").html("house id: "+tmt_house_id);
+      //$("#house_id").html("house id: "+tmt_house_id);
 
     });
     $scope.$on('$ionicView.afterLeave', function (viewInfo, state) {
