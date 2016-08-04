@@ -98,7 +98,9 @@ function AddJsonObject(path, nameStr) {
         } ,onProgress,onError
     );
 }
-function AddOBJMTLObject(nameStr,path, obj, mtl,onLoaded,onError) {
+function AddOBJMTLObject(nameStr,path, obj, mtl,
+                         position, rotation, scale,
+                         onLoaded,onError) {
     //find object, if exist do nothing
     for (var i = 0; i < objectList.length; i++) {
         if (objectList[i].Name == nameStr) {
@@ -123,8 +125,17 @@ function AddOBJMTLObject(nameStr,path, obj, mtl,onLoaded,onError) {
             //         }
             //     }
             // }
-            object.castShadow = true;
-            object.receiveShadow=true;
+            // object.castShadow = true;
+            // object.receiveShadow=true;
+            object.position.x=position[0];
+            object.position.y=position[1];
+            object.position.z=position[2];
+            object.rotation.x=rotation[0];
+            object.rotation.y=rotation[1];
+            object.rotation.z=rotation[2];
+            object.scale.x=scale[0];
+            object.scale.y=scale[1];
+            object.scale.z=scale[2];
             objectList.push(
                 {
                     Name: nameStr,
