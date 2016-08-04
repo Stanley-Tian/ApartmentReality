@@ -34,13 +34,20 @@ var TmtWebSocket =
       {
         tmt_house_id = parseInt(Msg);
         //onChangeModel();
-        if(tmt_house_id==tmt_last_house_id)
+        console.log("current house id: "+tmt_house_id);
+        console.log("current last house id: "+tmt_last_house_id);
+        var jump_status = false;
+        if(tmt_house_id==tmt_last_house_id&&tmt_house_id!=-1)
         {
           window.location.href='#/tab/show3D';
+          jump_status = true;
+          return;
         }
-        tmt_last_house_id = tmt_house_id;
-        tmt_house_id = -1;
-
+        if(jump_status!=true)
+        {
+          tmt_last_house_id = tmt_house_id;
+          tmt_house_id = -1;
+        }
       }
     }
   }
