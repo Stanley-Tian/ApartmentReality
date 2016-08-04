@@ -47,6 +47,9 @@ angular.module('myApp.controllers', [])
       });
       $scope.$on('$ionicView.afterLeave', function (viewInfo, state) {
           releaseCamera();
+
+        $("#stop_scan").hide();
+        $("#start_scan").show();
       });
   })
 
@@ -55,13 +58,13 @@ angular.module('myApp.controllers', [])
   .controller('show3DController', function($scope) {
 
     $scope.title='户型3D视图';
-    tmt_house_id=1;
+    //tmt_house_id=0;
 
     $scope.$on('$ionicView.loaded', function (viewInfo, state) {
-      onChangeModel();
-      $("#switchTo").click(function () {
-        switchTo();
-      });
+      // onChangeModel();
+      // $("#switchTo").click(function () {
+      //   switchTo();
+      // });
     });
     $scope.$on('$ionicView.afterEnter', function (viewInfo, state) {
       //alert("当前户型ID: "+tmt_house_id);
@@ -71,6 +74,10 @@ angular.module('myApp.controllers', [])
       // $("#showfull").click(function () {
       //   showfull();
       // });
+      onChangeModel();
+      $("#switchTo").click(function () {
+        switchTo();
+      });
       $("#house_id").html("house id: "+tmt_house_id);
 
     });

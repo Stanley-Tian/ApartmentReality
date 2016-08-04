@@ -327,6 +327,7 @@ function stopRender() {
     active=false;
 }
 function onChangeModel(){
+   // alert("tmt_house_id: "+tmt_house_id);
   $LoadCtrl.show({
     
     animation: 'fade-in',

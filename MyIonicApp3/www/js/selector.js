@@ -47,7 +47,7 @@ function initCamera() {
         "back",
         false,
         false,
-        false);
+        true);
 
   cordova.plugins.camerapreview.show();
   camera_ready=true;
