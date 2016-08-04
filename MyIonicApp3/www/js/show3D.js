@@ -272,7 +272,7 @@ var scenes = [
         index:       0,//default object
         models:[
             {
-                name: 'A5',
+                name: 'A5_all',
                 path: 'assets/Models/A5/',
                 obj:  'A3_all.obj',
                 mtl:  'A3_all.mtl',
