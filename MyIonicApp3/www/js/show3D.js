@@ -78,13 +78,6 @@ var scenes = [
                 mtl:  'A1.mtl',
                 initPosition: [0, 0, 0], initRotation: [0, 0, 0], initScale: [1,1,1]
             }
-            //,
-            // {
-            //     name: 'A1_transport',
-            //     path: 'assets/Models/A1/',
-            //     obj:  'A1_transport.obj',
-            //     mtl:  'A1_transport.mtl'
-            // }
         ],
         // switch object showed in circular sequence
         onSwitch:  function(){
@@ -102,20 +95,6 @@ var scenes = [
             }
             this.index=index;
             ShowObject('A1');
-            // switch(this.index){
-            //     case 0:
-            //         ShowObject('A1_real');
-            //         HideObject('A1_transport');
-            //         break;
-            //     case 1:
-            //         HideObject('A1_real');
-            //         ShowObject('A1_transport');
-            //         break;
-            //     default:
-            //         ShowObject('A1_real');
-            //         HideObject('A1_transport');
-            //         break;
-            // }
         }
     },
     {
@@ -128,13 +107,6 @@ var scenes = [
                 mtl:  'A2.mtl',
                 initPosition: [0, 0, 0], initRotation: [0, 0, 0], initScale: [1,1,1]
             }
-            //,
-            // {
-            //     name: 'A2_transport',
-            //     path: 'assets/Models/A2/',
-            //     obj:  'A2_transport.obj',
-            //     mtl:  'A2_transport.mtl'
-            // }
         ],
         // switch object showed in circular sequence
         onSwitch:  function(){
@@ -152,135 +124,21 @@ var scenes = [
             }
             this.index=index;
             ShowObject('A2');
-            // switch(this.index){
-            //     case 0:
-            //         ShowObject('A2_real');
-            //         HideObject('A2_transport');
-            //         break;
-            //     case 1:
-            //         HideObject('A2_real');
-            //         ShowObject('A2_transport');
-            //         break;
-            //     default:
-            //         ShowObject('A2_real');
-            //         HideObject('A2_transport');
-            //         break;
-            // }
         }
     },
     {
         index:       0,//default object
         models:[
             {
-                name: 'A3',
-                path: 'assets/Models/A3/',
-                obj:  'A3.obj',
-                mtl:  'A3.mtl',
-                initPosition: [0, 0, 0], initRotation: [0, 0, 0], initScale: [1,1,1]
-            }
-            //,
-            // {
-            //     name: 'A3_center',
-            //     path: 'assets/Models/A3/',
-            //     obj:  'A3_center.obj',
-            //     mtl:  'A3_center.mtl'
-            // }
-        ],
-        // switch object showed in circular sequence
-        onSwitch:  function(){
-            if(this.index<0 ||this.index>1){
-                this.index=0;
-            }else{
-                this.index=this.index+1;
-            }
-            this.onIndex(this.index);
-        },
-        // switch object showed in circular sequence
-        onIndex:  function(index){
-            if (index<0 || index>1){
-                index=0;
-            }
-            this.index=index;
-            ShowObject('A3');
-            // switch(this.index){
-            //     case 0:
-            //         ShowObject('A3_all');
-            //         ShowObject('A3_center');
-            //         break;
-            //     case 1:
-            //         HideObject('A3_all');
-            //         ShowObject('A3_center');
-            //         break;
-            //     default:
-            //         ShowObject('A3_all');
-            //         ShowObject('A3_center');
-            //         break;
-            // }
-        }
-    },
-    {
-        index:       0,//default object
-        models:[
-            {
-                name: 'A4',
-                path: 'assets/Models/A4/',
-                obj:  'A4.obj',
-                mtl:  'A4.mtl',
-                initPosition: [0, 0, 0], initRotation: [0, 0, 0], initScale: [1,1,1]
-            }
-            //,
-            // {
-            //     name: 'A4_transport',
-            //     path: 'assets/Models/A4/',
-            //     obj:  'A4_transport.obj',
-            //     mtl:  'A4_transport.mtl'
-            // }
-        ],
-        // switch object showed in circular sequence
-        onSwitch:  function(){
-            if(this.index<0 ||this.index>1){
-                this.index=0;
-            }else{
-                this.index=this.index+1;
-            }
-            this.onIndex(this.index);
-        },
-        // switch object showed in circular sequence
-        onIndex:  function(index){
-            if (index<0 || index>1){
-                index=0;
-            }
-            this.index=index;
-            ShowObject('A4');
-            // switch(this.index){
-            //     case 0:
-            //         ShowObject('A4_real');
-            //         HideObject('A4_transport');
-            //         break;
-            //     case 1:
-            //         HideObject('A4_real');
-            //         ShowObject('A4_transport');
-            //         break;
-            //     default:
-            //         ShowObject('A4_real');
-            //         HideObject('A4_transport');
-            //         break;
-            // }
-        }
-    },
-    {
-        index:       0,//default object
-        models:[
-            {
-                name: 'A5_all',
-                path: 'assets/Models/A5/',
+                name: 'A3_all',
+                path: 'assets/Models/A3_all/',
                 obj:  'A3_all.obj',
                 mtl:  'A3_all.mtl',
                 initPosition: [0, 0, 0], initRotation: [0, 0, 0], initScale: [0.5,0.5,0.5]
             },
             {
-                name: 'A5_center',
-                path: 'assets/Models/A5/',
+                name: 'A3_center',
+                path: 'assets/Models/A3_all/',
                 obj:  'A3_center.obj',
                 mtl:  'A3_center.mtl',
                 initPosition: [0, 0, 0], initRotation: [0, 0, 0], initScale: [0.5,0.5,0.5]
@@ -303,18 +161,134 @@ var scenes = [
             this.index=index;
             switch(this.index){
                 case 0:
-                    ShowObject('A5_all');
-                    ShowObject('A5_center');
+                    ShowObject('A3_all');
+                    ShowObject('A3_center');
                     break;
                 case 1:
-                    HideObject('A5_all');
-                    ShowObject('A5_center');
+                    HideObject('A3_all');
+                    ShowObject('A3_center');
                     break;
                 default:
-                    ShowObject('A5_all');
-                    ShowObject('A5_center');
+                    ShowObject('A3_all');
+                    ShowObject('A3_center');
                     break;
             }
+        }
+    },
+    {
+        index:       0,//default object
+        models:[
+            {
+                name: 'A4',
+                path: 'assets/Models/A4/',
+                obj:  'A4.obj',
+                mtl:  'A4.mtl',
+                initPosition: [0, 0, 0], initRotation: [0, 0, 0], initScale: [1,1,1]
+            }
+        ],
+        // switch object showed in circular sequence
+        onSwitch:  function(){
+            if(this.index<0 ||this.index>1){
+                this.index=0;
+            }else{
+                this.index=this.index+1;
+            }
+            this.onIndex(this.index);
+        },
+        // switch object showed in circular sequence
+        onIndex:  function(index){
+            if (index<0 || index>1){
+                index=0;
+            }
+            this.index=index;
+            ShowObject('A4');
+        }
+    },
+    {
+        index:       0,//default object
+        models:[
+            {
+                name: 'A5',
+                path: 'assets/Models/A5/',
+                obj:  'A5.obj',
+                mtl:  'A5.mtl',
+                initPosition: [0, 0, 0], initRotation: [0, 0, 0], initScale: [1,1,1]
+            }
+        ],
+        // switch object showed in circular sequence
+        onSwitch:  function(){
+            if(this.index<0 ||this.index>0){
+                this.index=0;
+            }else{
+                this.index=this.index+1;
+            }
+            this.onIndex(this.index);
+        },
+        // switch object showed in circular sequence
+        onIndex:  function(index){
+            if (index<0 || index>1){
+                index=0;
+            }
+            this.index=index;
+            ShowObject('A5');
+        }
+    },
+    {
+        index:       0,//default object
+        models:[
+            {
+                name: 'B1',
+                path: 'assets/Models/B1/',
+                obj:  'B1.obj',
+                mtl:  'B1.mtl',
+                initPosition: [0, 0, 0], initRotation: [0, 0, 0], initScale: [1,1,1]
+            }
+        ],
+        // switch object showed in circular sequence
+        onSwitch:  function(){
+            if(this.index<0 ||this.index>0){
+                this.index=0;
+            }else{
+                this.index=this.index+1;
+            }
+            this.onIndex(this.index);
+        },
+        // switch object showed in circular sequence
+        onIndex:  function(index){
+            if (index<0 || index>1){
+                index=0;
+            }
+            this.index=index;
+            ShowObject('B1');
+        }
+    },
+    {
+        index:       0,//default object
+        models:[
+            {
+                name: 'B2',
+                path: 'assets/Models/B2/',
+                obj:  'B2.obj',
+                mtl:  'B2.mtl',
+                initPosition: [0, 0, 0], initRotation: [0, 0, 0], initScale: [1,1,1]
+            }
+        ],
+        // switch object showed in circular sequence
+        onSwitch:  function(){
+            if(this.index<0 ||this.index>0){
+                this.index=0;
+            }else{
+                this.index=this.index+1;
+            }
+            this.onIndex(this.index);
+        },
+        // switch object showed in circular sequence
+        onIndex:  function(index){
+            if (index<0 || index>1){
+                index=0;
+            }
+            this.index=index;
+            ShowObject('B2');
         }
     }
 ];
@@ -381,18 +355,6 @@ function switchTo() {
     scenes[scenesIndex].onSwitch();
     requestAnimationFrame(render);
 }
-// function show2nd() {
-//     ShowObject('House01_1st');
-//     ShowObject('House01_2nd');
-//     HideObject('House01_3rd');
-//     requestAnimationFrame(render);
-// }
-// function showfull() {
-//     ShowObject('House01_1st');
-//     ShowObject('House01_2nd');
-//     ShowObject('House01_3rd');
-//     requestAnimationFrame(render);
-// }
 function startRender() {
     active=true;
     requestAnimationFrame(render);
