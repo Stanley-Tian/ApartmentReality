@@ -290,6 +290,35 @@ var scenes = [
             this.index=index;
             ShowObject('B2');
         }
+    },
+    {
+        index:       0,//default object
+        models:[
+            {
+                name: 'D1',
+                path: 'assets/Models/D1/',
+                obj:  'D1.obj',
+                mtl:  'D1.mtl',
+                initPosition: [0, 0, 0], initRotation: [0, 0, 0], initScale: [1,1,1]
+            }
+        ],
+        // switch object showed in circular sequence
+        onSwitch:  function(){
+            if(this.index<0 ||this.index>0){
+                this.index=0;
+            }else{
+                this.index=this.index+1;
+            }
+            this.onIndex(this.index);
+        },
+        // switch object showed in circular sequence
+        onIndex:  function(index){
+            if (index<0 || index>1){
+                index=0;
+            }
+            this.index=index;
+            ShowObject('D1');
+        }
     }
 ];
 

@@ -58,7 +58,7 @@ angular.module('myApp.controllers', [])
   .controller('show3DController', function($scope) {
 
     $scope.title='户型3D视图';
-    // tmt_house_id= 5;
+    tmt_house_id= 7;
 
     $scope.$on('$ionicView.loaded', function (viewInfo, state) {
       // onChangeModel();
